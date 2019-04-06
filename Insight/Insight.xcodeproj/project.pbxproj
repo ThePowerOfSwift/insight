@@ -129,6 +129,7 @@
 		5A33CD0E225956BC00734BC6 /* InsightTests */ = {
 			isa = PBXGroup;
 			children = (
+				5A33CD412259694700734BC6 /* Modules */,
 				5A33CD0F225956BC00734BC6 /* InsightTests.swift */,
 				5A33CD11225956BC00734BC6 /* Info.plist */,
 			);
@@ -206,6 +207,21 @@
 				5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */,
 			);
 			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		5A33CD412259694700734BC6 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD422259694E00734BC6 /* Insight */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		5A33CD422259694E00734BC6 /* Insight */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Insight;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
