@@ -9,8 +9,17 @@
 import Foundation
 
 
-class InsightInteractor {
+final class InsightInteractor {
     
+    private weak var output: InsightInteractorOutputProtocol?
+    
+    init() {
+
+    }
+    
+    func setupInteractor(with output: InsightInteractorOutputProtocol) {
+        
+    }
 }
 
 extension InsightInteractor: InsightInteractorProtocol {

@@ -9,8 +9,15 @@
 import Foundation
 
 
-class InsightPresenter {
+final class InsightPresenter {
     
+    private var interactor: InsightInteractorProtocol?
+    private weak var output: InsightPresenterOutputProtocol?
+    
+    init(interactor: InsightInteractorProtocol, output: InsightPresenterOutputProtocol) {
+        self.interactor = interactor
+        self.output = output
+    }
 }
 
 extension InsightPresenter: InsightPresenterProtocol {

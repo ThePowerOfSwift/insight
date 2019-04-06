@@ -11,6 +11,15 @@ import UIKit
 
 class InsightViewController: UIViewController {
     
+    private var presenter: InsightPresenterProtocol?
+    
+    override func viewDidLoad() {
+        
+    }
+    
+    func setupViewController(with presenter: InsightPresenterProtocol) {
+        self.presenter = presenter
+    }
 }
 
 extension InsightViewController: InsightPresenterOutputProtocol {

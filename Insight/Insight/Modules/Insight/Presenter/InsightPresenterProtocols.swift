@@ -10,7 +10,7 @@ import Foundation
 
 
 protocol InsightPresenterProtocol {
-    
+    init(interactor: InsightInteractorProtocol, output: InsightPresenterOutputProtocol)
 }
 
 protocol InsightPresenterOutputProtocol: class {

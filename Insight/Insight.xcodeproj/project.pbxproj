@@ -20,6 +20,9 @@
 		5A33CD3622595A3D00734BC6 /* InsightWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */; };
 		5A33CD3822595C2600734BC6 /* InsightPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */; };
 		5A33CD3A22595C6C00734BC6 /* InsightInteractorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3922595C6C00734BC6 /* InsightInteractorProtocols.swift */; };
+		5A33CD3C2259604F00734BC6 /* InsightViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */; };
+		5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */; };
+		5A33CD402259617B00734BC6 /* InsightInteractorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightWireframe.swift; sourceTree = "<group>"; };
 		5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterProtocols.swift; sourceTree = "<group>"; };
 		5A33CD3922595C6C00734BC6 /* InsightInteractorProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightInteractorProtocols.swift; sourceTree = "<group>"; };
+		5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightViewControllerBuilder.swift; sourceTree = "<group>"; };
+		5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterBuilder.swift; sourceTree = "<group>"; };
+		5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightInteractorBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				5A33CD2F2259596100734BC6 /* InsightViewController.swift */,
+				5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,6 +178,7 @@
 			children = (
 				5A33CD312259599000734BC6 /* InsightPresenter.swift */,
 				5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */,
+				5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -180,6 +188,7 @@
 			children = (
 				5A33CD33225959A900734BC6 /* InsightInteractor.swift */,
 				5A33CD3922595C6C00734BC6 /* InsightInteractorProtocols.swift */,
+				5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -332,11 +341,14 @@
 			files = (
 				5A33CCFD225956B900734BC6 /* ViewController.swift in Sources */,
 				5A33CD302259596100734BC6 /* InsightViewController.swift in Sources */,
+				5A33CD3C2259604F00734BC6 /* InsightViewControllerBuilder.swift in Sources */,
+				5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */,
 				5A33CD3A22595C6C00734BC6 /* InsightInteractorProtocols.swift in Sources */,
 				5A33CCFB225956B900734BC6 /* AppDelegate.swift in Sources */,
 				5A33CD3622595A3D00734BC6 /* InsightWireframe.swift in Sources */,
 				5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */,
 				5A33CD34225959A900734BC6 /* InsightInteractor.swift in Sources */,
+				5A33CD402259617B00734BC6 /* InsightInteractorBuilder.swift in Sources */,
 				5A33CD3822595C2600734BC6 /* InsightPresenterProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

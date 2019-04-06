@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 
-class InsightWireframe {
-    
+final class InsightWireframe {
+ 
+    class func present(in viewController: UIViewController) {
+        let insight = InsightViewControllerBuilder.build()
+        viewController.present(insight, animated: true, completion: nil)
+    }
 }
