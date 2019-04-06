@@ -14,6 +14,15 @@
 		5A33CD05225956BC00734BC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD03225956BC00734BC6 /* LaunchScreen.storyboard */; };
 		5A33CD10225956BC00734BC6 /* InsightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD0F225956BC00734BC6 /* InsightTests.swift */; };
 		5A33CD1B225956BC00734BC6 /* InsightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD1A225956BC00734BC6 /* InsightUITests.swift */; };
+		5A33CD302259596100734BC6 /* InsightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD2F2259596100734BC6 /* InsightViewController.swift */; };
+		5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD312259599000734BC6 /* InsightPresenter.swift */; };
+		5A33CD34225959A900734BC6 /* InsightInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD33225959A900734BC6 /* InsightInteractor.swift */; };
+		5A33CD3622595A3D00734BC6 /* InsightWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */; };
+		5A33CD3822595C2600734BC6 /* InsightPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */; };
+		5A33CD3A22595C6C00734BC6 /* InsightInteractorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3922595C6C00734BC6 /* InsightInteractorProtocols.swift */; };
+		5A33CD3C2259604F00734BC6 /* InsightViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */; };
+		5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */; };
+		5A33CD402259617B00734BC6 /* InsightInteractorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +56,15 @@
 		5A33CD16225956BC00734BC6 /* InsightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A33CD1A225956BC00734BC6 /* InsightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightUITests.swift; sourceTree = "<group>"; };
 		5A33CD1C225956BC00734BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A33CD2F2259596100734BC6 /* InsightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightViewController.swift; sourceTree = "<group>"; };
+		5A33CD312259599000734BC6 /* InsightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenter.swift; sourceTree = "<group>"; };
+		5A33CD33225959A900734BC6 /* InsightInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightInteractor.swift; sourceTree = "<group>"; };
+		5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightWireframe.swift; sourceTree = "<group>"; };
+		5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterProtocols.swift; sourceTree = "<group>"; };
+		5A33CD3922595C6C00734BC6 /* InsightInteractorProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightInteractorProtocols.swift; sourceTree = "<group>"; };
+		5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightViewControllerBuilder.swift; sourceTree = "<group>"; };
+		5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterBuilder.swift; sourceTree = "<group>"; };
+		5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightInteractorBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +115,7 @@
 		5A33CCF9225956B900734BC6 /* Insight */ = {
 			isa = PBXGroup;
 			children = (
+				5A33CD282259574D00734BC6 /* Modules */,
 				5A33CCFA225956B900734BC6 /* AppDelegate.swift */,
 				5A33CCFC225956B900734BC6 /* ViewController.swift */,
 				5A33CCFE225956B900734BC6 /* Main.storyboard */,
@@ -110,6 +129,7 @@
 		5A33CD0E225956BC00734BC6 /* InsightTests */ = {
 			isa = PBXGroup;
 			children = (
+				5A33CD412259694700734BC6 /* Modules */,
 				5A33CD0F225956BC00734BC6 /* InsightTests.swift */,
 				5A33CD11225956BC00734BC6 /* Info.plist */,
 			);
@@ -123,6 +143,85 @@
 				5A33CD1C225956BC00734BC6 /* Info.plist */,
 			);
 			path = InsightUITests;
+			sourceTree = "<group>";
+		};
+		5A33CD282259574D00734BC6 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD292259576A00734BC6 /* Insight */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		5A33CD292259576A00734BC6 /* Insight */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD2D2259578C00734BC6 /* Entity */,
+				5A33CD2C2259578500734BC6 /* Interactor */,
+				5A33CD2B2259577F00734BC6 /* Presenter */,
+				5A33CD2A2259577A00734BC6 /* View */,
+				5A33CD2E2259579300734BC6 /* Wireframe */,
+			);
+			path = Insight;
+			sourceTree = "<group>";
+		};
+		5A33CD2A2259577A00734BC6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD2F2259596100734BC6 /* InsightViewController.swift */,
+				5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5A33CD2B2259577F00734BC6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD312259599000734BC6 /* InsightPresenter.swift */,
+				5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */,
+				5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		5A33CD2C2259578500734BC6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD33225959A900734BC6 /* InsightInteractor.swift */,
+				5A33CD3922595C6C00734BC6 /* InsightInteractorProtocols.swift */,
+				5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		5A33CD2D2259578C00734BC6 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		5A33CD2E2259579300734BC6 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		5A33CD412259694700734BC6 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD422259694E00734BC6 /* Insight */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		5A33CD422259694E00734BC6 /* Insight */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Insight;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +356,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A33CCFD225956B900734BC6 /* ViewController.swift in Sources */,
+				5A33CD302259596100734BC6 /* InsightViewController.swift in Sources */,
+				5A33CD3C2259604F00734BC6 /* InsightViewControllerBuilder.swift in Sources */,
+				5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */,
+				5A33CD3A22595C6C00734BC6 /* InsightInteractorProtocols.swift in Sources */,
 				5A33CCFB225956B900734BC6 /* AppDelegate.swift in Sources */,
+				5A33CD3622595A3D00734BC6 /* InsightWireframe.swift in Sources */,
+				5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */,
+				5A33CD34225959A900734BC6 /* InsightInteractor.swift in Sources */,
+				5A33CD402259617B00734BC6 /* InsightInteractorBuilder.swift in Sources */,
+				5A33CD3822595C2600734BC6 /* InsightPresenterProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
