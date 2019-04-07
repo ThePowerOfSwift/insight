@@ -65,12 +65,11 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
     func broadcastActivityViewController(_ broadcastActivityViewController: RPBroadcastActivityViewController,
                                          didFinishWith broadcastController: RPBroadcastController?, error: Error?) {
         
-        guard error == nil else { return }
+        guard error == nil else { self.showErrorInBroadcast(); return }
         showActivityIndicator()
         broadcastActivityViewController.dismiss(animated: true) {
             broadcastController?.startBroadcast { error in
-                guard error == nil else { return }
-                print("Broadcast started successfully!")
+                guard error == nil else { self.showErrorInBroadcast(); return }
                 self.dismissAlert()
                 self.broadcastStarted()
             }
@@ -91,7 +90,7 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
     }
     
     private func showActivityIndicator() {
-        let waitView = UIAlertController(title: nil, message: "Aguarde...", preferredStyle: .alert)
+        let waitView = UIAlertController(title: nil, message: "Wait...", preferredStyle: .alert)
         
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
@@ -100,6 +99,16 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
 
         waitView.view.addSubview(loadingIndicator)
         present(waitView, animated: true, completion: nil)
+    }
+    
+    private func showErrorInBroadcast() {
+        dismiss(animated: false, completion: nil)
+        let alert = UIAlertController(title: "Something happened", message: "Couldn't start broadcast", preferredStyle: .alert)
+        let cancelButton = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(cancelButton)
+        present(alert, animated: true, completion: nil)
     }
     
     private func dismissAlert() {
