@@ -19,8 +19,6 @@ class InsightViewController: UIViewController {
     private let controller = RPBroadcastController()
     private let recorder = RPScreenRecorder.shared()
     
-    private var toogleTest: Bool = true
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureInsightViewController()
@@ -41,7 +39,14 @@ class InsightViewController: UIViewController {
 }
 
 extension InsightViewController: InsightPresenterOutputProtocol {
+   
+    func startRecording() {
+        loadBoradcastActivityViewController()
+    }
     
+    func recordEnded() {
+        broadcastEnded()
+    }
 }
 
 extension InsightViewController: RecordBarDelegate {
@@ -51,38 +56,28 @@ extension InsightViewController: RecordBarDelegate {
     }
     
     func didTapRecordButton() {
-        print("RECORD")
-        if toogleTest {
-            recordBarView.didStartRecording()
-            toogleTest = false
-        } else {
-            recordBarView.didStopRecording()
-            toogleTest = true
-        }
-//        controller.isBroadcasting ? stopBroadcast() : startBroadcast()
+        self.presenter?.didTapRecordButton()
     }
 }
 
 extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
     
-    func broadcastActivityViewController(_ broadcastActivityViewController: RPBroadcastActivityViewController, didFinishWith broadcastController: RPBroadcastController?, error: Error?) {
+    func broadcastActivityViewController(_ broadcastActivityViewController: RPBroadcastActivityViewController,
+                                         didFinishWith broadcastController: RPBroadcastController?, error: Error?) {
         
-        guard error == nil else {
-            print("Broadcast Activity Controller is not available.")
-            return
-        }
-        
+        guard error == nil else { return }
+        showActivityIndicator()
         broadcastActivityViewController.dismiss(animated: true) {
             broadcastController?.startBroadcast { error in
-                if error == nil {
-                    print("Broadcast started successfully!")
-                    self.broadcastStarted()
-                }
+                guard error == nil else { return }
+                print("Broadcast started successfully!")
+                self.dismissAlert()
+                self.broadcastStarted()
             }
         }
     }
     
-    private func startBroadcast() {
+    private func loadBoradcastActivityViewController() {
         RPBroadcastActivityViewController.load { broadcastAVC, error in
             guard error == nil else {
                 print("Cannot load Broadcast Activity View Controller.")
@@ -95,13 +90,20 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
         }
     }
     
-    private func stopBroadcast() {
-        controller.finishBroadcast { error in
-            if error == nil {
-                print("Broadcast ended")
-                self.broadcastEnded()
-            }
-        }
+    private func showActivityIndicator() {
+        let waitView = UIAlertController(title: nil, message: "Aguarde...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating()
+
+        waitView.view.addSubview(loadingIndicator)
+        present(waitView, animated: true, completion: nil)
+    }
+    
+    private func dismissAlert() {
+        dismiss(animated: false, completion: nil)
     }
     
     private func broadcastStarted() {
@@ -109,6 +111,6 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
     }
     
     private func broadcastEnded() {
-        recordBarView.didStartRecording()
+        recordBarView.didStopRecording()
     }
 }

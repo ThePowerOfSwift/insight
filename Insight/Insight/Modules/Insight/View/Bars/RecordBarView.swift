@@ -66,6 +66,7 @@ class RecordBarView: UIView {
     
     private func stopClock() {
         self.clockLabel.text = "00:00"
+        self.clockLabel.isHidden = true
         self.timer.invalidate()
         self.timer = nil
     }
