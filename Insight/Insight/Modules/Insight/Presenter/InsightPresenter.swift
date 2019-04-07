@@ -6,13 +6,15 @@
 //  Copyright © 2019 Douglas Mandarino. All rights reserved.
 //
 
-import Foundation
+import ReplayKit
 
 
 final class InsightPresenter {
     
     private var interactor: InsightInteractorProtocol?
     private weak var output: InsightPresenterOutputProtocol?
+    
+    private let controller = RPBroadcastController()
     
     init(interactor: InsightInteractorProtocol, output: InsightPresenterOutputProtocol) {
         self.interactor = interactor
@@ -21,9 +23,23 @@ final class InsightPresenter {
 }
 
 extension InsightPresenter: InsightPresenterProtocol {
+  
+    func didTapCameraButton() {
+        
+    }
     
+    func didTapRecordButton() {
+        self.interactor?.startOrStopRecording()
+    }
 }
 
 extension InsightPresenter: InsightInteractorOutputProtocol {
     
+    func startRecording() {
+        self.output?.startRecording()
+    }
+    
+    func recordEnded() {
+        self.output?.recordEnded()
+    }
 }

@@ -10,9 +10,10 @@ import Foundation
 
 
 protocol InsightInteractorProtocol {
-    
+    func startOrStopRecording()
 }
 
 protocol InsightInteractorOutputProtocol: class {
-    
+    func startRecording()
+    func recordEnded()
 }
