@@ -21,8 +21,8 @@
             <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6HY-Zb-0iQ" customClass="RecordBarView" customModule="Insight" customModuleProvider="target">
-                    <rect key="frame" x="555" y="24" width="88" height="60"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6HY-Zb-0iQ" customClass="RecordBarView" customModule="Insight" customModuleProvider="target">
+                    <rect key="frame" x="555" y="24" width="92" height="60"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="88" id="7me-Fq-y4f"/>
