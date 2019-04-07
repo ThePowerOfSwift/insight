@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5A33CCFB225956B900734BC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CCFA225956B900734BC6 /* AppDelegate.swift */; };
-		5A33CCFD225956B900734BC6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CCFC225956B900734BC6 /* ViewController.swift */; };
-		5A33CD00225956B900734BC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CCFE225956B900734BC6 /* Main.storyboard */; };
 		5A33CD02225956BC00734BC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD01225956BC00734BC6 /* Assets.xcassets */; };
 		5A33CD05225956BC00734BC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD03225956BC00734BC6 /* LaunchScreen.storyboard */; };
 		5A33CD10225956BC00734BC6 /* InsightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD0F225956BC00734BC6 /* InsightTests.swift */; };
@@ -23,6 +21,10 @@
 		5A33CD3C2259604F00734BC6 /* InsightViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */; };
 		5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */; };
 		5A33CD402259617B00734BC6 /* InsightInteractorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */; };
+		5A33CD4722597D5A00734BC6 /* InsightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD4622597D5A00734BC6 /* InsightViewController.xib */; };
+		5A33CD54225981F300734BC6 /* RecordBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD4F225981F300734BC6 /* RecordBarView.xib */; };
+		5A33CD562259829F00734BC6 /* RecordBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD552259829F00734BC6 /* RecordBarView.swift */; };
+		5A33CD5A225998F500734BC6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD59225998F500734BC6 /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +47,6 @@
 /* Begin PBXFileReference section */
 		5A33CCF7225956B900734BC6 /* Insight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A33CCFA225956B900734BC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5A33CCFC225956B900734BC6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5A33CCFF225956B900734BC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5A33CD01225956BC00734BC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A33CD04225956BC00734BC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A33CD06225956BC00734BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,6 +65,10 @@
 		5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightViewControllerBuilder.swift; sourceTree = "<group>"; };
 		5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterBuilder.swift; sourceTree = "<group>"; };
 		5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightInteractorBuilder.swift; sourceTree = "<group>"; };
+		5A33CD4622597D5A00734BC6 /* InsightViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightViewController.xib; sourceTree = "<group>"; };
+		5A33CD4F225981F300734BC6 /* RecordBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordBarView.xib; sourceTree = "<group>"; };
+		5A33CD552259829F00734BC6 /* RecordBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBarView.swift; sourceTree = "<group>"; };
+		5A33CD59225998F500734BC6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +119,9 @@
 		5A33CCF9225956B900734BC6 /* Insight */ = {
 			isa = PBXGroup;
 			children = (
+				5A33CD57225998CC00734BC6 /* Core */,
 				5A33CD282259574D00734BC6 /* Modules */,
 				5A33CCFA225956B900734BC6 /* AppDelegate.swift */,
-				5A33CCFC225956B900734BC6 /* ViewController.swift */,
-				5A33CCFE225956B900734BC6 /* Main.storyboard */,
 				5A33CD01225956BC00734BC6 /* Assets.xcassets */,
 				5A33CD03225956BC00734BC6 /* LaunchScreen.storyboard */,
 				5A33CD06225956BC00734BC6 /* Info.plist */,
@@ -168,8 +171,10 @@
 		5A33CD2A2259577A00734BC6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5A33CD2F2259596100734BC6 /* InsightViewController.swift */,
+				5A33CD4A225981EA00734BC6 /* Bars */,
 				5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */,
+				5A33CD2F2259596100734BC6 /* InsightViewController.swift */,
+				5A33CD4622597D5A00734BC6 /* InsightViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -222,6 +227,31 @@
 			children = (
 			);
 			path = Insight;
+			sourceTree = "<group>";
+		};
+		5A33CD4A225981EA00734BC6 /* Bars */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD4F225981F300734BC6 /* RecordBarView.xib */,
+				5A33CD552259829F00734BC6 /* RecordBarView.swift */,
+			);
+			path = Bars;
+			sourceTree = "<group>";
+		};
+		5A33CD57225998CC00734BC6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD58225998D300734BC6 /* Extensions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5A33CD58225998D300734BC6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD59225998F500734BC6 /* UIView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,7 +360,8 @@
 			files = (
 				5A33CD05225956BC00734BC6 /* LaunchScreen.storyboard in Resources */,
 				5A33CD02225956BC00734BC6 /* Assets.xcassets in Resources */,
-				5A33CD00225956B900734BC6 /* Main.storyboard in Resources */,
+				5A33CD54225981F300734BC6 /* RecordBarView.xib in Resources */,
+				5A33CD4722597D5A00734BC6 /* InsightViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,16 +386,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A33CCFD225956B900734BC6 /* ViewController.swift in Sources */,
 				5A33CD302259596100734BC6 /* InsightViewController.swift in Sources */,
 				5A33CD3C2259604F00734BC6 /* InsightViewControllerBuilder.swift in Sources */,
 				5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */,
 				5A33CD3A22595C6C00734BC6 /* InsightInteractorProtocols.swift in Sources */,
+				5A33CD562259829F00734BC6 /* RecordBarView.swift in Sources */,
 				5A33CCFB225956B900734BC6 /* AppDelegate.swift in Sources */,
 				5A33CD3622595A3D00734BC6 /* InsightWireframe.swift in Sources */,
 				5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */,
 				5A33CD34225959A900734BC6 /* InsightInteractor.swift in Sources */,
 				5A33CD402259617B00734BC6 /* InsightInteractorBuilder.swift in Sources */,
+				5A33CD5A225998F500734BC6 /* UIView.swift in Sources */,
 				5A33CD3822595C2600734BC6 /* InsightPresenterProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,14 +433,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5A33CCFE225956B900734BC6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5A33CCFF225956B900734BC6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5A33CD03225956BC00734BC6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -543,6 +567,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N3GG8VLR9P;
 				INFOPLIST_FILE = Insight/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -561,6 +586,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N3GG8VLR9P;
 				INFOPLIST_FILE = Insight/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

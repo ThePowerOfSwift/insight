@@ -13,8 +13,10 @@ class InsightViewController: UIViewController {
     
     private var presenter: InsightPresenterProtocol?
     
+    @IBOutlet weak var recordBarView: RecordBarView!
+    
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
     }
     
     func setupViewController(with presenter: InsightPresenterProtocol) {
