@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol RecordBarDelegate: class {
+    func didTapCameraButton()
+    func didTapRecordButton()
+}
+
 
 class RecordBarView: UIView {
     
@@ -15,6 +20,8 @@ class RecordBarView: UIView {
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var RecordButton: UIButton!
     @IBOutlet weak var clockLabel: UILabel!
+    
+    weak var delegate: RecordBarDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,11 +34,11 @@ class RecordBarView: UIView {
     }
     
     @IBAction func didTapCameraButton(_ sender: Any) {
-        print("open camera")
+        self.delegate?.didTapCameraButton()
     }
     
     @IBAction func didTapRecordButton(_ sender: Any) {
-        print("record")
+        self.delegate?.didTapRecordButton()
     }
     
     func commonInit() {

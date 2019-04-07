@@ -17,13 +17,29 @@ class InsightViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureInsightViewController()
     }
     
     func setupViewController(with presenter: InsightPresenterProtocol) {
         self.presenter = presenter
     }
+    
+    private func configureInsightViewController() {
+        self.recordBarView.delegate = self
+    }
 }
 
 extension InsightViewController: InsightPresenterOutputProtocol {
     
+}
+
+extension InsightViewController: RecordBarDelegate {
+  
+    func didTapCameraButton() {
+        print("CAMERA")
+    }
+    
+    func didTapRecordButton() {
+        print("RECORD")
+    }
 }
