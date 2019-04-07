@@ -65,11 +65,17 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
     func broadcastActivityViewController(_ broadcastActivityViewController: RPBroadcastActivityViewController,
                                          didFinishWith broadcastController: RPBroadcastController?, error: Error?) {
         
-        guard error == nil else { self.showErrorInBroadcast(); return }
+        guard error == nil else {
+            self.showError(with: "Couldn't start broadcast.")
+            return
+        }
         showActivityIndicator()
         broadcastActivityViewController.dismiss(animated: true) {
             broadcastController?.startBroadcast { error in
-                guard error == nil else { self.showErrorInBroadcast(); return }
+                guard error == nil else {
+                    self.showError(with: "Couldn't start broadcast.")
+                    return
+                }
                 self.dismissAlert()
                 self.broadcastStarted()
             }
@@ -79,7 +85,7 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
     private func loadBoradcastActivityViewController() {
         RPBroadcastActivityViewController.load { broadcastAVC, error in
             guard error == nil else {
-                print("Cannot load Broadcast Activity View Controller.")
+                self.showError(with: "Cannot load Broadcast Activity.")
                 return
             }
             if let broadcastAVC = broadcastAVC {
@@ -87,6 +93,14 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
                 self.present(broadcastAVC, animated: true, completion: nil)
             }
         }
+    }
+    
+    private func broadcastStarted() {
+        recordBarView.didStartRecording()
+    }
+    
+    private func broadcastEnded() {
+        recordBarView.didStopRecording()
     }
     
     private func showActivityIndicator() {
@@ -101,9 +115,9 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
         present(waitView, animated: true, completion: nil)
     }
     
-    private func showErrorInBroadcast() {
+    private func showError(with message: String) {
         dismiss(animated: false, completion: nil)
-        let alert = UIAlertController(title: "Something happened", message: "Couldn't start broadcast", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Something happened", message: message, preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "Ok", style: .default) { _ in
             self.dismiss(animated: true, completion: nil)
         }
@@ -113,13 +127,5 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
     
     private func dismissAlert() {
         dismiss(animated: false, completion: nil)
-    }
-    
-    private func broadcastStarted() {
-        recordBarView.didStartRecording()
-    }
-    
-    private func broadcastEnded() {
-        recordBarView.didStopRecording()
     }
 }
