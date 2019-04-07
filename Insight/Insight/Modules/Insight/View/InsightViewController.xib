@@ -21,11 +21,11 @@
             <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6HY-Zb-0iQ" customClass="RecordBarView" customModule="Insight" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6HY-Zb-0iQ" customClass="RecordBarView" customModule="Insight" customModuleProvider="target">
                     <rect key="frame" x="555" y="24" width="92" height="60"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="88" id="7me-Fq-y4f"/>
+                        <constraint firstAttribute="width" constant="92" id="7me-Fq-y4f"/>
                         <constraint firstAttribute="height" constant="88" id="bEn-06-VEz"/>
                         <constraint firstAttribute="height" constant="60" id="imL-f9-CqJ"/>
                         <constraint firstAttribute="width" constant="128" id="sNI-fW-vEz"/>
@@ -48,7 +48,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="8qJ-Kc-LQv" firstAttribute="trailing" secondItem="6HY-Zb-0iQ" secondAttribute="trailing" constant="24" id="fDG-eu-kpx"/>
+                <constraint firstItem="8qJ-Kc-LQv" firstAttribute="trailing" secondItem="6HY-Zb-0iQ" secondAttribute="trailing" constant="20" id="fDG-eu-kpx"/>
                 <constraint firstItem="6HY-Zb-0iQ" firstAttribute="top" secondItem="8qJ-Kc-LQv" secondAttribute="top" constant="24" id="vSB-LU-7ye"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="8qJ-Kc-LQv"/>
