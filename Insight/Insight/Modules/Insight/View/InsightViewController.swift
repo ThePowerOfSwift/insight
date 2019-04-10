@@ -18,6 +18,7 @@ class InsightViewController: UIViewController {
     
     private let controller = RPBroadcastController()
     private let recorder = RPScreenRecorder.shared()
+    private var isCamHidden: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,8 @@ extension InsightViewController: InsightPresenterOutputProtocol {
 extension InsightViewController: RecordBarDelegate {
   
     func didTapCameraButton() {
-        print("CAMERA")
+        isCamHidden ? CamView.show(in: self.view) : CamView.stop()
+        isCamHidden = !isCamHidden
     }
     
     func didTapRecordButton() {
@@ -72,12 +74,14 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
         showActivityIndicator()
         broadcastActivityViewController.dismiss(animated: true) {
             broadcastController?.startBroadcast { error in
-                guard error == nil else {
-                    self.showError(with: "Couldn't start broadcast.")
-                    return
+                DispatchQueue.main.async {
+                    guard error == nil else {
+                        self.showError(with: "Couldn't start broadcast.")
+                        return
+                    }
+                    self.dismissAlert()
+                    self.broadcastStarted()
                 }
-                self.dismissAlert()
-                self.broadcastStarted()
             }
         }
     }
