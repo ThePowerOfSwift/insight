@@ -16,20 +16,12 @@ class CamView: UIView, UIGestureRecognizerDelegate {
     static private var input: AVCaptureDeviceInput?
     
     static func show(in superView: UIView) {
-        guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else { return }
-        do {
-            input = try AVCaptureDeviceInput(device: captureDevice)
-            guard input != nil else { return }
-            captureSession.addInput(input!)
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            videoPreviewLayer?.frame = CGRect(x: 0, y: 0, width: 300, height: 169)
-            captureSession.startRunning()
-            guard let layer = videoPreviewLayer else { return }
-            superView.layer.addSublayer(layer)
-        } catch {
-            return
-        }
+        guard let captureDevice = frontCameraDevice() else { return }
+        input = try? AVCaptureDeviceInput(device: captureDevice)
+        guard input != nil else { return }
+        captureSession.addInput(input!)
+        configureVideoPreviewLayer(in: superView)
+        captureSession.startRunning()
     }
     
     static func stop() {
@@ -37,5 +29,28 @@ class CamView: UIView, UIGestureRecognizerDelegate {
         captureSession.stopRunning()
         guard input != nil else { return }
         captureSession.removeInput(input!)
+    }
+    
+    static private func frontCameraDevice() -> AVCaptureDevice? {
+        let session = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .front)
+        return session.devices.compactMap({ $0 }).filter({ $0.position == .front }).first
+    }
+    
+    static private func configureVideoPreviewLayer(in superView: UIView) {
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        videoPreviewLayer?.frame = CGRect(x: 150, y: superView.frame.height/2, width: 150, height: 85)
+        setCamOrientation()
+        guard let layer = videoPreviewLayer else { return }
+        superView.layer.addSublayer(layer)
+    }
+    
+    static private func setCamOrientation() {
+        switch UIDevice.current.orientation {
+        case .landscapeRight:
+            videoPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.landscapeLeft
+        default:
+            videoPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.landscapeRight
+        }
     }
 }
