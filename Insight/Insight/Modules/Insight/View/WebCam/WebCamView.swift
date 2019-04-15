@@ -11,46 +11,130 @@ import AVFoundation
 
 class CamView: UIView, UIGestureRecognizerDelegate {
     
-    static private let captureSession = AVCaptureSession()
-    static private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    static private var input: AVCaptureDeviceInput?
+    private let captureSession = AVCaptureSession()
+    private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    private var trayCenter: CGPoint? = .zero
+    private var superViewFrame: CGRect = .zero
     
-    static func show(in superView: UIView) {
-        guard let captureDevice = frontCameraDevice() else { return }
-        input = try? AVCaptureDeviceInput(device: captureDevice)
-        guard input != nil else { return }
-        captureSession.addInput(input!)
-        configureVideoPreviewLayer(in: superView)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupWebCam()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupWebCam()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func show(in superView: UIView) {
+        self.superViewFrame = superView.frame
+        if captureSession.inputs.isEmpty {
+            configureDeviceInput()
+            superView.addSubview(self)
+        }
+        setCamOrientation()
+        hideOrShowView()
         captureSession.startRunning()
     }
     
-    static func stop() {
-        videoPreviewLayer?.removeFromSuperlayer()
-        captureSession.stopRunning()
-        guard input != nil else { return }
-        captureSession.removeInput(input!)
+    func stop() {
+        hideOrShowView()
     }
     
-    static private func frontCameraDevice() -> AVCaptureDevice? {
+    @objc private func orientationDidChange() {
+        setCamOrientation()
+    }
+    
+    private func setupWebCam() {
+        self.frame = CGRect(x: 100, y: 50, width: 300, height: 170)
+        self.trayCenter = self.center
+        self.videoPreviewLayer?.isHidden = true
+        self.isHidden = true
+        configureVideoPreviewLayer()
+        configureGestures()
+        self.backgroundColor = .blue
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+    
+    private func configureVideoPreviewLayer() {
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        videoPreviewLayer?.frame = CGRect(origin: .zero, size: self.bounds.size)
+        setCamOrientation()
+        guard let layer = videoPreviewLayer else { return }
+        self.layer.addSublayer(layer)
+    }
+    
+    private func configureDeviceInput() {
+        guard let captureDevice = frontCameraDevice() else { return }
+        let input = try? AVCaptureDeviceInput(device: captureDevice)
+        guard input != nil else { return }
+        captureSession.addInput(input!)
+    }
+    
+    private func hideOrShowView() {
+        guard let hidden = videoPreviewLayer?.isHidden else { return }
+        videoPreviewLayer?.isHidden = !hidden
+        self.isHidden = !hidden
+    }
+    
+    private func frontCameraDevice() -> AVCaptureDevice? {
         let session = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .front)
         return session.devices.compactMap({ $0 }).filter({ $0.position == .front }).first
     }
     
-    static private func configureVideoPreviewLayer(in superView: UIView) {
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        videoPreviewLayer?.frame = CGRect(x: 150, y: superView.frame.height/2, width: 150, height: 85)
-        setCamOrientation()
-        guard let layer = videoPreviewLayer else { return }
-        superView.layer.addSublayer(layer)
-    }
-    
-    static private func setCamOrientation() {
+    private func setCamOrientation() {
         switch UIDevice.current.orientation {
         case .landscapeRight:
             videoPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.landscapeLeft
         default:
             videoPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.landscapeRight
         }
+    }
+    
+    @objc private func moveWebCam(recognizer: UIPanGestureRecognizer) {
+        let translation = recognizer.translation(in: self)
+        let xPoint = self.frame.midX + translation.x
+        let yPoint = self.frame.midY + translation.y
+        
+        if isCamOnTheEdge(xPoint: xPoint, yPoint: yPoint) {
+            self.center = CGPoint(x: xPoint, y: yPoint)
+        }
+
+        recognizer.setTranslation(.zero, in: self)
+    }
+    
+    @objc private func resizeWebCam(pinch: UIPinchGestureRecognizer) {
+        switch pinch.state {
+        case .ended, .cancelled:
+            pinch.scale = 1
+            self.trayCenter = self.center
+        default:
+            self.transform = CGAffineTransform(scaleX: pinch.scale, y: pinch.scale)
+        }
+    }
+    
+    private func isCamOnTheEdge(xPoint: CGFloat, yPoint: CGFloat) -> Bool {
+        return ( xPoint < self.superViewFrame.width && xPoint > 0 )
+            || ( yPoint < self.superViewFrame.height && yPoint > 0 )
+    }
+    
+    private func configureGestures() {
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(moveWebCam(recognizer:)))
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(resizeWebCam(pinch:)))
+        
+        pan.minimumNumberOfTouches = 1
+        pan.maximumNumberOfTouches = 2
+        
+        pan.delegate = self
+        pinch.delegate = self
+        
+        self.addGestureRecognizer(pan)
+        self.addGestureRecognizer(pinch)
+        self.isUserInteractionEnabled = true
     }
 }

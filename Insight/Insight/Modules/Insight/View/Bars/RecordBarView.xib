@@ -34,11 +34,6 @@
                         <color key="titleColor" red="0.68627450980392157" green="0.035294117647058823" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <state key="selected" backgroundImage="stopIcon"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="34"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="1Eo-LH-gk5"/>
@@ -62,13 +57,10 @@
                         <constraint firstAttribute="width" constant="48" id="PHb-hh-Ret"/>
                         <constraint firstAttribute="width" secondItem="eMg-TY-WKF" secondAttribute="height" multiplier="1:1" id="ccZ-jW-11c"/>
                     </constraints>
-                    <state key="normal" backgroundImage="blueCameraIcon"/>
+                    <state key="normal" backgroundImage="blueCameraIcon">
+                        <color key="titleColor" red="0.13709297776222229" green="0.35873600840568542" blue="0.48363375663757324" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <state key="selected" backgroundImage="redcameraIcon"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="34"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="9Mc-D5-yY4"/>
