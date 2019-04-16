@@ -9,7 +9,10 @@
 import UIKit
 import AVFoundation
 
-class CamView: UIView, UIGestureRecognizerDelegate {
+
+// MARK: - CamView
+
+class CamView: UIView {
     
     private let captureSession = AVCaptureSession()
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
@@ -32,25 +35,86 @@ class CamView: UIView, UIGestureRecognizerDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func show(in superView: UIView) {
+    func setup(for superView: UIView) {
         self.superViewFrame = superView.frame
-        if captureSession.inputs.isEmpty {
+        superView.addSubview(self)
+    }
+    
+    func show() {
+        if isDeviceConfigured() {
             configureDeviceInput()
-            setFrame()
+            setFrameOfCam()
             configureVideoPreviewLayer()
-            superView.addSubview(self)
+            captureSession.startRunning()
         }
         setCamOrientation()
         hideOrShowView()
-        captureSession.startRunning()
     }
     
     func stop() {
         hideOrShowView()
     }
+}
+
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension CamView: UIGestureRecognizerDelegate {
+    
+    @objc private func moveWebCam(recognizer: UIPanGestureRecognizer) {
+        let translation = recognizer.translation(in: self)
+        let xPoint = self.frame.midX + translation.x
+        let yPoint = self.frame.midY + translation.y
+        
+        if isCamOutOfTheEdge(xPoint: xPoint, yPoint: yPoint) {
+            self.center = CGPoint(x: xPoint, y: yPoint)
+        }
+        
+        recognizer.setTranslation(.zero, in: self)
+    }
+    
+    @objc private func resizeWebCam(pinch: UIPinchGestureRecognizer) {
+        switch pinch.state {
+        case .ended, .cancelled:
+            self.trayCenter = self.center
+            pinch.scale = 1
+        default:
+            self.transform = CGAffineTransform(scaleX: pinch.scale, y: pinch.scale)
+        }
+    }
+    
+    private func configureGestures() {
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(moveWebCam(recognizer:)))
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(resizeWebCam(pinch:)))
+        
+        pan.minimumNumberOfTouches = 1
+        pan.maximumNumberOfTouches = 2
+        
+        pan.delegate = self
+        pinch.delegate = self
+        
+        self.addGestureRecognizer(pan)
+        self.addGestureRecognizer(pinch)
+        self.isUserInteractionEnabled = true
+    }
+    
+    private func isCamOutOfTheEdge(xPoint: CGFloat, yPoint: CGFloat) -> Bool {
+        return ( xPoint < self.superViewFrame.width && xPoint > 0 )
+            || ( yPoint < self.superViewFrame.height && yPoint > 0 )
+    }
+}
+
+
+// MARK: - Privates
+
+extension CamView {
     
     @objc private func orientationDidChange() {
         setCamOrientation()
+    }
+    
+    private func isDeviceConfigured() -> Bool {
+        return self.captureSession.inputs.isEmpty
     }
     
     private func setupWebCam() {
@@ -62,15 +126,18 @@ class CamView: UIView, UIGestureRecognizerDelegate {
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         videoPreviewLayer?.frame = CGRect(origin: .zero, size: self.bounds.size)
-        self.videoPreviewLayer?.isHidden = true
-        self.isHidden = true
-        setCamOrientation()
         guard let layer = videoPreviewLayer else { return }
         self.layer.addSublayer(layer)
+        setDefaultHiddenStatus()
     }
     
-    private func setFrame() {
-        let xPosition = self.superViewFrame.width - self.width - 44
+    private func setDefaultHiddenStatus() {
+        self.videoPreviewLayer?.isHidden = true
+        self.isHidden = true
+    }
+    
+    private func setFrameOfCam() {
+        let xPosition = self.superViewFrame.width - self.width
         let yPosition = self.superViewFrame.height - self.height - 28
         self.frame = CGRect(x: xPosition, y: yPosition, width: self.width, height: self.height)
         self.trayCenter = self.center
@@ -101,47 +168,5 @@ class CamView: UIView, UIGestureRecognizerDelegate {
         default:
             videoPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.landscapeRight
         }
-    }
-    
-    @objc private func moveWebCam(recognizer: UIPanGestureRecognizer) {
-        let translation = recognizer.translation(in: self)
-        let xPoint = self.frame.midX + translation.x
-        let yPoint = self.frame.midY + translation.y
-        
-        if isCamOutOfTheEdge(xPoint: xPoint, yPoint: yPoint) {
-            self.center = CGPoint(x: xPoint, y: yPoint)
-        }
-
-        recognizer.setTranslation(.zero, in: self)
-    }
-    
-    @objc private func resizeWebCam(pinch: UIPinchGestureRecognizer) {
-        switch pinch.state {
-        case .ended, .cancelled:
-            pinch.scale = 1
-            self.trayCenter = self.center
-        default:
-            self.transform = CGAffineTransform(scaleX: pinch.scale, y: pinch.scale)
-        }
-    }
-    
-    private func isCamOutOfTheEdge(xPoint: CGFloat, yPoint: CGFloat) -> Bool {
-        return ( xPoint < self.superViewFrame.width && xPoint > 0 )
-            || ( yPoint < self.superViewFrame.height && yPoint > 0 )
-    }
-    
-    private func configureGestures() {
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(moveWebCam(recognizer:)))
-        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(resizeWebCam(pinch:)))
-        
-        pan.minimumNumberOfTouches = 1
-        pan.maximumNumberOfTouches = 2
-        
-        pan.delegate = self
-        pinch.delegate = self
-        
-        self.addGestureRecognizer(pan)
-        self.addGestureRecognizer(pinch)
-        self.isUserInteractionEnabled = true
     }
 }

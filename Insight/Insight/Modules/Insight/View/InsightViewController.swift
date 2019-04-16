@@ -10,6 +10,8 @@ import UIKit
 import ReplayKit
 
 
+// MARK: - InsightViewController
+
 class InsightViewController: UIViewController {
     
     @IBOutlet weak var recordBarView: RecordBarView!
@@ -37,8 +39,12 @@ class InsightViewController: UIViewController {
     
     private func configureInsightViewController() {
         self.recordBarView.delegate = self
+        self.camView.setup(for: self.view)
     }
 }
+
+
+// MARK: - InsightPresenterOutputProtocol
 
 extension InsightViewController: InsightPresenterOutputProtocol {
    
@@ -51,10 +57,13 @@ extension InsightViewController: InsightPresenterOutputProtocol {
     }
 }
 
+
+// MARK: - RecordBarDelegate
+
 extension InsightViewController: RecordBarDelegate {
   
     func didTapCameraButton() {
-        self.isCamHidden ? self.camView.show(in: self.view) : self.camView.stop()
+        self.isCamHidden ? self.camView.show() : self.camView.stop()
         self.isCamHidden = !self.isCamHidden
         self.view.bringSubviewToFront(self.recordBarView)
     }
@@ -63,6 +72,9 @@ extension InsightViewController: RecordBarDelegate {
         self.presenter?.didTapRecordButton()
     }
 }
+
+
+// MARK: - RPBroadcastActivityViewControllerDelegate
 
 extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
     
@@ -73,6 +85,7 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
             self.showError(with: "Couldn't start broadcast.")
             return
         }
+        self.showActivityIndicator()
         broadcastActivityViewController.dismiss(animated: true) {
             broadcastController?.startBroadcast { error in
                 DispatchQueue.main.async {
@@ -95,10 +108,7 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
             }
             if let broadcastAVC = broadcastAVC {
                 broadcastAVC.delegate = self
-                self.present(broadcastAVC, animated: true, completion: {
-                    [weak self] in
-                    self?.showActivityIndicator()
-                })
+                self.present(broadcastAVC, animated: true, completion: nil)
             }
         }
     }
