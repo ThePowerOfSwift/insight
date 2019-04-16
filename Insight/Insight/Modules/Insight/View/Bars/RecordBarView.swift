@@ -23,16 +23,16 @@ class RecordBarView: UIView {
     
     weak var delegate: RecordBarDelegate?
     private var startTime: Double = 0
-    private var timer: Timer!
+    private var timer: Timer?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        configureView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
+        configureView()
     }
     
     @IBAction func didTapCameraButton(_ sender: Any) {
@@ -53,9 +53,16 @@ class RecordBarView: UIView {
         stopClock()
     }
     
-    private func commonInit() {
+    private func configureView() {
         loadNib()
         contentView.fixInView(self)
+        setRadius(in: self.cameraButton)
+        setRadius(in: self.recordButton)
+    }
+    
+    private func setRadius(in button: UIButton) {
+        button.layer.cornerRadius = button.frame.size.width/2
+        button.clipsToBounds = true
     }
     
     private func startClock() {
@@ -67,7 +74,7 @@ class RecordBarView: UIView {
     private func stopClock() {
         self.clockLabel.text = "00:00"
         self.clockLabel.isHidden = true
-        self.timer.invalidate()
+        self.timer?.invalidate()
         self.timer = nil
     }
     

@@ -25,6 +25,7 @@
 		5A33CD562259829F00734BC6 /* RecordBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD552259829F00734BC6 /* RecordBarView.swift */; };
 		5A33CD5A225998F500734BC6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD59225998F500734BC6 /* UIView.swift */; };
 		5A33CD5C2259BAC800734BC6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD5B2259BAC800734BC6 /* LaunchScreen.xib */; };
+		5A33CD5F225AB8F500734BC6 /* WebCamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD5E225AB8F500734BC6 /* WebCamView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		5A33CD552259829F00734BC6 /* RecordBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBarView.swift; sourceTree = "<group>"; };
 		5A33CD59225998F500734BC6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		5A33CD5B2259BAC800734BC6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		5A33CD5E225AB8F500734BC6 /* WebCamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCamView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 		5A33CD2A2259577A00734BC6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5A33CD5D225AB8CB00734BC6 /* WebCam */,
 				5A33CD4A225981EA00734BC6 /* Bars */,
 				5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */,
 				5A33CD2F2259596100734BC6 /* InsightViewController.swift */,
@@ -254,6 +257,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		5A33CD5D225AB8CB00734BC6 /* WebCam */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD5E225AB8F500734BC6 /* WebCamView.swift */,
+			);
+			path = WebCam;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -322,6 +333,11 @@
 				TargetAttributes = {
 					5A33CCF6225956B900734BC6 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					5A33CD0A225956BC00734BC6 = {
 						CreatedOnToolsVersion = 10.1;
@@ -394,6 +410,7 @@
 				5A33CCFB225956B900734BC6 /* AppDelegate.swift in Sources */,
 				5A33CD3622595A3D00734BC6 /* InsightWireframe.swift in Sources */,
 				5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */,
+				5A33CD5F225AB8F500734BC6 /* WebCamView.swift in Sources */,
 				5A33CD34225959A900734BC6 /* InsightInteractor.swift in Sources */,
 				5A33CD402259617B00734BC6 /* InsightInteractorBuilder.swift in Sources */,
 				5A33CD5A225998F500734BC6 /* UIView.swift in Sources */,

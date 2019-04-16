@@ -10,6 +10,8 @@ import UIKit
 import ReplayKit
 
 
+// MARK: - InsightViewController
+
 class InsightViewController: UIViewController {
     
     @IBOutlet weak var recordBarView: RecordBarView!
@@ -18,6 +20,8 @@ class InsightViewController: UIViewController {
     
     private let controller = RPBroadcastController()
     private let recorder = RPScreenRecorder.shared()
+    private var isCamHidden: Bool = true
+    private var camView = CamView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +39,12 @@ class InsightViewController: UIViewController {
     
     private func configureInsightViewController() {
         self.recordBarView.delegate = self
+        self.camView.setup(for: self.view)
     }
 }
+
+
+// MARK: - InsightPresenterOutputProtocol
 
 extension InsightViewController: InsightPresenterOutputProtocol {
    
@@ -49,16 +57,24 @@ extension InsightViewController: InsightPresenterOutputProtocol {
     }
 }
 
+
+// MARK: - RecordBarDelegate
+
 extension InsightViewController: RecordBarDelegate {
   
     func didTapCameraButton() {
-        print("CAMERA")
+        self.isCamHidden ? self.camView.show() : self.camView.stop()
+        self.isCamHidden = !self.isCamHidden
+        self.view.bringSubviewToFront(self.recordBarView)
     }
     
     func didTapRecordButton() {
         self.presenter?.didTapRecordButton()
     }
 }
+
+
+// MARK: - RPBroadcastActivityViewControllerDelegate
 
 extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
     
@@ -69,15 +85,17 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
             self.showError(with: "Couldn't start broadcast.")
             return
         }
-        showActivityIndicator()
+        self.showActivityIndicator()
         broadcastActivityViewController.dismiss(animated: true) {
             broadcastController?.startBroadcast { error in
-                guard error == nil else {
-                    self.showError(with: "Couldn't start broadcast.")
-                    return
+                DispatchQueue.main.async {
+                    guard error == nil else {
+                        self.showError(with: "Couldn't start broadcast.")
+                        return
+                    }
+                    self.dismissAlert()
+                    self.broadcastStarted()
                 }
-                self.dismissAlert()
-                self.broadcastStarted()
             }
         }
     }
