@@ -15,6 +15,8 @@ class CamView: UIView, UIGestureRecognizerDelegate {
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     private var trayCenter: CGPoint? = .zero
     private var superViewFrame: CGRect = .zero
+    private var width: CGFloat = 180
+    private var height: CGFloat = 102
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,6 +36,8 @@ class CamView: UIView, UIGestureRecognizerDelegate {
         self.superViewFrame = superView.frame
         if captureSession.inputs.isEmpty {
             configureDeviceInput()
+            setFrame()
+            configureVideoPreviewLayer()
             superView.addSubview(self)
         }
         setCamOrientation()
@@ -50,13 +54,7 @@ class CamView: UIView, UIGestureRecognizerDelegate {
     }
     
     private func setupWebCam() {
-        self.frame = CGRect(x: 100, y: 50, width: 300, height: 170)
-        self.trayCenter = self.center
-        self.videoPreviewLayer?.isHidden = true
-        self.isHidden = true
-        configureVideoPreviewLayer()
         configureGestures()
-        self.backgroundColor = .blue
         NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
@@ -64,9 +62,18 @@ class CamView: UIView, UIGestureRecognizerDelegate {
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         videoPreviewLayer?.frame = CGRect(origin: .zero, size: self.bounds.size)
+        self.videoPreviewLayer?.isHidden = true
+        self.isHidden = true
         setCamOrientation()
         guard let layer = videoPreviewLayer else { return }
         self.layer.addSublayer(layer)
+    }
+    
+    private func setFrame() {
+        let xPosition = self.superViewFrame.width - self.width - 44
+        let yPosition = self.superViewFrame.height - self.height - 28
+        self.frame = CGRect(x: xPosition, y: yPosition, width: self.width, height: self.height)
+        self.trayCenter = self.center
     }
     
     private func configureDeviceInput() {
@@ -101,7 +108,7 @@ class CamView: UIView, UIGestureRecognizerDelegate {
         let xPoint = self.frame.midX + translation.x
         let yPoint = self.frame.midY + translation.y
         
-        if isCamOnTheEdge(xPoint: xPoint, yPoint: yPoint) {
+        if isCamOutOfTheEdge(xPoint: xPoint, yPoint: yPoint) {
             self.center = CGPoint(x: xPoint, y: yPoint)
         }
 
@@ -118,7 +125,7 @@ class CamView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    private func isCamOnTheEdge(xPoint: CGFloat, yPoint: CGFloat) -> Bool {
+    private func isCamOutOfTheEdge(xPoint: CGFloat, yPoint: CGFloat) -> Bool {
         return ( xPoint < self.superViewFrame.width && xPoint > 0 )
             || ( yPoint < self.superViewFrame.height && yPoint > 0 )
     }
