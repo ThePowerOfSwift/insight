@@ -11,9 +11,12 @@ import Foundation
 
 protocol InsightInteractorProtocol {
     func startOrStopRecording()
+    func startOrStopBroadcast()
 }
 
 protocol InsightInteractorOutputProtocol: class {
     func startRecording()
-    func recordEnded()
+    func stopRecording()
+    func startBroadcast()
+    func broadcastEnded()
 }

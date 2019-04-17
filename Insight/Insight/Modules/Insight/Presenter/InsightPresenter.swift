@@ -23,13 +23,9 @@ final class InsightPresenter {
 }
 
 extension InsightPresenter: InsightPresenterProtocol {
-  
-    func didTapCameraButton() {
-        
-    }
     
-    func didTapRecordButton() {
-        self.interactor?.startOrStopRecording()
+    func didTapRecordButton(toBroadcast: Bool) {
+        toBroadcast ? self.interactor?.startOrStopBroadcast() : self.interactor?.startOrStopRecording()
     }
 }
 
@@ -39,7 +35,15 @@ extension InsightPresenter: InsightInteractorOutputProtocol {
         self.output?.startRecording()
     }
     
-    func recordEnded() {
-        self.output?.recordEnded()
+    func stopRecording() {
+        self.output?.stopRecording()
+    }
+    
+    func startBroadcast() {
+        self.output?.startBroadcast()
+    }
+    
+    func broadcastEnded() {
+        self.output?.broadcastEnded()
     }
 }

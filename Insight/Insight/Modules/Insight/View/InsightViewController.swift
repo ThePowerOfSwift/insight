@@ -20,6 +20,8 @@ class InsightViewController: UIViewController {
     
     private let controller = RPBroadcastController()
     private let recorder = RPScreenRecorder.shared()
+    private var isRecording: Bool = false
+    private var isReplayKitOff: Bool = true
     private var isCamHidden: Bool = true
     private var camView = CamView()
     
@@ -41,19 +43,33 @@ class InsightViewController: UIViewController {
         self.recordBarView.delegate = self
         self.camView.setup(for: self.view)
     }
+    
+    private func dismissAlert() {
+        dismiss(animated: false, completion: nil)
+    }
 }
 
 
 // MARK: - InsightPresenterOutputProtocol
 
 extension InsightViewController: InsightPresenterOutputProtocol {
-   
-    func startRecording() {
+
+    func startBroadcast() {
+        self.recorder.isMicrophoneEnabled = true
         loadBoradcastActivityViewController()
     }
     
-    func recordEnded() {
-        broadcastEnded()
+    func broadcastEnded() {
+        didStopReplayKit()
+    }
+    
+    func startRecording() {
+        self.recorder.isMicrophoneEnabled = true
+        startRecordingScreen()
+    }
+    
+    func stopRecording() {
+        stopRecordingScreen()
     }
 }
 
@@ -63,13 +79,44 @@ extension InsightViewController: InsightPresenterOutputProtocol {
 extension InsightViewController: RecordBarDelegate {
   
     func didTapCameraButton() {
-        self.isCamHidden ? self.camView.show() : self.camView.stop()
+        self.isCamHidden ? showCam() : closeCam()
         self.isCamHidden = !self.isCamHidden
         self.view.bringSubviewToFront(self.recordBarView)
     }
     
     func didTapRecordButton() {
-        self.presenter?.didTapRecordButton()
+        if self.isReplayKitOff {
+            showActionSheetToChooseReplayKitStyle()
+        } else {
+            self.presenter?.didTapRecordButton(toBroadcast: self.isRecording ? false : true)
+        }
+    }
+    
+    private func showCam() {
+        self.camView.show(completion: { self.recordBarView.didOpenCam() })
+    }
+    
+    private func closeCam() {
+        self.camView.show(completion: { self.recordBarView.didCloseCam() })
+    }
+    
+    private func showActionSheetToChooseReplayKitStyle() {
+        let alert = UIAlertController(title: "What do you want to do?", message: nil, preferredStyle: .actionSheet)
+        let broadcastAction = UIAlertAction(title: "Broadcast", style: .default) { _ in
+            self.dismiss(animated: true, completion: nil)
+            self.presenter?.didTapRecordButton(toBroadcast: true)
+        }
+        let recordAction = UIAlertAction(title: "Recording", style: .default) { _ in
+            self.dismiss(animated: true, completion: nil)
+            self.presenter?.didTapRecordButton(toBroadcast: false)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(broadcastAction)
+        alert.addAction(recordAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -85,16 +132,11 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
             self.showError(with: "Couldn't start broadcast.")
             return
         }
-        self.showActivityIndicator()
+    
         broadcastActivityViewController.dismiss(animated: true) {
             broadcastController?.startBroadcast { error in
                 DispatchQueue.main.async {
-                    guard error == nil else {
-                        self.showError(with: "Couldn't start broadcast.")
-                        return
-                    }
-                    self.dismissAlert()
-                    self.broadcastStarted()
+                    self.didStartReplayKit(error: error)
                 }
             }
         }
@@ -113,26 +155,6 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
         }
     }
     
-    private func broadcastStarted() {
-        recordBarView.didStartRecording()
-    }
-    
-    private func broadcastEnded() {
-        recordBarView.didStopRecording()
-    }
-    
-    private func showActivityIndicator() {
-        let waitView = UIAlertController(title: nil, message: "Wait...", preferredStyle: .alert)
-        
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        loadingIndicator.startAnimating()
-
-        waitView.view.addSubview(loadingIndicator)
-        present(waitView, animated: true, completion: nil)
-    }
-    
     private func showError(with message: String) {
         dismiss(animated: false, completion: nil)
         let alert = UIAlertController(title: "Something happened", message: message, preferredStyle: .alert)
@@ -142,8 +164,106 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
         alert.addAction(cancelButton)
         present(alert, animated: true, completion: nil)
     }
+}
+
+
+// MARK: - RPPreviewViewControllerDelegate
+
+extension InsightViewController: RPPreviewViewControllerDelegate {
     
-    private func dismissAlert() {
-        dismiss(animated: false, completion: nil)
+    func startRecordingScreen() {
+        self.showActivityIndicator()
+        guard self.recorder.isAvailable else {
+            self.showError(with: "Recording is not available at this time")
+            return
+        }
+        
+        self.recorder.isMicrophoneEnabled = true
+        
+        self.recorder.startRecording{ [unowned self] (error) in
+            DispatchQueue.main.async {
+                self.didStartReplayKit(error: error)
+                self.isRecording = true
+            }
+        }
+        self.dismissAlert()
+    }
+
+    func stopRecordingScreen() {
+        guard self.recorder.isAvailable else {
+            self.showError(with: "Recording is not available at this time")
+            return
+        }
+
+        recorder.stopRecording { [unowned self] (preview, error) in
+            DispatchQueue.main.async {
+                guard preview != nil else {
+                    self.showError(with: "Preview controller is not available.")
+                    return
+                }
+                self.didStopReplayKit()
+                self.presentDidFinishRecord(preview: preview!)
+            }
+        }
+    }
+    
+    func previewControllerDidFinish(_ previewController: RPPreviewViewController) {
+        dismiss(animated: true)
+    }
+    
+    private func didStartRcording() {
+        self.recordBarView.didStartRecording()
+    }
+    
+    private func presentDidFinishRecord(preview: RPPreviewViewController) {
+        let alert = UIAlertController(title: "Recording Finished", message: "Would you like to edit or delete your recording?", preferredStyle: .alert)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+            self.recorder.discardRecording {}
+        })
+        
+        let editAction = UIAlertAction(title: "Edit", style: .default, handler: { _ in
+            preview.previewControllerDelegate = self
+            self.present(preview, animated: true, completion: nil)
+        })
+        
+        alert.addAction(editAction)
+        alert.addAction(deleteAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+
+// MARL: - Privates
+
+extension InsightViewController {
+    
+    private func didStartReplayKit(error: Error?) {
+        guard error == nil else {
+            self.showError(with: "Couldn't start broadcast.")
+            return
+        }
+        self.dismissAlert()
+        self.recordBarView.didStartRecording()
+        self.isReplayKitOff = true
+        self.isReplayKitOff = false
+    }
+    
+    private func didStopReplayKit() {
+        self.recordBarView.didStopRecording()
+        self.isRecording = false
+        self.isReplayKitOff = true
+    }
+    
+    private func showActivityIndicator() {
+        let waitView = UIAlertController(title: nil, message: "Wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating()
+        
+        waitView.view.addSubview(loadingIndicator)
+        present(waitView, animated: true, completion: nil)
     }
 }

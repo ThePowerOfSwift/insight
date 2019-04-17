@@ -40,7 +40,7 @@ class CamView: UIView {
         superView.addSubview(self)
     }
     
-    func show() {
+    func show(completion: ()->()) {
         if isDeviceConfigured() {
             configureDeviceInput()
             setFrameOfCam()
@@ -49,10 +49,12 @@ class CamView: UIView {
         }
         setCamOrientation()
         hideOrShowView()
+        completion()
     }
     
-    func stop() {
+    func stop(completion: ()->()) {
         hideOrShowView()
+        completion()
     }
 }
 

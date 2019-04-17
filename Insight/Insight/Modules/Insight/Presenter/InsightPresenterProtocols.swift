@@ -11,11 +11,12 @@ import Foundation
 
 protocol InsightPresenterProtocol {
     init(interactor: InsightInteractorProtocol, output: InsightPresenterOutputProtocol)
-    func didTapCameraButton()
-    func didTapRecordButton()
+    func didTapRecordButton(toBroadcast: Bool)
 }
 
 protocol InsightPresenterOutputProtocol: class {
+    func startBroadcast()
+    func broadcastEnded()
     func startRecording()
-    func recordEnded()
+    func stopRecording()
 }
