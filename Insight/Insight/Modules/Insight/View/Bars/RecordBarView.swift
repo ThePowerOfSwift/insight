@@ -53,6 +53,14 @@ class RecordBarView: UIView {
         stopClock()
     }
     
+    func didOpenCam() {
+        self.cameraButton.isSelected = true
+    }
+    
+    func didCloseCam() {
+        self.cameraButton.isSelected = false
+    }
+    
     private func configureView() {
         loadNib()
         contentView.fixInView(self)
