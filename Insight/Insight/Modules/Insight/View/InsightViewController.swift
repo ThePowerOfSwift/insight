@@ -40,6 +40,7 @@ class InsightViewController: UIViewController {
     }
     
     private func configureInsightViewController() {
+        self.recorder.isMicrophoneEnabled = true
         self.recordBarView.delegate = self
         self.camView.setup(for: self.view)
     }
@@ -90,6 +91,10 @@ extension InsightViewController: RecordBarDelegate {
         } else {
             self.presenter?.didTapRecordButton(toBroadcast: self.isRecording ? false : true)
         }
+    }
+    
+    func didTapMicrophoneButton() {
+        self.recorder.isMicrophoneEnabled = !self.recorder.isMicrophoneEnabled
     }
     
     private func showCam() {
