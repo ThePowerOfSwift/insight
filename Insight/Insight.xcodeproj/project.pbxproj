@@ -333,6 +333,7 @@
 				TargetAttributes = {
 					5A33CCF6225956B900734BC6 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -341,10 +342,12 @@
 					};
 					5A33CD0A225956BC00734BC6 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 5A33CCF6225956B900734BC6;
 					};
 					5A33CD15225956BC00734BC6 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 5A33CCF6225956B900734BC6;
 					};
 				};
@@ -580,7 +583,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mandarino.douglas.Insight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -599,7 +602,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mandarino.douglas.Insight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -619,7 +622,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mandarino.douglas.InsightTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Insight.app/Insight";
 			};
@@ -640,7 +643,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mandarino.douglas.InsightTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Insight.app/Insight";
 			};
@@ -660,7 +663,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mandarino.douglas.InsightUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Insight;
 			};
@@ -680,7 +683,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mandarino.douglas.InsightUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Insight;
 			};
