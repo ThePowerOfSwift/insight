@@ -48,7 +48,6 @@ class RecordBarView: UIView {
     @IBAction func didTapMicrophoneButton(_ sender: Any) {
         self.microphoneButton.isSelected = !self.microphoneButton.isSelected
         self.delegate?.didTapMicrophoneButton()
-        configureMicrophoneImage()
     }
     
     func didStartRecording() {
@@ -75,13 +74,6 @@ class RecordBarView: UIView {
         setRadius(in: self.cameraButton)
         setRadius(in: self.recordButton)
         setRadius(in: self.microphoneButton)
-        configureMicrophoneImage()
-    }
-    
-    private func configureMicrophoneImage() {
-        let image = self.microphoneButton.imageView?.image
-        self.microphoneButton.imageView?.image = image?.withRenderingMode(.alwaysTemplate)
-        self.microphoneButton.imageView?.tintColor = UIColor(red: 35/255, green: 91/255, blue: 123/255, alpha: 1)
     }
     
     private func setRadius(in button: UIButton) {
