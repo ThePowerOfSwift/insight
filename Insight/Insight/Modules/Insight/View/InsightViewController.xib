@@ -22,13 +22,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6HY-Zb-0iQ" customClass="RecordBarView" customModule="Insight" customModuleProvider="target">
-                    <rect key="frame" x="539" y="20" width="108" height="72"/>
+                    <rect key="frame" x="491" y="20" width="156" height="74"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="108" id="7me-Fq-y4f"/>
-                        <constraint firstAttribute="height" constant="88" id="bEn-06-VEz"/>
-                        <constraint firstAttribute="height" constant="72" id="imL-f9-CqJ"/>
-                        <constraint firstAttribute="width" constant="128" id="sNI-fW-vEz"/>
+                        <constraint firstAttribute="width" constant="156" id="7me-Fq-y4f"/>
+                        <constraint firstAttribute="height" constant="92" id="bEn-06-VEz"/>
+                        <constraint firstAttribute="height" constant="74" id="imL-f9-CqJ"/>
+                        <constraint firstAttribute="width" constant="184" id="sNI-fW-vEz"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
