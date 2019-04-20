@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A1FB0CC226AB75300D7681A /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FB0CB226AB75300D7681A /* ToolBarView.swift */; };
+		5A1FB0CE226AB79A00D7681A /* ToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A1FB0CD226AB79A00D7681A /* ToolBarView.xib */; };
+		5A1FB0D2226AC08F00D7681A /* InsightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FB0D1226AC08F00D7681A /* InsightButton.swift */; };
 		5A33CCFB225956B900734BC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CCFA225956B900734BC6 /* AppDelegate.swift */; };
 		5A33CD02225956BC00734BC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD01225956BC00734BC6 /* Assets.xcassets */; };
 		5A33CD10225956BC00734BC6 /* InsightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD0F225956BC00734BC6 /* InsightTests.swift */; };
@@ -46,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A1FB0CB226AB75300D7681A /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
+		5A1FB0CD226AB79A00D7681A /* ToolBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolBarView.xib; sourceTree = "<group>"; };
+		5A1FB0D1226AC08F00D7681A /* InsightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightButton.swift; sourceTree = "<group>"; };
 		5A33CCF7225956B900734BC6 /* Insight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A33CCFA225956B900734BC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A33CD01225956BC00734BC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,6 +104,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A1FB0C9226AB70900D7681A /* RecordBar */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD4F225981F300734BC6 /* RecordBarView.xib */,
+				5A33CD552259829F00734BC6 /* RecordBarView.swift */,
+			);
+			path = RecordBar;
+			sourceTree = "<group>";
+		};
+		5A1FB0CA226AB71700D7681A /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				5A1FB0CB226AB75300D7681A /* ToolBarView.swift */,
+				5A1FB0CD226AB79A00D7681A /* ToolBarView.xib */,
+			);
+			path = ToolBar;
+			sourceTree = "<group>";
+		};
 		5A33CCEE225956B900734BC6 = {
 			isa = PBXGroup;
 			children = (
@@ -235,8 +259,9 @@
 		5A33CD4A225981EA00734BC6 /* Bars */ = {
 			isa = PBXGroup;
 			children = (
-				5A33CD4F225981F300734BC6 /* RecordBarView.xib */,
-				5A33CD552259829F00734BC6 /* RecordBarView.swift */,
+				5A1FB0CA226AB71700D7681A /* ToolBar */,
+				5A1FB0C9226AB70900D7681A /* RecordBar */,
+				5A1FB0D1226AC08F00D7681A /* InsightButton.swift */,
 			);
 			path = Bars;
 			sourceTree = "<group>";
@@ -378,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A33CD5C2259BAC800734BC6 /* LaunchScreen.xib in Resources */,
+				5A1FB0CE226AB79A00D7681A /* ToolBarView.xib in Resources */,
 				5A33CD02225956BC00734BC6 /* Assets.xcassets in Resources */,
 				5A33CD54225981F300734BC6 /* RecordBarView.xib in Resources */,
 				5A33CD4722597D5A00734BC6 /* InsightViewController.xib in Resources */,
@@ -405,8 +431,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A1FB0D2226AC08F00D7681A /* InsightButton.swift in Sources */,
 				5A33CD302259596100734BC6 /* InsightViewController.swift in Sources */,
 				5A33CD3C2259604F00734BC6 /* InsightViewControllerBuilder.swift in Sources */,
+				5A1FB0CC226AB75300D7681A /* ToolBarView.swift in Sources */,
 				5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */,
 				5A33CD3A22595C6C00734BC6 /* InsightInteractorProtocols.swift in Sources */,
 				5A33CD562259829F00734BC6 /* RecordBarView.swift in Sources */,

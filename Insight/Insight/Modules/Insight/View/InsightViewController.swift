@@ -15,6 +15,7 @@ import ReplayKit
 class InsightViewController: UIViewController {
     
     @IBOutlet weak var recordBarView: RecordBarView!
+    @IBOutlet weak var toolBarView: ToolBarView!
     
     private var presenter: InsightPresenterProtocol?
     
@@ -42,6 +43,7 @@ class InsightViewController: UIViewController {
     private func configureInsightViewController() {
         self.recorder.isMicrophoneEnabled = true
         self.recordBarView.delegate = self
+        self.toolBarView.delegate = self
         self.camView.setup(for: self.view)
     }
     
@@ -71,6 +73,20 @@ extension InsightViewController: InsightPresenterOutputProtocol {
     
     func stopRecording() {
         stopRecordingScreen()
+    }
+}
+
+
+// MARK: - RecordBarDelegate
+
+extension InsightViewController: ToolBarDelegate {
+    
+    func didTapImportButton() {
+        
+    }
+    
+    func didTapLaserPointerButton() {
+        
     }
 }
 

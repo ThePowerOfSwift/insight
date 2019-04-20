@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InsightViewController" customModule="Insight" customModuleProvider="target">
             <connections>
                 <outlet property="recordBarView" destination="6HY-Zb-0iQ" id="1o9-oc-zIs"/>
+                <outlet property="toolBarView" destination="2PR-wi-Gnc" id="hei-Kb-Hwm"/>
                 <outlet property="view" destination="hoi-h9-ecI" id="eJU-m2-N6h"/>
             </connections>
         </placeholder>
@@ -45,9 +46,19 @@
                         </mask>
                     </variation>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2PR-wi-Gnc" customClass="ToolBarView" customModule="Insight" customModuleProvider="target">
+                    <rect key="frame" x="20" y="307" width="104" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="ME4-s0-wf9"/>
+                        <constraint firstAttribute="width" constant="104" id="ewC-o4-BTc"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="2PR-wi-Gnc" firstAttribute="leading" secondItem="8qJ-Kc-LQv" secondAttribute="leading" constant="20" id="1Tf-2m-fGj"/>
+                <constraint firstItem="8qJ-Kc-LQv" firstAttribute="bottom" secondItem="2PR-wi-Gnc" secondAttribute="bottom" constant="20" id="dwc-oZ-jXv"/>
                 <constraint firstItem="8qJ-Kc-LQv" firstAttribute="trailing" secondItem="6HY-Zb-0iQ" secondAttribute="trailing" constant="20" id="fDG-eu-kpx"/>
                 <constraint firstItem="6HY-Zb-0iQ" firstAttribute="top" secondItem="8qJ-Kc-LQv" secondAttribute="top" constant="20" id="vSB-LU-7ye"/>
             </constraints>
