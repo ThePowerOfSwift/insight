@@ -85,7 +85,11 @@ extension InsightViewController: InsightPresenterOutputProtocol {
 extension InsightViewController: ToolBarDelegate {
     
     func didSelectImportButton() {
-        
+        showActivityIndicator()
+        DispatchQueue.global().async {
+            guard let image = self.drawPDFfromURL(url: URL(string: "https://www.soundczech.cz/temp/lorem-ipsum.pdf")!) else { return }
+            self.presentPDF(image: image)
+        }
     }
     
     func didSelectLaserPointerButton() {
@@ -94,6 +98,18 @@ extension InsightViewController: ToolBarDelegate {
     
     func didDeselectTool() {
         self.isLaserPointerSelected = false
+    }
+    
+    private func presentPDF(image: UIImage) {
+        DispatchQueue.main.async {
+            let imageView = UIImageView(image: image)
+            imageView.frame.size = CGSize(width: imageView.frame.width, height: self.view.frame.height)
+            imageView.center = self.view.center
+            self.view.addSubview(imageView)
+            self.view.bringSubviewToFront(self.toolBarView)
+            self.view.bringSubviewToFront(self.recordBarView)
+            self.dismissAlert()
+        }
     }
 }
 
@@ -122,6 +138,7 @@ extension InsightViewController: RecordBarDelegate {
     
     private func showCam() {
         self.camView.show(completion: { self.recordBarView.didOpenCam() })
+        self.view.bringSubviewToFront(self.camView)
     }
     
     private func closeCam() {
@@ -262,6 +279,49 @@ extension InsightViewController: RPPreviewViewControllerDelegate {
 }
 
 
+// MARK: - UIGestureRecognizerDelegate
+
+extension InsightViewController: UIGestureRecognizerDelegate {
+    
+    @objc private func trackLaserPointer(recognizer: UIPanGestureRecognizer) {
+        if isLaserPointerSelected {
+            self.laserPointerView.didMove(in: self.view, recognizer: recognizer)
+        }
+    }
+    
+    private func configureGestures() {
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(trackLaserPointer(recognizer:)))
+        pan.delegate = self
+        self.view.addGestureRecognizer(pan)
+    }
+}
+
+
+// MARK: - PDF
+
+extension InsightViewController {
+    
+    func drawPDFfromURL(url: URL) -> UIImage? {
+        guard let document = CGPDFDocument(url as CFURL) else { return nil }
+        guard let page = document.page(at: 1) else { return nil }
+        
+        let pageRect = page.getBoxRect(.mediaBox)
+        let renderer = UIGraphicsImageRenderer(size: pageRect.size)
+        let img = renderer.image { ctx in
+            UIColor.white.set()
+            ctx.fill(pageRect)
+            
+            ctx.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
+            ctx.cgContext.scaleBy(x: 1.0, y: -1.0)
+            
+            ctx.cgContext.drawPDFPage(page)
+        }
+        
+        return img
+    }
+}
+
+
 // MARL: - Privates
 
 extension InsightViewController {
@@ -292,23 +352,5 @@ extension InsightViewController {
         
         waitView.view.addSubview(loadingIndicator)
         present(waitView, animated: true, completion: nil)
-    }
-}
-
-
-// MARK: - UIGestureRecognizerDelegate
-
-extension InsightViewController: UIGestureRecognizerDelegate {
-    
-    @objc private func trackLaserPointer(recognizer: UIPanGestureRecognizer) {
-        if isLaserPointerSelected {
-            self.laserPointerView.didMove(in: self.view, recognizer: recognizer)
-        }
-    }
-    
-    private func configureGestures() {
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(trackLaserPointer(recognizer:)))
-        pan.delegate = self
-        self.view.addGestureRecognizer(pan)
     }
 }
