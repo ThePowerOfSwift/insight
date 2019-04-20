@@ -64,10 +64,6 @@ class ToolBarView: UIView {
     private func configureView() {
         loadNib()
         contentView.fixInView(self)
-        configureToolBarView()
-    }
-    
-    private func configureToolBarView() {
         self.originalLaserPointerPosition = self.laserPointerButton.frame.origin
     }
 }

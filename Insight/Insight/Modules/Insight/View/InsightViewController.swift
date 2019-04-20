@@ -266,7 +266,6 @@ extension InsightViewController {
         }
         self.dismissAlert()
         self.recordBarView.didStartRecording()
-        self.isReplayKitOff = true
         self.isReplayKitOff = false
     }
     
