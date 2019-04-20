@@ -24,7 +24,9 @@ class InsightViewController: UIViewController {
     private var isRecording: Bool = false
     private var isReplayKitOff: Bool = true
     private var isCamHidden: Bool = true
+    private var isLaserPointerSelected: Bool = false
     private var camView = CamView()
+    private var laserPointerView = LaserPointerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,7 @@ class InsightViewController: UIViewController {
         self.recordBarView.delegate = self
         self.toolBarView.delegate = self
         self.camView.setup(for: self.view)
+        configureGestures()
     }
     
     private func dismissAlert() {
@@ -81,12 +84,16 @@ extension InsightViewController: InsightPresenterOutputProtocol {
 
 extension InsightViewController: ToolBarDelegate {
     
-    func didTapImportButton() {
+    func didSelectImportButton() {
         
     }
     
-    func didTapLaserPointerButton() {
-        
+    func didSelectLaserPointerButton() {
+        self.isLaserPointerSelected = true
+    }
+    
+    func didDeselectTool() {
+        self.isLaserPointerSelected = false
     }
 }
 
@@ -285,5 +292,23 @@ extension InsightViewController {
         
         waitView.view.addSubview(loadingIndicator)
         present(waitView, animated: true, completion: nil)
+    }
+}
+
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension InsightViewController: UIGestureRecognizerDelegate {
+    
+    @objc private func trackLaserPointer(recognizer: UIPanGestureRecognizer) {
+        if isLaserPointerSelected {
+            self.laserPointerView.didMove(in: self.view, recognizer: recognizer)
+        }
+    }
+    
+    private func configureGestures() {
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(trackLaserPointer(recognizer:)))
+        pan.delegate = self
+        self.view.addGestureRecognizer(pan)
     }
 }

@@ -11,8 +11,9 @@ import UIKit
 
 
 protocol ToolBarDelegate: class {
-    func didTapImportButton()
-    func didTapLaserPointerButton()
+    func didSelectImportButton()
+    func didSelectLaserPointerButton()
+    func didDeselectTool()
 }
 
 
@@ -38,12 +39,12 @@ class ToolBarView: UIView {
     
     @IBAction func didTapImportButton(_ sender: InsightButton) {
         didTap(button: self.importButton)
-        self.delegate?.didTapImportButton()
+        self.isToolBarSelected ? self.delegate?.didSelectImportButton() : self.delegate?.didDeselectTool()
     }
     
     @IBAction func didTapLaserPointerButton(_ sender: InsightButton) {
         didTap(button: self.laserPointerButton)
-        self.delegate?.didTapLaserPointerButton()
+        self.isToolBarSelected ? self.delegate?.didSelectLaserPointerButton() : self.delegate?.didDeselectTool()
     }
     
     private func didTap(button: InsightButton) {
