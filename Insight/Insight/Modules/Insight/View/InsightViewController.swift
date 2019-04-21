@@ -29,8 +29,7 @@ class InsightViewController: UIViewController {
     private var camView = CamView()
     private var laserPointerView = LaserPointerView()
     private var pdfPages: [UIImage] = []
-    private var pdfImageView: [UIImageView] = []
-    private var pdfCount = 0
+    private var pdfView: UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,35 +100,6 @@ extension InsightViewController: ToolBarDelegate {
     
     func didDeselectTool() {
         self.isLaserPointerSelected = false
-    }
-    
-    private func presentPDF(pageNumber: Int) {
-        DispatchQueue.main.async {
-            guard pageNumber <= self.pdfPages.count else { return }
-            let imageView = UIImageView(image: self.pdfPages[pageNumber-1])
-            imageView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-            imageView.center = self.view.center
-            self.pdfImageView.append(imageView)
-            self.view.addSubview(imageView)
-            self.view.bringSubviewToFront(self.toolBarView)
-            self.view.bringSubviewToFront(self.recordBarView)
-            self.pdfCount += 1
-            self.dismissAlert()
-        }
-    }
-    
-    private func removePdf(pageNumber: Int) {
-        DispatchQueue.main.async {
-            guard pageNumber >= 0 else { return }
-            self.pdfImageView[pageNumber].removeFromSuperview()
-            self.view.layoutSubviews()
-            self.pdfCount -= 1
-        }
-    }
-    
-    @objc private func presentAnotherPage(recognizer: UITapGestureRecognizer) {
-//        if recognizer.location(in: self.view).x > self.view.center.x {
-            presentPDF(pageNumber: pdfCount + 1)
     }
 }
 
@@ -333,13 +303,49 @@ extension InsightViewController: UIDocumentPickerDelegate {
         DispatchQueue.global().async {
             guard let document = CGPDFDocument(url as CFURL) else { return }
             self.pdfPages = self.drawPages(from: document)
-            self.presentPDF(pageNumber: 1)
+            DispatchQueue.main.async {
+                self.presentFirstPage()
+                self.dismissAlert()
+            }
         }
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("view was cancelled")
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func presentFirstPage() {
+        guard let page = self.pdfPages.first else { return }
+        self.pdfView = UIImageView(image: page)
+        self.pdfView?.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        self.pdfView?.center = self.view.center
+        self.view.addSubview(self.pdfView!)
+        self.view.sendSubviewToBack(self.pdfView!)
+    }
+    
+    private func presentNextPage() {
+        guard let index = getCurrentPdfPage(), index < self.pdfPages.count - 1 else { return }
+        self.pdfView?.image = self.pdfPages[index + 1]
+    }
+    
+    private func presentPreviousPage() {
+        guard let index = getCurrentPdfPage(), index > 0 else { return }
+        self.pdfView?.image = self.pdfPages[index - 1]
+    }
+    
+    private func getCurrentPdfPage() -> Int? {
+        guard let image = self.pdfView?.image else { return nil }
+        guard let index = self.pdfPages.firstIndex(of: image) else { return nil }
+        return index
+    }
+    
+    @objc private func presentAnotherPage(recognizer: UITapGestureRecognizer) {
+        if recognizer.location(in: self.view).x > self.view.center.x {
+            presentNextPage()
+        } else {
+            presentPreviousPage()
+        }
     }
     
     private func drawPages(from document: CGPDFDocument) -> [UIImage] {
@@ -352,19 +358,15 @@ extension InsightViewController: UIDocumentPickerDelegate {
     
     private func drawNextPage(from document: CGPDFDocument, page: Int) -> UIImage? {
         guard let page = document.page(at: page) else { return nil }
-        
         let pageRect = page.getBoxRect(.mediaBox)
         let renderer = UIGraphicsImageRenderer(size: pageRect.size)
         let img = renderer.image { ctx in
             UIColor.white.set()
             ctx.fill(pageRect)
-            
             ctx.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
             ctx.cgContext.scaleBy(x: 1.0, y: -1.0)
-            
             ctx.cgContext.drawPDFPage(page)
         }
-        
         return img
     }
 }
