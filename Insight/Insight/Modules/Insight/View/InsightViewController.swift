@@ -8,6 +8,7 @@
 
 import UIKit
 import ReplayKit
+import MobileCoreServices
 
 
 // MARK: - InsightViewController
@@ -88,13 +89,10 @@ extension InsightViewController: InsightPresenterOutputProtocol {
 extension InsightViewController: ToolBarDelegate {
     
     func didSelectImportButton() {
-        showActivityIndicator()
-        DispatchQueue.global().async {
-            let url = URL(string: "http://www.inf.puc-rio.br/~coordbac/Alunos/ProjetoFinal/Manual-Aluno-Projeto-Final.pdf")!
-            guard let document = CGPDFDocument(url as CFURL) else { return }
-            self.pdfPages = self.drawPages(from: document)
-            self.presentPDF(pageNumber: 1)
-        }
+        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .import)
+        importMenu.delegate = self
+        importMenu.modalPresentationStyle = .formSheet
+        self.present(importMenu, animated: true, completion: nil)
     }
     
     func didSelectLaserPointerButton() {
@@ -109,7 +107,7 @@ extension InsightViewController: ToolBarDelegate {
         DispatchQueue.main.async {
             guard pageNumber <= self.pdfPages.count else { return }
             let imageView = UIImageView(image: self.pdfPages[pageNumber-1])
-            imageView.frame.size = CGSize(width: imageView.frame.width, height: self.view.frame.height)
+            imageView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
             imageView.center = self.view.center
             self.pdfImageView.append(imageView)
             self.view.addSubview(imageView)
@@ -130,11 +128,8 @@ extension InsightViewController: ToolBarDelegate {
     }
     
     @objc private func presentAnotherPage(recognizer: UITapGestureRecognizer) {
-        if recognizer.location(in: self.view).x > self.view.center.x {
+//        if recognizer.location(in: self.view).x > self.view.center.x {
             presentPDF(pageNumber: pdfCount + 1)
-        } else {
-            removePdf(pageNumber: pdfCount - 1)
-        }
     }
 }
 
@@ -331,7 +326,21 @@ extension InsightViewController: UIGestureRecognizerDelegate {
 
 // MARK: - PDF
 
-extension InsightViewController {
+extension InsightViewController: UIDocumentPickerDelegate {
+    
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        showActivityIndicator()
+        DispatchQueue.global().async {
+            guard let document = CGPDFDocument(url as CFURL) else { return }
+            self.pdfPages = self.drawPages(from: document)
+            self.presentPDF(pageNumber: 1)
+        }
+    }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        print("view was cancelled")
+        dismiss(animated: true, completion: nil)
+    }
     
     private func drawPages(from document: CGPDFDocument) -> [UIImage] {
         var pages: [UIImage?] = []
