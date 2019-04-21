@@ -27,6 +27,9 @@ class InsightViewController: UIViewController {
     private var isLaserPointerSelected: Bool = false
     private var camView = CamView()
     private var laserPointerView = LaserPointerView()
+    private var pdfPages: [UIImage] = []
+    private var pdfImageView: [UIImageView] = []
+    private var pdfCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,8 +90,10 @@ extension InsightViewController: ToolBarDelegate {
     func didSelectImportButton() {
         showActivityIndicator()
         DispatchQueue.global().async {
-            guard let image = self.drawPDFfromURL(url: URL(string: "https://www.soundczech.cz/temp/lorem-ipsum.pdf")!) else { return }
-            self.presentPDF(image: image)
+            let url = URL(string: "http://www.inf.puc-rio.br/~coordbac/Alunos/ProjetoFinal/Manual-Aluno-Projeto-Final.pdf")!
+            guard let document = CGPDFDocument(url as CFURL) else { return }
+            self.pdfPages = self.drawPages(from: document)
+            self.presentPDF(pageNumber: 1)
         }
     }
     
@@ -100,15 +105,35 @@ extension InsightViewController: ToolBarDelegate {
         self.isLaserPointerSelected = false
     }
     
-    private func presentPDF(image: UIImage) {
+    private func presentPDF(pageNumber: Int) {
         DispatchQueue.main.async {
-            let imageView = UIImageView(image: image)
+            guard pageNumber <= self.pdfPages.count else { return }
+            let imageView = UIImageView(image: self.pdfPages[pageNumber-1])
             imageView.frame.size = CGSize(width: imageView.frame.width, height: self.view.frame.height)
             imageView.center = self.view.center
+            self.pdfImageView.append(imageView)
             self.view.addSubview(imageView)
             self.view.bringSubviewToFront(self.toolBarView)
             self.view.bringSubviewToFront(self.recordBarView)
+            self.pdfCount += 1
             self.dismissAlert()
+        }
+    }
+    
+    private func removePdf(pageNumber: Int) {
+        DispatchQueue.main.async {
+            guard pageNumber >= 0 else { return }
+            self.pdfImageView[pageNumber].removeFromSuperview()
+            self.view.layoutSubviews()
+            self.pdfCount -= 1
+        }
+    }
+    
+    @objc private func presentAnotherPage(recognizer: UITapGestureRecognizer) {
+        if recognizer.location(in: self.view).x > self.view.center.x {
+            presentPDF(pageNumber: pdfCount + 1)
+        } else {
+            removePdf(pageNumber: pdfCount - 1)
         }
     }
 }
@@ -291,8 +316,15 @@ extension InsightViewController: UIGestureRecognizerDelegate {
     
     private func configureGestures() {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(trackLaserPointer(recognizer:)))
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(presentAnotherPage(recognizer:)))
+        
         pan.delegate = self
+        doubleTap.delegate = self
+        
+        doubleTap.numberOfTapsRequired = 2
+        
         self.view.addGestureRecognizer(pan)
+        self.view.addGestureRecognizer(doubleTap)
     }
 }
 
@@ -301,9 +333,16 @@ extension InsightViewController: UIGestureRecognizerDelegate {
 
 extension InsightViewController {
     
-    func drawPDFfromURL(url: URL) -> UIImage? {
-        guard let document = CGPDFDocument(url as CFURL) else { return nil }
-        guard let page = document.page(at: 1) else { return nil }
+    private func drawPages(from document: CGPDFDocument) -> [UIImage] {
+        var pages: [UIImage?] = []
+        for pageNumber in 0...document.numberOfPages {
+            pages.append(drawNextPage(from: document, page: pageNumber))
+        }
+        return pages.compactMap { $0 }
+    }
+    
+    private func drawNextPage(from document: CGPDFDocument, page: Int) -> UIImage? {
+        guard let page = document.page(at: page) else { return nil }
         
         let pageRect = page.getBoxRect(.mediaBox)
         let renderer = UIGraphicsImageRenderer(size: pageRect.size)
