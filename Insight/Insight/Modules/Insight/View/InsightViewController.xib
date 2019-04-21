@@ -48,7 +48,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2PR-wi-Gnc" customClass="ToolBarView" customModule="Insight" customModuleProvider="target">
                     <rect key="frame" x="20" y="307" width="104" height="48"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="ME4-s0-wf9"/>
                         <constraint firstAttribute="width" constant="104" id="ewC-o4-BTc"/>

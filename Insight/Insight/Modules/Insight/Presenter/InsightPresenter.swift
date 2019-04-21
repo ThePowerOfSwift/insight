@@ -23,6 +23,10 @@ final class InsightPresenter {
 }
 
 extension InsightPresenter: InsightPresenterProtocol {
+
+    func didSelectImport() {
+
+    }    
     
     func didTapRecordButton(toBroadcast: Bool) {
         toBroadcast ? self.interactor?.startOrStopBroadcast() : self.interactor?.startOrStopRecording()

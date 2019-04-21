@@ -12,6 +12,7 @@ import Foundation
 protocol InsightPresenterProtocol {
     init(interactor: InsightInteractorProtocol, output: InsightPresenterOutputProtocol)
     func didTapRecordButton(toBroadcast: Bool)
+    func didSelectImport()
 }
 
 protocol InsightPresenterOutputProtocol: class {
