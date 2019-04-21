@@ -38,8 +38,7 @@ class ToolBarView: UIView {
     }
     
     @IBAction func didTapImportButton(_ sender: InsightButton) {
-        didTap(button: self.importButton)
-        self.isToolBarSelected ? self.delegate?.didSelectImportButton() : self.delegate?.didDeselectTool()
+        self.delegate?.didSelectImportButton()
     }
     
     @IBAction func didTapLaserPointerButton(_ sender: InsightButton) {
