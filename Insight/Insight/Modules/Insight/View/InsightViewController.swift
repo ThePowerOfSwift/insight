@@ -90,7 +90,7 @@ extension InsightViewController: ToolBarDelegate {
     func didSelectImportButton() {
         let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .import)
         importMenu.delegate = self
-        importMenu.modalPresentationStyle = .formSheet
+        importMenu.modalPresentationStyle = .popover
         self.present(importMenu, animated: true, completion: nil)
     }
     

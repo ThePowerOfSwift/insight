@@ -31,6 +31,7 @@
 		5A33CD5A225998F500734BC6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD59225998F500734BC6 /* UIView.swift */; };
 		5A33CD5C2259BAC800734BC6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD5B2259BAC800734BC6 /* LaunchScreen.xib */; };
 		5A33CD5F225AB8F500734BC6 /* WebCamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD5E225AB8F500734BC6 /* WebCamView.swift */; };
+		5AA0CF63226D5BD3009E6A99 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		5A33CD5B2259BAC800734BC6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		5A33CD5E225AB8F500734BC6 /* WebCamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCamView.swift; sourceTree = "<group>"; };
 		5AA0CF60226C2848009E6A99 /* Insight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Insight.entitlements; sourceTree = "<group>"; };
+		5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AA0CF63226D5BD3009E6A99 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,8 +115,8 @@
 		5A1FB0C9226AB70900D7681A /* RecordBar */ = {
 			isa = PBXGroup;
 			children = (
-				5A33CD4F225981F300734BC6 /* RecordBarView.xib */,
 				5A33CD552259829F00734BC6 /* RecordBarView.swift */,
+				5A33CD4F225981F300734BC6 /* RecordBarView.xib */,
 			);
 			path = RecordBar;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				5A33CD0E225956BC00734BC6 /* InsightTests */,
 				5A33CD19225956BC00734BC6 /* InsightUITests */,
 				5A33CCF8225956B900734BC6 /* Products */,
+				5AA0CF61226D5BD3009E6A99 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -306,6 +310,14 @@
 			path = WebCam;
 			sourceTree = "<group>";
 		};
+		5AA0CF61226D5BD3009E6A99 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -380,6 +392,9 @@
 								enabled = 1;
 							};
 							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 							com.apple.iCloud = {

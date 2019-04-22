@@ -27,9 +27,13 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Yvi-3r-dv9" secondAttribute="height" multiplier="1:1" id="3O4-hM-WpR"/>
-                        <constraint firstAttribute="width" constant="48" id="i4l-cD-t1p"/>
                     </constraints>
                     <state key="normal" image="importIcon"/>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <mask key="constraints">
+                            <exclude reference="3O4-hM-WpR"/>
+                        </mask>
+                    </variation>
                     <connections>
                         <action selector="didTapImportButton:" destination="-1" eventType="touchUpInside" id="o2o-6a-Qr4"/>
                     </connections>
@@ -38,7 +42,6 @@
                     <rect key="frame" x="56" y="0.0" width="48" height="48"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="48" id="SbX-aZ-gIv"/>
                         <constraint firstAttribute="width" secondItem="dmq-g2-5dj" secondAttribute="height" multiplier="1:1" id="gFx-xM-bl4"/>
                     </constraints>
                     <state key="normal" image="laserPointerIcon"/>
@@ -51,13 +54,10 @@
             <constraints>
                 <constraint firstItem="Yvi-3r-dv9" firstAttribute="top" secondItem="VUq-xG-glC" secondAttribute="top" id="1oe-Y4-PKp"/>
                 <constraint firstItem="dmq-g2-5dj" firstAttribute="top" secondItem="VUq-xG-glC" secondAttribute="top" id="2RW-9F-1aY"/>
-                <constraint firstItem="dmq-g2-5dj" firstAttribute="top" secondItem="VUq-xG-glC" secondAttribute="top" id="DUK-iE-bxu"/>
                 <constraint firstItem="dmq-g2-5dj" firstAttribute="trailing" secondItem="kuU-uh-cWW" secondAttribute="trailing" id="Sdj-jj-UPa"/>
                 <constraint firstAttribute="bottom" secondItem="Yvi-3r-dv9" secondAttribute="bottom" id="b6s-IP-gM9"/>
                 <constraint firstItem="Yvi-3r-dv9" firstAttribute="leading" secondItem="kuU-uh-cWW" secondAttribute="leading" id="diV-my-ETh"/>
-                <constraint firstItem="dmq-g2-5dj" firstAttribute="leading" secondItem="Yvi-3r-dv9" secondAttribute="trailing" priority="999" constant="8" id="t9i-ZZ-tyF"/>
-                <constraint firstItem="Yvi-3r-dv9" firstAttribute="top" secondItem="VUq-xG-glC" secondAttribute="top" id="vVI-2P-ZyW"/>
-                <constraint firstItem="Yvi-3r-dv9" firstAttribute="leading" secondItem="kuU-uh-cWW" secondAttribute="leading" id="yXC-L3-S67"/>
+                <constraint firstItem="dmq-g2-5dj" firstAttribute="leading" secondItem="Yvi-3r-dv9" secondAttribute="trailing" constant="8" id="t9i-ZZ-tyF"/>
                 <constraint firstAttribute="bottom" secondItem="dmq-g2-5dj" secondAttribute="bottom" id="zfh-VD-Xn6"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
