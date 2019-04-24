@@ -13,6 +13,7 @@ protocol InsightPresenterProtocol {
     init(interactor: InsightInteractorProtocol, output: InsightPresenterOutputProtocol)
     func didTapRecordButton(toBroadcast: Bool)
     func didSelectToImport(from url: URL)
+    func didDoubleTapped(leftSide: Bool)
 }
 
 protocol InsightPresenterOutputProtocol: class {

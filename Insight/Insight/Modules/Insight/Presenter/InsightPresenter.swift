@@ -15,6 +15,7 @@ final class InsightPresenter {
     private weak var output: InsightPresenterOutputProtocol?
     
     private var pages = [PDFPageViewModel]()
+    private var selectedPage: PDFPageViewModel?
     
     init(interactor: InsightInteractorProtocol, output: InsightPresenterOutputProtocol) {
         self.interactor = interactor
@@ -31,6 +32,26 @@ extension InsightPresenter: InsightPresenterProtocol {
     
     func didTapRecordButton(toBroadcast: Bool) {
         toBroadcast ? self.interactor?.startOrStopBroadcast() : self.interactor?.startOrStopRecording()
+    }
+    
+    func didDoubleTapped(leftSide: Bool) {
+        leftSide ? presentPreviousPage() : presentNextPage()
+    }
+    
+    private func presentNextPage() {
+        guard let index = getCurrentPdfPage(), index < self.pages.count - 1 else { return }
+        self.selectedPage = self.pages[index + 1]
+        self.output?.presentPDFPage(page: self.selectedPage!)
+    }
+    
+    private func presentPreviousPage() {
+        guard let index = getCurrentPdfPage(), index > 0 else { return }
+        self.selectedPage = self.pages[index - 1]
+        self.output?.presentPDFPage(page: self.selectedPage!)
+    }
+    
+    private func getCurrentPdfPage() -> Int? {
+        return self.pages.firstIndex(where: { $0.image == selectedPage?.image })
     }
 }
 
@@ -65,6 +86,7 @@ extension InsightPresenter: InsightInteractorOutputProtocol {
     
     private func presentFirstPage() {
         guard let page = self.pages.first else { return }
+        self.selectedPage = page
         self.output?.presentPDFPage(page: page)
     }
 }
