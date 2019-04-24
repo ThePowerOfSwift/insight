@@ -28,7 +28,6 @@ class InsightViewController: UIViewController {
     private var isLaserPointerSelected: Bool = false
     private var camView = CamView()
     private var laserPointerView = LaserPointerView()
-    private var pdfPages: [UIImage] = []
     private var pdfView: UIImageView = UIImageView()
     
     override func viewDidLoad() {
@@ -302,11 +301,11 @@ extension InsightViewController: UIGestureRecognizerDelegate {
 }
 
 
-// MARK: - PDF
+// MARK: - UIDocumentPickerDelegate
 
 extension InsightViewController: UIDocumentPickerDelegate {
     
-    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         self.presenter?.didSelectToImport(from: url)
     }
     
