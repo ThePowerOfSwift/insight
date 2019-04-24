@@ -62,6 +62,26 @@ class InsightViewController: UIViewController {
 // MARK: - InsightPresenterOutputProtocol
 
 extension InsightViewController: InsightPresenterOutputProtocol {
+    
+    func showLoading() {
+        showActivityIndicator()
+    }
+    
+    func hideLoading() {
+        dismissAlert()
+    }
+    
+    func presentPDFPage(page: PDFPageViewModel) {
+        self.pdfView = UIImageView(image: page.image)
+        self.pdfView?.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        self.pdfView?.center = self.view.center
+        self.view.addSubview(self.pdfView!)
+        self.view.sendSubviewToBack(self.pdfView!)
+    }
+    
+    func presentError() {
+        showError(with: "Sorry, we couldn't download your document. Try again later, please.")
+    }
 
     func startBroadcast() {
         self.recorder.isMicrophoneEnabled = true
@@ -88,10 +108,7 @@ extension InsightViewController: InsightPresenterOutputProtocol {
 extension InsightViewController: ToolBarDelegate {
     
     func didSelectImportButton() {
-        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .import)
-        importMenu.delegate = self
-        importMenu.modalPresentationStyle = .popover
-        self.present(importMenu, animated: true, completion: nil)
+        presentDocumentPicker()
     }
     
     func didSelectLaserPointerButton() {
@@ -188,16 +205,6 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
                 self.present(broadcastAVC, animated: true, completion: nil)
             }
         }
-    }
-    
-    private func showError(with message: String) {
-        dismiss(animated: false, completion: nil)
-        let alert = UIAlertController(title: "Something happened", message: message, preferredStyle: .alert)
-        let cancelButton = UIAlertAction(title: "Ok", style: .default) { _ in
-            self.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(cancelButton)
-        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -299,20 +306,19 @@ extension InsightViewController: UIGestureRecognizerDelegate {
 extension InsightViewController: UIDocumentPickerDelegate {
     
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        showActivityIndicator()
-        DispatchQueue.global().async {
-            guard let document = CGPDFDocument(url as CFURL) else { return }
-            self.pdfPages = self.drawPages(from: document)
-            DispatchQueue.main.async {
-                self.presentFirstPage()
-                self.dismissAlert()
-            }
-        }
+        self.presenter?.didSelectToImport(from: url)
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("view was cancelled")
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func presentDocumentPicker() {
+        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .import)
+        importMenu.delegate = self
+        importMenu.modalPresentationStyle = .popover
+        self.present(importMenu, animated: true, completion: nil)
     }
     
     private func presentFirstPage() {
@@ -402,5 +408,15 @@ extension InsightViewController {
         
         waitView.view.addSubview(loadingIndicator)
         present(waitView, animated: true, completion: nil)
+    }
+    
+    private func showError(with message: String) {
+        dismiss(animated: false, completion: nil)
+        let alert = UIAlertController(title: "Something happened", message: message, preferredStyle: .alert)
+        let cancelButton = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(cancelButton)
+        present(alert, animated: true, completion: nil)
     }
 }

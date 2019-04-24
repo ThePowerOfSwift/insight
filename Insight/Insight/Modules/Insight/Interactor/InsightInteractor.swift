@@ -15,6 +15,7 @@ final class InsightInteractor {
     
     private let broadcastController = RPBroadcastController()
     private let recorder = RPScreenRecorder.shared()
+    private var pdfDocument: PDFDocument?
     
     init() {}
     
@@ -31,6 +32,19 @@ extension InsightInteractor: InsightInteractorProtocol {
     
     func startOrStopRecording() {
         self.recorder.isRecording ? stopRecording() : startRecording()
+    }
+    
+    func fetchPresentation(url: URL) {
+        DispatchQueue.global().async {
+            guard let document = CGPDFDocument(url as CFURL) else {
+                self.output?.didFailFetchingDocument()
+                return
+            }
+            DispatchQueue.main.async {
+                self.pdfDocument = PDFDocumentMapper.make(from: document)
+                self.output?.didFetchDocument(document: self.pdfDocument!)
+            }
+        }
     }
     
     private func startBroadcast() {

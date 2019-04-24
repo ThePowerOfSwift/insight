@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 
 protocol InsightInteractorProtocol {
     func startOrStopRecording()
     func startOrStopBroadcast()
+    func fetchPresentation(url: URL)
 }
 
 protocol InsightInteractorOutputProtocol: class {
@@ -19,4 +21,6 @@ protocol InsightInteractorOutputProtocol: class {
     func stopRecording()
     func startBroadcast()
     func broadcastEnded()
+    func didFetchDocument(document: PDFDocument)
+    func didFailFetchingDocument()
 }
