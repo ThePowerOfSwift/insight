@@ -11,27 +11,31 @@ import ReplayKit
 
 final class InsightPresenter {
     
-    private var interactor: InsightInteractorProtocol?
-    private weak var output: InsightPresenterOutputProtocol?
+    private var recordInteractor: InsightInteractorProtocol?
+    private var documentInteractor: InsightDocumentInteractorProtocol?
+    private weak var delegate: InsightPresenterOutputProtocol?
     
     private var pages = [PDFPageViewModel]()
     private var selectedPage: PDFPageViewModel?
     
-    init(interactor: InsightInteractorProtocol, output: InsightPresenterOutputProtocol) {
-        self.interactor = interactor
-        self.output = output
+    init(recordInteractor: InsightInteractorProtocol,
+         documentInteractor: InsightDocumentInteractorProtocol,
+         delegate: InsightPresenterOutputProtocol) {
+        self.recordInteractor = recordInteractor
+        self.documentInteractor = documentInteractor
+        self.delegate = delegate
     }
 }
 
 extension InsightPresenter: InsightPresenterProtocol {
-    
+
     func didSelectToImport(from url: URL) {
-        self.output?.showLoading()
-        self.interactor?.fetchPresentation(url: url)
+        self.delegate?.showLoading()
+        self.documentInteractor?.fetchPresentation(for: url)
     }
     
     func didTapRecordButton(toBroadcast: Bool) {
-        toBroadcast ? self.interactor?.startOrStopBroadcast() : self.interactor?.startOrStopRecording()
+        toBroadcast ? self.recordInteractor?.startOrStopBroadcast() : self.recordInteractor?.startOrStopRecording()
     }
     
     func didDoubleTapped(leftSide: Bool) {
@@ -41,13 +45,13 @@ extension InsightPresenter: InsightPresenterProtocol {
     private func presentNextPage() {
         guard let index = getCurrentPdfPage(), index < self.pages.count - 1 else { return }
         self.selectedPage = self.pages[index + 1]
-        self.output?.presentPDFPage(page: self.selectedPage!)
+        self.delegate?.presentPDFPage(page: self.selectedPage!)
     }
     
     private func presentPreviousPage() {
         guard let index = getCurrentPdfPage(), index > 0 else { return }
         self.selectedPage = self.pages[index - 1]
-        self.output?.presentPDFPage(page: self.selectedPage!)
+        self.delegate?.presentPDFPage(page: self.selectedPage!)
     }
     
     private func getCurrentPdfPage() -> Int? {
@@ -57,36 +61,39 @@ extension InsightPresenter: InsightPresenterProtocol {
 
 extension InsightPresenter: InsightInteractorOutputProtocol {
     
+    func startRecording() {
+        self.delegate?.startRecording()
+    }
+    
+    func stopRecording() {
+        self.delegate?.stopRecording()
+    }
+    
+    func startBroadcast() {
+        self.delegate?.startBroadcast()
+    }
+    
+    func broadcastEnded() {
+        self.delegate?.broadcastEnded()
+    }
+    
+    private func presentFirstPage() {
+        guard let page = self.pages.first else { return }
+        self.selectedPage = page
+        self.delegate?.presentPDFPage(page: page)
+    }
+}
+
+extension InsightPresenter: InsightDocumentInteractorDelegate {
+    
     func didFetchDocument(document: PDFDocument) {
-        self.output?.hideLoading()
+        self.delegate?.hideLoading()
         self.pages = PDFPageViewModelMapper.make(from: document)
         guard !self.pages.isEmpty else { return }
         presentFirstPage()
     }
     
     func didFailFetchingDocument() {
-        self.output?.presentError()
-    }
-    
-    func startRecording() {
-        self.output?.startRecording()
-    }
-    
-    func stopRecording() {
-        self.output?.stopRecording()
-    }
-    
-    func startBroadcast() {
-        self.output?.startBroadcast()
-    }
-    
-    func broadcastEnded() {
-        self.output?.broadcastEnded()
-    }
-    
-    private func presentFirstPage() {
-        guard let page = self.pages.first else { return }
-        self.selectedPage = page
-        self.output?.presentPDFPage(page: page)
+        self.delegate?.presentError()
     }
 }

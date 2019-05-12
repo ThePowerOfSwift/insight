@@ -9,9 +9,27 @@
 import ReplayKit
 
 
+// MARK: - Protocols
+
+protocol InsightInteractorProtocol {
+    func startOrStopRecording()
+    func startOrStopBroadcast()
+}
+
+protocol InsightInteractorOutputProtocol: class {
+    func startRecording()
+    func stopRecording()
+    func startBroadcast()
+    func broadcastEnded()
+}
+
+
+// MARK: - InsightInteractor
+
 final class InsightInteractor {
     
     private weak var output: InsightInteractorOutputProtocol?
+    private weak var documentDelegate: InsightDocumentInteractorDelegate?
     
     private let broadcastController = RPBroadcastController()
     private let recorder = RPScreenRecorder.shared()
@@ -24,6 +42,9 @@ final class InsightInteractor {
     }
 }
 
+
+// MARK: - InsightInteractorProtocol
+
 extension InsightInteractor: InsightInteractorProtocol {
     
     func startOrStopBroadcast() {
@@ -32,19 +53,6 @@ extension InsightInteractor: InsightInteractorProtocol {
     
     func startOrStopRecording() {
         self.recorder.isRecording ? stopRecording() : startRecording()
-    }
-    
-    func fetchPresentation(url: URL) {
-        DispatchQueue.global().async {
-            guard let document = CGPDFDocument(url as CFURL) else {
-                self.output?.didFailFetchingDocument()
-                return
-            }
-            DispatchQueue.main.async {
-                self.pdfDocument = PDFDocumentMapper.make(from: document)
-                self.output?.didFetchDocument(document: self.pdfDocument!)
-            }
-        }
     }
     
     private func startBroadcast() {
