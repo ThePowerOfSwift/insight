@@ -11,14 +11,14 @@ import ReplayKit
 
 final class InsightPresenter {
     
-    private var recordInteractor: InsightInteractorProtocol?
+    private var recordInteractor: InsightRecorderInteractorProtocol?
     private var documentInteractor: InsightDocumentInteractorProtocol?
     private weak var delegate: InsightPresenterOutputProtocol?
     
     private var pages = [PDFPageViewModel]()
     private var selectedPage: PDFPageViewModel?
     
-    init(recordInteractor: InsightInteractorProtocol,
+    init(recordInteractor: InsightRecorderInteractorProtocol,
          documentInteractor: InsightDocumentInteractorProtocol,
          delegate: InsightPresenterOutputProtocol) {
         self.recordInteractor = recordInteractor
@@ -59,7 +59,7 @@ extension InsightPresenter: InsightPresenterProtocol {
     }
 }
 
-extension InsightPresenter: InsightInteractorOutputProtocol {
+extension InsightPresenter: InsightRecorderInteractorDelegate {
     
     func startRecording() {
         self.delegate?.startRecording()

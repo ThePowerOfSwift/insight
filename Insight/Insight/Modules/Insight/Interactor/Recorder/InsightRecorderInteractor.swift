@@ -11,12 +11,12 @@ import ReplayKit
 
 // MARK: - Protocols
 
-protocol InsightInteractorProtocol {
+protocol InsightRecorderInteractorProtocol {
     func startOrStopRecording()
     func startOrStopBroadcast()
 }
 
-protocol InsightInteractorOutputProtocol: class {
+protocol InsightRecorderInteractorDelegate: class {
     func startRecording()
     func stopRecording()
     func startBroadcast()
@@ -26,53 +26,52 @@ protocol InsightInteractorOutputProtocol: class {
 
 // MARK: - InsightInteractor
 
-final class InsightInteractor {
+final class InsightRecorderInteractor {
     
-    private weak var output: InsightInteractorOutputProtocol?
+    private weak var delegate: InsightRecorderInteractorDelegate?
     private weak var documentDelegate: InsightDocumentInteractorDelegate?
     
     private let broadcastController = RPBroadcastController()
-    private let recorder = RPScreenRecorder.shared()
     private var pdfDocument: PDFDocument?
     
     init() {}
     
-    func setupInteractor(with output: InsightInteractorOutputProtocol) {
-        self.output = output
+    func setupInteractor(with output: InsightRecorderInteractorDelegate) {
+        self.delegate = output
     }
 }
 
 
 // MARK: - InsightInteractorProtocol
 
-extension InsightInteractor: InsightInteractorProtocol {
+extension InsightRecorderInteractor: InsightRecorderInteractorProtocol {
     
     func startOrStopBroadcast() {
         self.broadcastController.isBroadcasting ? stopBroadcast() : startBroadcast()
     }
     
     func startOrStopRecording() {
-        self.recorder.isRecording ? stopRecording() : startRecording()
+        RPScreenRecorder.shared().isRecording ? stopRecording() : startRecording()
     }
     
     private func startBroadcast() {
-        self.output?.startBroadcast()
+        self.delegate?.startBroadcast()
     }
     
     private func stopBroadcast() {
         self.broadcastController.finishBroadcast { [unowned self] error in
             DispatchQueue.main.async {
                 guard error == nil else { return }
-                self.output?.broadcastEnded()
+                self.delegate?.broadcastEnded()
             }
         }
     }
     
     private func startRecording() {
-        self.output?.startRecording()
+        self.delegate?.startRecording()
     }
     
     private func stopRecording() {
-        self.output?.stopRecording()
+        self.delegate?.stopRecording()
     }
 }

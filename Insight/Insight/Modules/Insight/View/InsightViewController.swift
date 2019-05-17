@@ -19,9 +19,6 @@ class InsightViewController: UIViewController {
     @IBOutlet weak var toolBarView: ToolBarView!
     
     private var presenter: InsightPresenterProtocol?
-    
-    private let controller = RPBroadcastController()
-    private let recorder = RPScreenRecorder.shared()
     private var isRecording: Bool = false
     private var isReplayKitOff: Bool = true
     private var isCamHidden: Bool = true
@@ -35,17 +32,12 @@ class InsightViewController: UIViewController {
         configureInsightViewController()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        print("Memory warning triggered. If running this app on an older device, you might want to remove some apps from multitasking.")
-    }
-    
     func setupViewController(with presenter: InsightPresenterProtocol) {
         self.presenter = presenter
     }
     
     private func configureInsightViewController() {
-        self.recorder.isMicrophoneEnabled = true
+        RPScreenRecorder.shared().isMicrophoneEnabled = true
         self.recordBarView.delegate = self
         self.toolBarView.delegate = self
         self.camView.setup(for: self.view)
@@ -84,7 +76,7 @@ extension InsightViewController: InsightPresenterOutputProtocol {
     }
 
     func startBroadcast() {
-        self.recorder.isMicrophoneEnabled = true
+        RPScreenRecorder.shared().isMicrophoneEnabled = true
         loadBoradcastActivityViewController()
     }
     
@@ -93,7 +85,7 @@ extension InsightViewController: InsightPresenterOutputProtocol {
     }
     
     func startRecording() {
-        self.recorder.isMicrophoneEnabled = true
+        RPScreenRecorder.shared().isMicrophoneEnabled = true
         startRecordingScreen()
     }
     
@@ -140,7 +132,7 @@ extension InsightViewController: RecordBarDelegate {
     }
     
     func didTapMicrophoneButton() {
-        self.recorder.isMicrophoneEnabled = !self.recorder.isMicrophoneEnabled
+        RPScreenRecorder.shared().isMicrophoneEnabled = !RPScreenRecorder.shared().isMicrophoneEnabled
     }
     
     private func showCam() {
@@ -215,14 +207,14 @@ extension InsightViewController: RPPreviewViewControllerDelegate {
     
     func startRecordingScreen() {
         self.showActivityIndicator()
-        guard self.recorder.isAvailable else {
+        guard RPScreenRecorder.shared().isAvailable else {
             self.showError(with: "Recording is not available at this time")
             return
         }
         
-        self.recorder.isMicrophoneEnabled = true
+        RPScreenRecorder.shared().isMicrophoneEnabled = true
         
-        self.recorder.startRecording{ [unowned self] (error) in
+        RPScreenRecorder.shared().startRecording{ [unowned self] (error) in
             DispatchQueue.main.async {
                 self.didStartReplayKit(error: error)
                 self.isRecording = true
@@ -232,12 +224,12 @@ extension InsightViewController: RPPreviewViewControllerDelegate {
     }
 
     func stopRecordingScreen() {
-        guard self.recorder.isAvailable else {
+        guard RPScreenRecorder.shared().isAvailable else {
             self.showError(with: "Recording is not available at this time")
             return
         }
 
-        recorder.stopRecording { [unowned self] (preview, error) in
+        RPScreenRecorder.shared().stopRecording { [unowned self] (preview, error) in
             DispatchQueue.main.async {
                 guard preview != nil else {
                     self.showError(with: "Preview controller is not available.")
@@ -261,7 +253,7 @@ extension InsightViewController: RPPreviewViewControllerDelegate {
         let alert = UIAlertController(title: "Recording Finished", message: "Would you like to edit or delete your recording?", preferredStyle: .alert)
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
-            self.recorder.discardRecording {}
+            RPScreenRecorder.shared().discardRecording {}
         })
         
         let editAction = UIAlertAction(title: "Edit", style: .default, handler: { _ in

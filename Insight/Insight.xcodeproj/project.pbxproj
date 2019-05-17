@@ -25,7 +25,7 @@
 		5A33CD1B225956BC00734BC6 /* InsightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD1A225956BC00734BC6 /* InsightUITests.swift */; };
 		5A33CD302259596100734BC6 /* InsightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD2F2259596100734BC6 /* InsightViewController.swift */; };
 		5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD312259599000734BC6 /* InsightPresenter.swift */; };
-		5A33CD34225959A900734BC6 /* InsightInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD33225959A900734BC6 /* InsightInteractor.swift */; };
+		5A33CD34225959A900734BC6 /* InsightRecorderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD33225959A900734BC6 /* InsightRecorderInteractor.swift */; };
 		5A33CD3622595A3D00734BC6 /* InsightWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */; };
 		5A33CD3822595C2600734BC6 /* InsightPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */; };
 		5A33CD3C2259604F00734BC6 /* InsightViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */; };
@@ -82,7 +82,7 @@
 		5A33CD1C225956BC00734BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A33CD2F2259596100734BC6 /* InsightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightViewController.swift; sourceTree = "<group>"; };
 		5A33CD312259599000734BC6 /* InsightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenter.swift; sourceTree = "<group>"; };
-		5A33CD33225959A900734BC6 /* InsightInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightInteractor.swift; sourceTree = "<group>"; };
+		5A33CD33225959A900734BC6 /* InsightRecorderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRecorderInteractor.swift; sourceTree = "<group>"; };
 		5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightWireframe.swift; sourceTree = "<group>"; };
 		5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterProtocols.swift; sourceTree = "<group>"; };
 		5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightViewControllerBuilder.swift; sourceTree = "<group>"; };
@@ -151,13 +151,13 @@
 			path = LaserPointer;
 			sourceTree = "<group>";
 		};
-		5A2A817D2288D0B100321158 /* Record */ = {
+		5A2A817D2288D0B100321158 /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
-				5A33CD33225959A900734BC6 /* InsightInteractor.swift */,
+				5A33CD33225959A900734BC6 /* InsightRecorderInteractor.swift */,
 				5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */,
 			);
-			path = Record;
+			path = Recorder;
 			sourceTree = "<group>";
 		};
 		5A2A817E2288D0BC00321158 /* Document */ = {
@@ -271,7 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				5A2A817E2288D0BC00321158 /* Document */,
-				5A2A817D2288D0B100321158 /* Record */,
+				5A2A817D2288D0B100321158 /* Recorder */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -521,7 +521,7 @@
 				5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */,
 				5A24D9F22270DB390048BB3D /* PDFPageMapper.swift in Sources */,
 				5A33CD5F225AB8F500734BC6 /* WebCamView.swift in Sources */,
-				5A33CD34225959A900734BC6 /* InsightInteractor.swift in Sources */,
+				5A33CD34225959A900734BC6 /* InsightRecorderInteractor.swift in Sources */,
 				5A33CD402259617B00734BC6 /* InsightInteractorBuilder.swift in Sources */,
 				5A33CD5A225998F500734BC6 /* UIView.swift in Sources */,
 				5A33CD3822595C2600734BC6 /* InsightPresenterProtocols.swift in Sources */,
