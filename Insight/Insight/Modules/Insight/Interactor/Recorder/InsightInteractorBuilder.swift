@@ -11,8 +11,8 @@ import Foundation
 
 struct InsightInteractorBuilder {
     
-    static func build() -> InsightInteractor {
-        let interactor = InsightInteractor()
+    static func build() -> InsightRecorderInteractor {
+        let interactor = InsightRecorderInteractor()
         return interactor
     }
 }

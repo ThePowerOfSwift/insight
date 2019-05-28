@@ -51,11 +51,11 @@ class ToolBarView: UIView {
         self.contentView.layoutSubviews()
         self.isToolBarSelected = !self.isToolBarSelected
         if self.isToolBarSelected {
-            UIView.animate(withDuration: 0.4, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.laserPointerButton.frame.origin = .zero
             })
         } else {
-            UIView.animate(withDuration: 0.4, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.laserPointerButton.frame.origin = self.originalLaserPointerPosition
             })
         }

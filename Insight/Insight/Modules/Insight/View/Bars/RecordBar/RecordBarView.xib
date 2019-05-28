@@ -20,16 +20,16 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="156" height="74"/>
+            <rect key="frame" x="0.0" y="0.0" width="152" height="74"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMg-TY-WKF" userLabel="Camera Button">
                     <rect key="frame" x="52" y="0.0" width="48" height="48"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="64" id="9Tb-Oj-LUV"/>
-                        <constraint firstAttribute="width" secondItem="eMg-TY-WKF" secondAttribute="height" multiplier="1:1" id="RLw-tA-7iQ"/>
-                        <constraint firstAttribute="width" constant="48" id="WWp-OZ-pvj"/>
+                        <constraint firstAttribute="width" constant="48" id="7rW-qe-gC7"/>
+                        <constraint firstAttribute="width" constant="64" id="l7w-zS-VdS"/>
+                        <constraint firstAttribute="width" secondItem="eMg-TY-WKF" secondAttribute="height" multiplier="1:1" id="tlz-Of-GYo"/>
                     </constraints>
                     <state key="normal" backgroundImage="blueCameraIcon">
                         <color key="titleColor" red="0.13709297776222229" green="0.35873600840568542" blue="0.48363375663757324" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -37,47 +37,38 @@
                     <state key="selected" backgroundImage="redcameraIcon"/>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="9Tb-Oj-LUV"/>
+                            <exclude reference="l7w-zS-VdS"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=regular">
                         <mask key="constraints">
-                            <include reference="9Tb-Oj-LUV"/>
-                            <exclude reference="WWp-OZ-pvj"/>
+                            <exclude reference="7rW-qe-gC7"/>
+                            <include reference="l7w-zS-VdS"/>
                         </mask>
                     </variation>
                     <connections>
                         <action selector="didTapCameraButton:" destination="-1" eventType="touchUpInside" id="hzN-RK-R0v"/>
                     </connections>
                 </button>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh8-q9-aHv">
-                    <rect key="frame" x="106.5" y="52" width="43.5" height="22"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <color key="textColor" red="0.68627450980392157" green="0.035294117647058823" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                    <variation key="heightClass=regular-widthClass=regular">
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    </variation>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yh6-DN-uee">
                     <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="64" id="1P3-A8-9i7"/>
-                        <constraint firstAttribute="width" secondItem="yh6-DN-uee" secondAttribute="height" multiplier="1:1" id="HC5-s7-hzb"/>
-                        <constraint firstAttribute="width" constant="48" id="yjW-xY-bfX"/>
+                        <constraint firstAttribute="width" secondItem="yh6-DN-uee" secondAttribute="height" multiplier="1:1" id="ewS-xx-4vx"/>
+                        <constraint firstAttribute="width" constant="64" id="tg1-HW-HJA"/>
+                        <constraint firstAttribute="width" constant="48" id="yr5-5Z-JE4"/>
                     </constraints>
                     <state key="normal" image="withAudio"/>
                     <state key="selected" image="noAudio"/>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="1P3-A8-9i7"/>
+                            <exclude reference="tg1-HW-HJA"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=regular">
                         <mask key="constraints">
-                            <include reference="1P3-A8-9i7"/>
-                            <exclude reference="yjW-xY-bfX"/>
+                            <include reference="tg1-HW-HJA"/>
+                            <exclude reference="yr5-5Z-JE4"/>
                         </mask>
                     </variation>
                     <connections>
@@ -88,9 +79,9 @@
                     <rect key="frame" x="104" y="0.0" width="48" height="48"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="64" id="4rT-ge-49W"/>
-                        <constraint firstAttribute="width" secondItem="NVD-e4-Wve" secondAttribute="height" multiplier="1:1" id="MkH-bg-jRx"/>
-                        <constraint firstAttribute="width" constant="48" id="WV2-OU-QKz"/>
+                        <constraint firstAttribute="width" secondItem="NVD-e4-Wve" secondAttribute="height" multiplier="1:1" id="U9J-nc-6XU"/>
+                        <constraint firstAttribute="width" constant="48" id="ZA7-2c-EBS"/>
+                        <constraint firstAttribute="width" constant="64" id="hc1-RP-A79"/>
                     </constraints>
                     <state key="normal" backgroundImage="recordIcon">
                         <color key="titleColor" red="0.68627450980392157" green="0.035294117647058823" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -98,35 +89,45 @@
                     <state key="selected" backgroundImage="stopIcon"/>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="4rT-ge-49W"/>
+                            <exclude reference="hc1-RP-A79"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=regular">
                         <mask key="constraints">
-                            <include reference="4rT-ge-49W"/>
-                            <exclude reference="WV2-OU-QKz"/>
+                            <exclude reference="ZA7-2c-EBS"/>
+                            <include reference="hc1-RP-A79"/>
                         </mask>
                     </variation>
                     <connections>
                         <action selector="didTapRecordButton:" destination="-1" eventType="touchUpInside" id="fEY-th-BVq"/>
                     </connections>
                 </button>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh8-q9-aHv">
+                    <rect key="frame" x="106" y="54" width="44" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.68627450980392157" green="0.035294117647058823" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    </variation>
+                </label>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="NVD-e4-Wve" secondAttribute="trailing" constant="4" id="3hh-Y6-dDZ"/>
-                <constraint firstItem="NVD-e4-Wve" firstAttribute="leading" secondItem="eMg-TY-WKF" secondAttribute="trailing" constant="4" id="Awc-8U-Pe0"/>
-                <constraint firstItem="eMg-TY-WKF" firstAttribute="leading" secondItem="yh6-DN-uee" secondAttribute="trailing" constant="4" id="OIw-io-DNv"/>
-                <constraint firstItem="mh8-q9-aHv" firstAttribute="top" secondItem="NVD-e4-Wve" secondAttribute="bottom" constant="4" id="PzH-W3-GLW"/>
-                <constraint firstItem="eMg-TY-WKF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RdC-i4-bo3"/>
-                <constraint firstItem="NVD-e4-Wve" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fg7-oo-hDD"/>
-                <constraint firstItem="yh6-DN-uee" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gmF-K8-H9M"/>
-                <constraint firstItem="mh8-q9-aHv" firstAttribute="centerX" secondItem="NVD-e4-Wve" secondAttribute="centerX" id="iMo-Ml-QR1"/>
-                <constraint firstAttribute="bottom" secondItem="mh8-q9-aHv" secondAttribute="bottom" id="n2b-Al-gEO"/>
-                <constraint firstItem="yh6-DN-uee" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uJV-RO-yXW"/>
+                <constraint firstItem="eMg-TY-WKF" firstAttribute="top" secondItem="NVD-e4-Wve" secondAttribute="top" id="15T-u9-Acx"/>
+                <constraint firstAttribute="trailing" secondItem="mh8-q9-aHv" secondAttribute="trailing" constant="2" id="518-kP-ueP"/>
+                <constraint firstAttribute="bottom" secondItem="mh8-q9-aHv" secondAttribute="bottom" id="ApE-xX-1ID"/>
+                <constraint firstItem="yh6-DN-uee" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DfP-hX-6n3"/>
+                <constraint firstItem="eMg-TY-WKF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JZL-yD-I1C"/>
+                <constraint firstItem="yh6-DN-uee" firstAttribute="top" secondItem="eMg-TY-WKF" secondAttribute="top" id="aH1-Cx-xPL"/>
+                <constraint firstAttribute="trailing" secondItem="NVD-e4-Wve" secondAttribute="trailing" id="etA-F6-yUC"/>
+                <constraint firstItem="NVD-e4-Wve" firstAttribute="centerX" secondItem="mh8-q9-aHv" secondAttribute="centerX" id="hIo-x0-ADm"/>
+                <constraint firstItem="eMg-TY-WKF" firstAttribute="leading" secondItem="yh6-DN-uee" secondAttribute="trailing" constant="4" id="krn-oL-grN"/>
+                <constraint firstItem="yh6-DN-uee" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nNo-O3-Lmk"/>
+                <constraint firstItem="NVD-e4-Wve" firstAttribute="leading" secondItem="eMg-TY-WKF" secondAttribute="trailing" constant="4" id="zLZ-sy-ZQm"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="136" y="7.1964017991004505"/>
+            <point key="canvasLocation" x="132.80000000000001" y="7.1964017991004505"/>
         </view>
     </objects>
     <resources>

@@ -12,16 +12,22 @@
 		5A1FB0D2226AC08F00D7681A /* InsightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FB0D1226AC08F00D7681A /* InsightButton.swift */; };
 		5A1FB0D5226B715100D7681A /* LaserPointerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1FB0D4226B715100D7681A /* LaserPointerView.swift */; };
 		5A1FB0D7226B739800D7681A /* LaserPointerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A1FB0D6226B739800D7681A /* LaserPointerView.xib */; };
+		5A24D9EC226FB0050048BB3D /* PDFDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A24D9EB226FB0050048BB3D /* PDFDocument.swift */; };
+		5A24D9EE226FB4420048BB3D /* PDFDocumentMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A24D9ED226FB4420048BB3D /* PDFDocumentMapper.swift */; };
+		5A24D9F02270D84D0048BB3D /* PDFPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A24D9EF2270D84D0048BB3D /* PDFPage.swift */; };
+		5A24D9F22270DB390048BB3D /* PDFPageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A24D9F12270DB390048BB3D /* PDFPageMapper.swift */; };
+		5A24D9F42270E05D0048BB3D /* PDFPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A24D9F32270E05D0048BB3D /* PDFPageViewModel.swift */; };
+		5A2A817C2288CDD500321158 /* InsightDocumentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A817B2288CDD500321158 /* InsightDocumentInteractor.swift */; };
+		5A2A81802288D0F900321158 /* InsightDocumentInteractorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A817F2288D0F900321158 /* InsightDocumentInteractorBuilder.swift */; };
 		5A33CCFB225956B900734BC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CCFA225956B900734BC6 /* AppDelegate.swift */; };
 		5A33CD02225956BC00734BC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD01225956BC00734BC6 /* Assets.xcassets */; };
 		5A33CD10225956BC00734BC6 /* InsightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD0F225956BC00734BC6 /* InsightTests.swift */; };
 		5A33CD1B225956BC00734BC6 /* InsightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD1A225956BC00734BC6 /* InsightUITests.swift */; };
 		5A33CD302259596100734BC6 /* InsightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD2F2259596100734BC6 /* InsightViewController.swift */; };
 		5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD312259599000734BC6 /* InsightPresenter.swift */; };
-		5A33CD34225959A900734BC6 /* InsightInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD33225959A900734BC6 /* InsightInteractor.swift */; };
+		5A33CD34225959A900734BC6 /* InsightRecorderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD33225959A900734BC6 /* InsightRecorderInteractor.swift */; };
 		5A33CD3622595A3D00734BC6 /* InsightWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */; };
 		5A33CD3822595C2600734BC6 /* InsightPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */; };
-		5A33CD3A22595C6C00734BC6 /* InsightInteractorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3922595C6C00734BC6 /* InsightInteractorProtocols.swift */; };
 		5A33CD3C2259604F00734BC6 /* InsightViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */; };
 		5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */; };
 		5A33CD402259617B00734BC6 /* InsightInteractorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */; };
@@ -31,6 +37,7 @@
 		5A33CD5A225998F500734BC6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD59225998F500734BC6 /* UIView.swift */; };
 		5A33CD5C2259BAC800734BC6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD5B2259BAC800734BC6 /* LaunchScreen.xib */; };
 		5A33CD5F225AB8F500734BC6 /* WebCamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD5E225AB8F500734BC6 /* WebCamView.swift */; };
+		5AA0CF63226D5BD3009E6A99 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +63,13 @@
 		5A1FB0D1226AC08F00D7681A /* InsightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightButton.swift; sourceTree = "<group>"; };
 		5A1FB0D4226B715100D7681A /* LaserPointerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserPointerView.swift; sourceTree = "<group>"; };
 		5A1FB0D6226B739800D7681A /* LaserPointerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaserPointerView.xib; sourceTree = "<group>"; };
+		5A24D9EB226FB0050048BB3D /* PDFDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFDocument.swift; sourceTree = "<group>"; };
+		5A24D9ED226FB4420048BB3D /* PDFDocumentMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFDocumentMapper.swift; sourceTree = "<group>"; };
+		5A24D9EF2270D84D0048BB3D /* PDFPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPage.swift; sourceTree = "<group>"; };
+		5A24D9F12270DB390048BB3D /* PDFPageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageMapper.swift; sourceTree = "<group>"; };
+		5A24D9F32270E05D0048BB3D /* PDFPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageViewModel.swift; sourceTree = "<group>"; };
+		5A2A817B2288CDD500321158 /* InsightDocumentInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightDocumentInteractor.swift; sourceTree = "<group>"; };
+		5A2A817F2288D0F900321158 /* InsightDocumentInteractorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightDocumentInteractorBuilder.swift; sourceTree = "<group>"; };
 		5A33CCF7225956B900734BC6 /* Insight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A33CCFA225956B900734BC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A33CD01225956BC00734BC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,10 +82,9 @@
 		5A33CD1C225956BC00734BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A33CD2F2259596100734BC6 /* InsightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightViewController.swift; sourceTree = "<group>"; };
 		5A33CD312259599000734BC6 /* InsightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenter.swift; sourceTree = "<group>"; };
-		5A33CD33225959A900734BC6 /* InsightInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightInteractor.swift; sourceTree = "<group>"; };
+		5A33CD33225959A900734BC6 /* InsightRecorderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRecorderInteractor.swift; sourceTree = "<group>"; };
 		5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightWireframe.swift; sourceTree = "<group>"; };
 		5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterProtocols.swift; sourceTree = "<group>"; };
-		5A33CD3922595C6C00734BC6 /* InsightInteractorProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightInteractorProtocols.swift; sourceTree = "<group>"; };
 		5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightViewControllerBuilder.swift; sourceTree = "<group>"; };
 		5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterBuilder.swift; sourceTree = "<group>"; };
 		5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightInteractorBuilder.swift; sourceTree = "<group>"; };
@@ -82,6 +95,7 @@
 		5A33CD5B2259BAC800734BC6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		5A33CD5E225AB8F500734BC6 /* WebCamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCamView.swift; sourceTree = "<group>"; };
 		5AA0CF60226C2848009E6A99 /* Insight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Insight.entitlements; sourceTree = "<group>"; };
+		5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AA0CF63226D5BD3009E6A99 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,8 +127,8 @@
 		5A1FB0C9226AB70900D7681A /* RecordBar */ = {
 			isa = PBXGroup;
 			children = (
-				5A33CD4F225981F300734BC6 /* RecordBarView.xib */,
 				5A33CD552259829F00734BC6 /* RecordBarView.swift */,
+				5A33CD4F225981F300734BC6 /* RecordBarView.xib */,
 			);
 			path = RecordBar;
 			sourceTree = "<group>";
@@ -136,6 +151,24 @@
 			path = LaserPointer;
 			sourceTree = "<group>";
 		};
+		5A2A817D2288D0B100321158 /* Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				5A33CD33225959A900734BC6 /* InsightRecorderInteractor.swift */,
+				5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */,
+			);
+			path = Recorder;
+			sourceTree = "<group>";
+		};
+		5A2A817E2288D0BC00321158 /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				5A2A817B2288CDD500321158 /* InsightDocumentInteractor.swift */,
+				5A2A817F2288D0F900321158 /* InsightDocumentInteractorBuilder.swift */,
+			);
+			path = Document;
+			sourceTree = "<group>";
+		};
 		5A33CCEE225956B900734BC6 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +176,7 @@
 				5A33CD0E225956BC00734BC6 /* InsightTests */,
 				5A33CD19225956BC00734BC6 /* InsightUITests */,
 				5A33CCF8225956B900734BC6 /* Products */,
+				5AA0CF61226D5BD3009E6A99 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -215,6 +249,7 @@
 				5A1FB0D3226B711B00D7681A /* LaserPointer */,
 				5A33CD5D225AB8CB00734BC6 /* WebCam */,
 				5A33CD4A225981EA00734BC6 /* Bars */,
+				5A24D9F32270E05D0048BB3D /* PDFPageViewModel.swift */,
 				5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */,
 				5A33CD2F2259596100734BC6 /* InsightViewController.swift */,
 				5A33CD4622597D5A00734BC6 /* InsightViewController.xib */,
@@ -235,9 +270,8 @@
 		5A33CD2C2259578500734BC6 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				5A33CD33225959A900734BC6 /* InsightInteractor.swift */,
-				5A33CD3922595C6C00734BC6 /* InsightInteractorProtocols.swift */,
-				5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */,
+				5A2A817E2288D0BC00321158 /* Document */,
+				5A2A817D2288D0B100321158 /* Recorder */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -245,6 +279,10 @@
 		5A33CD2D2259578C00734BC6 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				5A24D9EB226FB0050048BB3D /* PDFDocument.swift */,
+				5A24D9F12270DB390048BB3D /* PDFPageMapper.swift */,
+				5A24D9ED226FB4420048BB3D /* PDFDocumentMapper.swift */,
+				5A24D9EF2270D84D0048BB3D /* PDFPage.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -304,6 +342,14 @@
 				5A33CD5E225AB8F500734BC6 /* WebCamView.swift */,
 			);
 			path = WebCam;
+			sourceTree = "<group>";
+		};
+		5AA0CF61226D5BD3009E6A99 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,6 +428,9 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -455,18 +504,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A1FB0D2226AC08F00D7681A /* InsightButton.swift in Sources */,
+				5A24D9F42270E05D0048BB3D /* PDFPageViewModel.swift in Sources */,
 				5A33CD302259596100734BC6 /* InsightViewController.swift in Sources */,
 				5A33CD3C2259604F00734BC6 /* InsightViewControllerBuilder.swift in Sources */,
 				5A1FB0CC226AB75300D7681A /* ToolBarView.swift in Sources */,
 				5A1FB0D5226B715100D7681A /* LaserPointerView.swift in Sources */,
 				5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */,
-				5A33CD3A22595C6C00734BC6 /* InsightInteractorProtocols.swift in Sources */,
+				5A24D9EE226FB4420048BB3D /* PDFDocumentMapper.swift in Sources */,
+				5A2A817C2288CDD500321158 /* InsightDocumentInteractor.swift in Sources */,
+				5A24D9F02270D84D0048BB3D /* PDFPage.swift in Sources */,
+				5A24D9EC226FB0050048BB3D /* PDFDocument.swift in Sources */,
 				5A33CD562259829F00734BC6 /* RecordBarView.swift in Sources */,
+				5A2A81802288D0F900321158 /* InsightDocumentInteractorBuilder.swift in Sources */,
 				5A33CCFB225956B900734BC6 /* AppDelegate.swift in Sources */,
 				5A33CD3622595A3D00734BC6 /* InsightWireframe.swift in Sources */,
 				5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */,
+				5A24D9F22270DB390048BB3D /* PDFPageMapper.swift in Sources */,
 				5A33CD5F225AB8F500734BC6 /* WebCamView.swift in Sources */,
-				5A33CD34225959A900734BC6 /* InsightInteractor.swift in Sources */,
+				5A33CD34225959A900734BC6 /* InsightRecorderInteractor.swift in Sources */,
 				5A33CD402259617B00734BC6 /* InsightInteractorBuilder.swift in Sources */,
 				5A33CD5A225998F500734BC6 /* UIView.swift in Sources */,
 				5A33CD3822595C2600734BC6 /* InsightPresenterProtocols.swift in Sources */,

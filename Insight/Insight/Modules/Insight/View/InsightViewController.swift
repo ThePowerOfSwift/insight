@@ -19,26 +19,17 @@ class InsightViewController: UIViewController {
     @IBOutlet weak var toolBarView: ToolBarView!
     
     private var presenter: InsightPresenterProtocol?
-    
-    private let controller = RPBroadcastController()
-    private let recorder = RPScreenRecorder.shared()
     private var isRecording: Bool = false
     private var isReplayKitOff: Bool = true
     private var isCamHidden: Bool = true
     private var isLaserPointerSelected: Bool = false
     private var camView = CamView()
     private var laserPointerView = LaserPointerView()
-    private var pdfPages: [UIImage] = []
-    private var pdfView: UIImageView?
+    private var pdfView: UIImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureInsightViewController()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        print("Memory warning triggered. If running this app on an older device, you might want to remove some apps from multitasking.")
     }
     
     func setupViewController(with presenter: InsightPresenterProtocol) {
@@ -46,7 +37,7 @@ class InsightViewController: UIViewController {
     }
     
     private func configureInsightViewController() {
-        self.recorder.isMicrophoneEnabled = true
+        RPScreenRecorder.shared().isMicrophoneEnabled = true
         self.recordBarView.delegate = self
         self.toolBarView.delegate = self
         self.camView.setup(for: self.view)
@@ -62,9 +53,30 @@ class InsightViewController: UIViewController {
 // MARK: - InsightPresenterOutputProtocol
 
 extension InsightViewController: InsightPresenterOutputProtocol {
+    
+    func showLoading() {
+        showActivityIndicator()
+    }
+    
+    func hideLoading() {
+        dismissAlert()
+    }
+    
+    func presentPDFPage(page: PDFPageViewModel) {
+        self.pdfView.image = page.image
+        self.pdfView.frame.size = self.view.safeAreaLayoutGuide.layoutFrame.size
+        self.pdfView.center = self.view.center
+        self.pdfView.setNeedsDisplay()
+        self.view.addSubview(self.pdfView)
+        self.view.sendSubviewToBack(self.pdfView)
+    }
+    
+    func presentError() {
+        showError(with: "Sorry, we couldn't download your document. Try again later, please.")
+    }
 
     func startBroadcast() {
-        self.recorder.isMicrophoneEnabled = true
+        RPScreenRecorder.shared().isMicrophoneEnabled = true
         loadBoradcastActivityViewController()
     }
     
@@ -73,7 +85,7 @@ extension InsightViewController: InsightPresenterOutputProtocol {
     }
     
     func startRecording() {
-        self.recorder.isMicrophoneEnabled = true
+        RPScreenRecorder.shared().isMicrophoneEnabled = true
         startRecordingScreen()
     }
     
@@ -88,10 +100,7 @@ extension InsightViewController: InsightPresenterOutputProtocol {
 extension InsightViewController: ToolBarDelegate {
     
     func didSelectImportButton() {
-        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .import)
-        importMenu.delegate = self
-        importMenu.modalPresentationStyle = .formSheet
-        self.present(importMenu, animated: true, completion: nil)
+        presentDocumentPicker()
     }
     
     func didSelectLaserPointerButton() {
@@ -123,7 +132,7 @@ extension InsightViewController: RecordBarDelegate {
     }
     
     func didTapMicrophoneButton() {
-        self.recorder.isMicrophoneEnabled = !self.recorder.isMicrophoneEnabled
+        RPScreenRecorder.shared().isMicrophoneEnabled = !RPScreenRecorder.shared().isMicrophoneEnabled
     }
     
     private func showCam() {
@@ -189,16 +198,6 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
             }
         }
     }
-    
-    private func showError(with message: String) {
-        dismiss(animated: false, completion: nil)
-        let alert = UIAlertController(title: "Something happened", message: message, preferredStyle: .alert)
-        let cancelButton = UIAlertAction(title: "Ok", style: .default) { _ in
-            self.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(cancelButton)
-        present(alert, animated: true, completion: nil)
-    }
 }
 
 
@@ -208,14 +207,14 @@ extension InsightViewController: RPPreviewViewControllerDelegate {
     
     func startRecordingScreen() {
         self.showActivityIndicator()
-        guard self.recorder.isAvailable else {
+        guard RPScreenRecorder.shared().isAvailable else {
             self.showError(with: "Recording is not available at this time")
             return
         }
         
-        self.recorder.isMicrophoneEnabled = true
+        RPScreenRecorder.shared().isMicrophoneEnabled = true
         
-        self.recorder.startRecording{ [unowned self] (error) in
+        RPScreenRecorder.shared().startRecording{ [unowned self] (error) in
             DispatchQueue.main.async {
                 self.didStartReplayKit(error: error)
                 self.isRecording = true
@@ -225,12 +224,12 @@ extension InsightViewController: RPPreviewViewControllerDelegate {
     }
 
     func stopRecordingScreen() {
-        guard self.recorder.isAvailable else {
+        guard RPScreenRecorder.shared().isAvailable else {
             self.showError(with: "Recording is not available at this time")
             return
         }
 
-        recorder.stopRecording { [unowned self] (preview, error) in
+        RPScreenRecorder.shared().stopRecording { [unowned self] (preview, error) in
             DispatchQueue.main.async {
                 guard preview != nil else {
                     self.showError(with: "Preview controller is not available.")
@@ -254,7 +253,7 @@ extension InsightViewController: RPPreviewViewControllerDelegate {
         let alert = UIAlertController(title: "Recording Finished", message: "Would you like to edit or delete your recording?", preferredStyle: .alert)
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
-            self.recorder.discardRecording {}
+            RPScreenRecorder.shared().discardRecording {}
         })
         
         let editAction = UIAlertAction(title: "Edit", style: .default, handler: { _ in
@@ -294,20 +293,12 @@ extension InsightViewController: UIGestureRecognizerDelegate {
 }
 
 
-// MARK: - PDF
+// MARK: - UIDocumentPickerDelegate
 
 extension InsightViewController: UIDocumentPickerDelegate {
     
-    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        showActivityIndicator()
-        DispatchQueue.global().async {
-            guard let document = CGPDFDocument(url as CFURL) else { return }
-            self.pdfPages = self.drawPages(from: document)
-            DispatchQueue.main.async {
-                self.presentFirstPage()
-                self.dismissAlert()
-            }
-        }
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        self.presenter?.didSelectToImport(from: url)
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
@@ -315,59 +306,19 @@ extension InsightViewController: UIDocumentPickerDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    private func presentFirstPage() {
-        guard let page = self.pdfPages.first else { return }
-        self.pdfView = UIImageView(image: page)
-        self.pdfView?.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-        self.pdfView?.center = self.view.center
-        self.view.addSubview(self.pdfView!)
-        self.view.sendSubviewToBack(self.pdfView!)
-    }
-    
-    private func presentNextPage() {
-        guard let index = getCurrentPdfPage(), index < self.pdfPages.count - 1 else { return }
-        self.pdfView?.image = self.pdfPages[index + 1]
-    }
-    
-    private func presentPreviousPage() {
-        guard let index = getCurrentPdfPage(), index > 0 else { return }
-        self.pdfView?.image = self.pdfPages[index - 1]
-    }
-    
-    private func getCurrentPdfPage() -> Int? {
-        guard let image = self.pdfView?.image else { return nil }
-        guard let index = self.pdfPages.firstIndex(of: image) else { return nil }
-        return index
+    private func presentDocumentPicker() {
+        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .import)
+        importMenu.delegate = self
+        importMenu.modalPresentationStyle = .popover
+        self.present(importMenu, animated: true, completion: nil)
     }
     
     @objc private func presentAnotherPage(recognizer: UITapGestureRecognizer) {
         if recognizer.location(in: self.view).x > self.view.center.x {
-            presentNextPage()
+            self.presenter?.didDoubleTapped(leftSide: false)
         } else {
-            presentPreviousPage()
+            self.presenter?.didDoubleTapped(leftSide: true)
         }
-    }
-    
-    private func drawPages(from document: CGPDFDocument) -> [UIImage] {
-        var pages: [UIImage?] = []
-        for pageNumber in 0...document.numberOfPages {
-            pages.append(drawNextPage(from: document, page: pageNumber))
-        }
-        return pages.compactMap { $0 }
-    }
-    
-    private func drawNextPage(from document: CGPDFDocument, page: Int) -> UIImage? {
-        guard let page = document.page(at: page) else { return nil }
-        let pageRect = page.getBoxRect(.mediaBox)
-        let renderer = UIGraphicsImageRenderer(size: pageRect.size)
-        let img = renderer.image { ctx in
-            UIColor.white.set()
-            ctx.fill(pageRect)
-            ctx.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
-            ctx.cgContext.scaleBy(x: 1.0, y: -1.0)
-            ctx.cgContext.drawPDFPage(page)
-        }
-        return img
     }
 }
 
@@ -402,5 +353,15 @@ extension InsightViewController {
         
         waitView.view.addSubview(loadingIndicator)
         present(waitView, animated: true, completion: nil)
+    }
+    
+    private func showError(with message: String) {
+        dismiss(animated: false, completion: nil)
+        let alert = UIAlertController(title: "Something happened", message: message, preferredStyle: .alert)
+        let cancelButton = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(cancelButton)
+        present(alert, animated: true, completion: nil)
     }
 }
