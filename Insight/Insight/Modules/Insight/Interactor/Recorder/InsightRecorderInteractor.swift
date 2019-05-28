@@ -59,10 +59,10 @@ extension InsightRecorderInteractor: InsightRecorderInteractorProtocol {
     }
     
     private func stopBroadcast() {
-        self.broadcastController.finishBroadcast { [unowned self] error in
+        self.broadcastController.finishBroadcast { [weak self] error in
             DispatchQueue.main.async {
                 guard error == nil else { return }
-                self.delegate?.broadcastEnded()
+                self?.delegate?.broadcastEnded()
             }
         }
     }

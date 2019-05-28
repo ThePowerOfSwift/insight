@@ -64,7 +64,7 @@ extension InsightViewController: InsightPresenterOutputProtocol {
     
     func presentPDFPage(page: PDFPageViewModel) {
         self.pdfView.image = page.image
-        self.pdfView.frame.size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        self.pdfView.frame.size = self.view.safeAreaLayoutGuide.layoutFrame.size
         self.pdfView.center = self.view.center
         self.pdfView.setNeedsDisplay()
         self.view.addSubview(self.pdfView)
