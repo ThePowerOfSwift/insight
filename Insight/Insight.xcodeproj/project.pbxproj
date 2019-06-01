@@ -37,6 +37,16 @@
 		5A33CD5A225998F500734BC6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD59225998F500734BC6 /* UIView.swift */; };
 		5A33CD5C2259BAC800734BC6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD5B2259BAC800734BC6 /* LaunchScreen.xib */; };
 		5A33CD5F225AB8F500734BC6 /* WebCamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD5E225AB8F500734BC6 /* WebCamView.swift */; };
+		5A8DD3C522A2C0AE00B7D3CC /* InitialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3C122A2C0AD00B7D3CC /* InitialScreenViewController.swift */; };
+		5A8DD3C622A2C0AE00B7D3CC /* InitialScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8DD3C222A2C0AD00B7D3CC /* InitialScreenViewController.xib */; };
+		5A8DD3C722A2C0AE00B7D3CC /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3C322A2C0AD00B7D3CC /* TutorialViewController.swift */; };
+		5A8DD3C822A2C0AE00B7D3CC /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8DD3C422A2C0AD00B7D3CC /* TutorialViewController.xib */; };
+		5A8DD3CB22A2CDE500B7D3CC /* InitialScreenViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3CA22A2CDE500B7D3CC /* InitialScreenViewControllerBuilder.swift */; };
+		5A8DD3CF22A2CE9100B7D3CC /* InitialScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3CE22A2CE9100B7D3CC /* InitialScreenPresenter.swift */; };
+		5A8DD3D222A2CEB400B7D3CC /* InitialScreenWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D122A2CEB400B7D3CC /* InitialScreenWireframe.swift */; };
+		5A8DD3D422A2CF0E00B7D3CC /* InitialScreenPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D322A2CF0E00B7D3CC /* InitialScreenPresenterProtocol.swift */; };
+		5A8DD3D622A2D00C00B7D3CC /* InitialScreenWireframeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D522A2D00C00B7D3CC /* InitialScreenWireframeProtocol.swift */; };
+		5A8DD3D822A2D2BF00B7D3CC /* InitialScreenPresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D722A2D2BF00B7D3CC /* InitialScreenPresenterBuilder.swift */; };
 		5AA0CF63226D5BD3009E6A99 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +104,16 @@
 		5A33CD59225998F500734BC6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		5A33CD5B2259BAC800734BC6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		5A33CD5E225AB8F500734BC6 /* WebCamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCamView.swift; sourceTree = "<group>"; };
+		5A8DD3C122A2C0AD00B7D3CC /* InitialScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialScreenViewController.swift; sourceTree = "<group>"; };
+		5A8DD3C222A2C0AD00B7D3CC /* InitialScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialScreenViewController.xib; sourceTree = "<group>"; };
+		5A8DD3C322A2C0AD00B7D3CC /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		5A8DD3C422A2C0AD00B7D3CC /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
+		5A8DD3CA22A2CDE500B7D3CC /* InitialScreenViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenViewControllerBuilder.swift; sourceTree = "<group>"; };
+		5A8DD3CE22A2CE9100B7D3CC /* InitialScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenPresenter.swift; sourceTree = "<group>"; };
+		5A8DD3D122A2CEB400B7D3CC /* InitialScreenWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenWireframe.swift; sourceTree = "<group>"; };
+		5A8DD3D322A2CF0E00B7D3CC /* InitialScreenPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenPresenterProtocol.swift; sourceTree = "<group>"; };
+		5A8DD3D522A2D00C00B7D3CC /* InitialScreenWireframeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenWireframeProtocol.swift; sourceTree = "<group>"; };
+		5A8DD3D722A2D2BF00B7D3CC /* InitialScreenPresenterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenPresenterBuilder.swift; sourceTree = "<group>"; };
 		5AA0CF60226C2848009E6A99 /* Insight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Insight.entitlements; sourceTree = "<group>"; };
 		5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -226,6 +246,8 @@
 		5A33CD282259574D00734BC6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5A8DD3C922A2C13400B7D3CC /* InitialScreen */,
+				5A8DD3C022A2C05400B7D3CC /* Tutorial */,
 				5A33CD292259576A00734BC6 /* Insight */,
 			);
 			path = Modules;
@@ -238,7 +260,6 @@
 				5A33CD2C2259578500734BC6 /* Interactor */,
 				5A33CD2B2259577F00734BC6 /* Presenter */,
 				5A33CD2A2259577A00734BC6 /* View */,
-				5A33CD2E2259579300734BC6 /* Wireframe */,
 			);
 			path = Insight;
 			sourceTree = "<group>";
@@ -323,6 +344,7 @@
 		5A33CD57225998CC00734BC6 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5A33CD2E2259579300734BC6 /* Wireframe */,
 				5A33CD58225998D300734BC6 /* Extensions */,
 			);
 			path = Core;
@@ -342,6 +364,54 @@
 				5A33CD5E225AB8F500734BC6 /* WebCamView.swift */,
 			);
 			path = WebCam;
+			sourceTree = "<group>";
+		};
+		5A8DD3C022A2C05400B7D3CC /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				5A8DD3C322A2C0AD00B7D3CC /* TutorialViewController.swift */,
+				5A8DD3C422A2C0AD00B7D3CC /* TutorialViewController.xib */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		5A8DD3C922A2C13400B7D3CC /* InitialScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5A8DD3CC22A2CE2C00B7D3CC /* Presenter */,
+				5A8DD3CD22A2CE3100B7D3CC /* View */,
+				5A8DD3D022A2CE9A00B7D3CC /* Wireframe */,
+			);
+			path = InitialScreen;
+			sourceTree = "<group>";
+		};
+		5A8DD3CC22A2CE2C00B7D3CC /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5A8DD3D722A2D2BF00B7D3CC /* InitialScreenPresenterBuilder.swift */,
+				5A8DD3CE22A2CE9100B7D3CC /* InitialScreenPresenter.swift */,
+				5A8DD3D322A2CF0E00B7D3CC /* InitialScreenPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		5A8DD3CD22A2CE3100B7D3CC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5A8DD3CA22A2CDE500B7D3CC /* InitialScreenViewControllerBuilder.swift */,
+				5A8DD3C122A2C0AD00B7D3CC /* InitialScreenViewController.swift */,
+				5A8DD3C222A2C0AD00B7D3CC /* InitialScreenViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5A8DD3D022A2CE9A00B7D3CC /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				5A8DD3D122A2CEB400B7D3CC /* InitialScreenWireframe.swift */,
+				5A8DD3D522A2D00C00B7D3CC /* InitialScreenWireframeProtocol.swift */,
+			);
+			path = Wireframe;
 			sourceTree = "<group>";
 		};
 		5AA0CF61226D5BD3009E6A99 /* Frameworks */ = {
@@ -477,7 +547,9 @@
 				5A1FB0CE226AB79A00D7681A /* ToolBarView.xib in Resources */,
 				5A33CD02225956BC00734BC6 /* Assets.xcassets in Resources */,
 				5A33CD54225981F300734BC6 /* RecordBarView.xib in Resources */,
+				5A8DD3C622A2C0AE00B7D3CC /* InitialScreenViewController.xib in Resources */,
 				5A1FB0D7226B739800D7681A /* LaserPointerView.xib in Resources */,
+				5A8DD3C822A2C0AE00B7D3CC /* TutorialViewController.xib in Resources */,
 				5A33CD4722597D5A00734BC6 /* InsightViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8DD3C522A2C0AE00B7D3CC /* InitialScreenViewController.swift in Sources */,
 				5A1FB0D2226AC08F00D7681A /* InsightButton.swift in Sources */,
 				5A24D9F42270E05D0048BB3D /* PDFPageViewModel.swift in Sources */,
 				5A33CD302259596100734BC6 /* InsightViewController.swift in Sources */,
@@ -511,14 +584,21 @@
 				5A1FB0D5226B715100D7681A /* LaserPointerView.swift in Sources */,
 				5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */,
 				5A24D9EE226FB4420048BB3D /* PDFDocumentMapper.swift in Sources */,
+				5A8DD3CF22A2CE9100B7D3CC /* InitialScreenPresenter.swift in Sources */,
 				5A2A817C2288CDD500321158 /* InsightDocumentInteractor.swift in Sources */,
+				5A8DD3C722A2C0AE00B7D3CC /* TutorialViewController.swift in Sources */,
 				5A24D9F02270D84D0048BB3D /* PDFPage.swift in Sources */,
+				5A8DD3D822A2D2BF00B7D3CC /* InitialScreenPresenterBuilder.swift in Sources */,
+				5A8DD3D622A2D00C00B7D3CC /* InitialScreenWireframeProtocol.swift in Sources */,
+				5A8DD3CB22A2CDE500B7D3CC /* InitialScreenViewControllerBuilder.swift in Sources */,
 				5A24D9EC226FB0050048BB3D /* PDFDocument.swift in Sources */,
 				5A33CD562259829F00734BC6 /* RecordBarView.swift in Sources */,
 				5A2A81802288D0F900321158 /* InsightDocumentInteractorBuilder.swift in Sources */,
 				5A33CCFB225956B900734BC6 /* AppDelegate.swift in Sources */,
 				5A33CD3622595A3D00734BC6 /* InsightWireframe.swift in Sources */,
+				5A8DD3D422A2CF0E00B7D3CC /* InitialScreenPresenterProtocol.swift in Sources */,
 				5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */,
+				5A8DD3D222A2CEB400B7D3CC /* InitialScreenWireframe.swift in Sources */,
 				5A24D9F22270DB390048BB3D /* PDFPageMapper.swift in Sources */,
 				5A33CD5F225AB8F500734BC6 /* WebCamView.swift in Sources */,
 				5A33CD34225959A900734BC6 /* InsightRecorderInteractor.swift in Sources */,
