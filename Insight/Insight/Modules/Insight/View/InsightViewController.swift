@@ -50,9 +50,9 @@ class InsightViewController: UIViewController {
 }
 
 
-// MARK: - InsightPresenterOutputProtocol
+// MARK: - InsightPresenterDelegate
 
-extension InsightViewController: InsightPresenterOutputProtocol {
+extension InsightViewController: InsightPresenterDelegate {
     
     func showLoading() {
         showActivityIndicator()

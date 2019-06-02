@@ -13,7 +13,7 @@ struct InsightViewControllerBuilder {
     
     static func build() -> InsightViewController {
         let viewController = InsightViewController()
-        let presenter = InsightPresenterBuilder.build(output: viewController)
+        let presenter = InsightPresenterBuilder.build(delegate: viewController)
         viewController.setupViewController(with: presenter)
         
         return viewController

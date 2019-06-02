@@ -1,5 +1,5 @@
 //
-//  InitialScreenWireframe.swift
+//  TutorialWireframe.swift
 //  Insight
 //
 //  Created by Douglas Mandarino on 01/06/19.
@@ -10,15 +10,10 @@ import Foundation
 import UIKit
 
 
-struct InitialScreenWireframe: InitialScreenWireframeProtocol {
+struct TutorialWireframe: TutorialWireframeProtocol {
    
     func presentInsight() {
         let insightViewController = InsightViewControllerBuilder.build()
         InsightWireframe.present(viewController: insightViewController)
-    }
-    
-    func presentTutorial() {
-        let tutorialViewController = TutorialViewControllerBuilder.build()
-        InsightWireframe.present(viewController: tutorialViewController)
     }
 }

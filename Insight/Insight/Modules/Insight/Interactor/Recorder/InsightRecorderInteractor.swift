@@ -36,8 +36,8 @@ final class InsightRecorderInteractor {
     
     init() {}
     
-    func setupInteractor(with output: InsightRecorderInteractorDelegate) {
-        self.delegate = output
+    func setupInteractor(with delegate: InsightRecorderInteractorDelegate) {
+        self.delegate = delegate
     }
 }
 
