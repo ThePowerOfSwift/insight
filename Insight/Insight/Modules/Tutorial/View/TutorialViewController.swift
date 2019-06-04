@@ -14,10 +14,12 @@ class TutorialViewController: UIViewController {
     @IBOutlet private weak var webcamButton: UIButton!
     @IBOutlet private weak var laserButton: UIButton!
     @IBOutlet private weak var importButton: UIButton!
+    @IBOutlet private weak var microphoneButton: UIButton!
     @IBOutlet private weak var laserArrow: UIImageView!
     @IBOutlet private weak var webcamArrow: UIImageView!
     @IBOutlet private weak var recordArrow: UIImageView!
     @IBOutlet private weak var importArrow: UIImageView!
+    @IBOutlet private weak var microphoneArrow: UIImageView!
     @IBOutlet private weak var newInsightButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var nextButton: UIButton!
@@ -81,6 +83,8 @@ extension TutorialViewController: TutorialPresenterDelegate {
             presentIndicator(button: self.recordButton, arrow: self.recordArrow)
         case .webCamStep:
             presentIndicator(button: self.webcamButton, arrow: self.webcamArrow)
+        case .microphoneStep:
+            presentIndicator(button: self.microphoneButton, arrow: self.microphoneArrow)
         case .mainTitle:
             presentIndicator(button: nil, arrow: nil)
             self.previousButton.isHidden = true
