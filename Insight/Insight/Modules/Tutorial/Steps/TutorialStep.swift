@@ -10,6 +10,7 @@ import Foundation
 
 
 enum Step {
+    case mainTitle
     case importStep
     case laserPointerStep
     case recordOrLiveStep

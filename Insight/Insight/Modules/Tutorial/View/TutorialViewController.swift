@@ -21,6 +21,7 @@ class TutorialViewController: UIViewController {
     @IBOutlet private weak var newInsightButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var nextButton: UIButton!
+    @IBOutlet private weak var previousButton: UIButton!
     @IBOutlet private weak var textView: UITextView!
     
     private var presenter: TutorialPresenterProtocol?
@@ -47,6 +48,10 @@ class TutorialViewController: UIViewController {
     @IBAction func nextTapped(sender: AnyObject) {
         self.presenter?.didTapNext()
     }
+    
+    @IBAction func previousTapped(_ sender: Any) {
+        self.presenter?.didTapPrevious()
+    }
 }
 
 
@@ -61,8 +66,7 @@ extension TutorialViewController: TutorialPresenterDelegate {
     }
     
     func changeSkipButton() {
-        self.nextButton.setTitle("Done!", for: .normal)
-        self.newInsightButton.titleLabel?.text = "Done"
+        self.newInsightButton.setTitle("Done!", for: .normal)
         self.nextButton.isHidden = true
         self.view.setNeedsDisplay()
     }
@@ -77,12 +81,17 @@ extension TutorialViewController: TutorialPresenterDelegate {
             presentIndicator(button: self.recordButton, arrow: self.recordArrow)
         case .webCamStep:
             presentIndicator(button: self.webcamButton, arrow: self.webcamArrow)
+        case .mainTitle:
+            presentIndicator(button: nil, arrow: nil)
+            self.previousButton.isHidden = true
         default:
             presentIndicator(button: nil, arrow: nil)
         }
     }
     
     private func presentIndicator(button: UIButton?, arrow: UIImageView?) {
+        self.previousButton.isHidden = false
+        self.nextButton.isHidden = false
         self.previousStepButton?.alpha = 0.25
         self.previousStepArrow?.isHidden = true
         

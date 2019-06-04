@@ -13,6 +13,7 @@ protocol TutorialPresenterProtocol {
     func viewDidLoad()
     func didTapToStartInsight()
     func didTapNext()
+    func didTapPrevious()
 }
 
 protocol TutorialPresenterDelegate: class {

@@ -26,6 +26,7 @@ extension TutorialPresenter: TutorialPresenterProtocol {
     
     func viewDidLoad() {
         self.steps = TutorialMapper.makeTutorialSteps()
+        presentStep()
     }
     
     func didTapToStartInsight() {
@@ -33,15 +34,31 @@ extension TutorialPresenter: TutorialPresenterProtocol {
     }
     
     func didTapNext() {
-        guard self.stepIndex + 1 <= steps.count else { return }
-        let step = steps[self.stepIndex]
-        self.delegate?.presentStep(with: step)
         self.stepIndex += 1
+        guard self.stepIndex + 1 <= steps.count else {
+            self.stepIndex = steps.count - 1
+            return
+        }
+        presentStep()
         changeSkipButtonIfNeeded()
     }
     
+    func didTapPrevious() {
+        self.stepIndex -= 1
+        guard self.stepIndex >= 0, self.steps.count > 0 else {
+            self.stepIndex = 0
+            return
+        }
+        presentStep()
+    }
+    
+    private func presentStep() {
+        let step = steps[self.stepIndex]
+        self.delegate?.presentStep(with: step)
+    }
+    
     private func changeSkipButtonIfNeeded() {
-        guard self.stepIndex == steps.count else { return }
+        guard self.stepIndex == steps.count - 1 else { return }
         self.delegate?.changeSkipButton()
     }
 }

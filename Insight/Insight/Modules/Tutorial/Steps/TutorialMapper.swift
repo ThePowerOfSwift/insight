@@ -13,6 +13,7 @@ struct TutorialMapper {
     
     static func makeTutorialSteps() -> [TutorialStep] {
         return [
+            makeMainTitleStep(),
             makeImportStep(),
             makePdfNavigationStep(),
             makeLaserPointerStep(),
@@ -20,6 +21,12 @@ struct TutorialMapper {
             makeWebCamStep(),
             makeMicrophoneStep()
         ]
+    }
+    
+    static private func makeMainTitleStep() -> TutorialStep {
+        return TutorialStep(title: "Welcome to Insight!",
+                            description: "Right here you have all the tools needed to create an awesome and creative video lesson. Share your thoughts and knowledge with this wonderful software created with you in mind. Everyone has something to teach. Do it with Insight.",
+                            step: .mainTitle)
     }
     
     static private func makeImportStep() -> TutorialStep {
