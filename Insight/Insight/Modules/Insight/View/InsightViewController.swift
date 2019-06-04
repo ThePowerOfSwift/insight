@@ -320,8 +320,7 @@ extension InsightViewController: UIDocumentPickerDelegate {
 // MARL: - Privates
 
 extension InsightViewController {
-    
-    private func didStartReplayKit(error: Error?) {
+        private func didStartReplayKit(error: Error?) {
         guard error == nil else {
             self.showError(with: "Couldn't start broadcast.")
             return
