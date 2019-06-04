@@ -11,9 +11,10 @@ import Foundation
 
 struct InitialScreenPresenterBuilder {
     
-    static func build() -> InitialScreenPresenter {
-        let wireframe = InitialScreenWireframe()
-        let presenter = InitialScreenPresenter(wireframe: wireframe)
+    static func build(delegate: InitialScreenPresenterDelegate) -> InitialScreenPresenter {
+        let router = InitialScreenRouter()
+        let presenter = InitialScreenPresenter(router: router)
+        router.configureRouter(with: delegate)
         return presenter
     }
 }

@@ -11,13 +11,13 @@ import Foundation
 
 final class TutorialPresenter {
     
-    private var wireframe: TutorialWireframeProtocol?
+    private var router: TutorialRouterProtocol?
     private weak var delegate: TutorialPresenterDelegate?
     private var steps: [TutorialStep] = []
     private var stepIndex: Int = 0
     
-    init(wireframe: TutorialWireframeProtocol, delegate: TutorialPresenterDelegate) {
-        self.wireframe = wireframe
+    init(router: TutorialRouterProtocol, delegate: TutorialPresenterDelegate) {
+        self.router = router
         self.delegate = delegate
     }
 }
@@ -30,7 +30,7 @@ extension TutorialPresenter: TutorialPresenterProtocol {
     }
     
     func didTapToStartInsight() {
-        self.wireframe?.presentInsight()
+        self.router?.presentInsight()
     }
     
     func didTapNext() {

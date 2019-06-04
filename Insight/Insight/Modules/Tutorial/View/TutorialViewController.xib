@@ -66,7 +66,7 @@
                                 </mask>
                             </variation>
                         </imageView>
-                        <button opaque="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIV-k8-pak" userLabel="LaserPointer">
+                        <button opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIV-k8-pak" userLabel="LaserPointer">
                             <rect key="frame" x="93" y="343" width="60" height="60"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="NBH-gK-kYL"/>
@@ -81,7 +81,7 @@
                                 <constraint firstAttribute="height" constant="80" id="iR0-oh-PTT"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58k-1g-lLT" userLabel="Import">
+                        <button opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58k-1g-lLT" userLabel="Import">
                             <rect key="frame" x="25" y="343" width="60" height="60"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="3Nb-2Q-R3u"/>
@@ -188,14 +188,14 @@
                         <constraint firstItem="58k-1g-lLT" firstAttribute="firstBaseline" secondItem="yIV-k8-pak" secondAttribute="firstBaseline" id="zP4-dH-MBs"/>
                     </constraints>
                 </view>
-                <button opaque="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7l-Lz-RDB" userLabel="Record">
+                <button opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7l-Lz-RDB" userLabel="Record">
                     <rect key="frame" x="710" y="15" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="ulT-t9-KB1"/>
                     </constraints>
                     <state key="normal" backgroundImage="recordIcon"/>
                 </button>
-                <button opaque="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6M-ko-1Oi" userLabel="WebCam">
+                <button opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6M-ko-1Oi" userLabel="WebCam">
                     <rect key="frame" x="642" y="15" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="JQK-Ig-BKJ"/>

@@ -12,8 +12,9 @@ import Foundation
 struct TutorialPresenterBuilder {
     
     static func build(with delegate: TutorialPresenterDelegate) -> TutorialPresenter {
-        let wireframe = TutorialWireframe()
-        let presenter = TutorialPresenter(wireframe: wireframe, delegate: delegate)
+        let router = TutorialRouter()
+        let presenter = TutorialPresenter(router: router, delegate: delegate)
+        router.configureRouter(with: delegate)
         return presenter
     }
 }

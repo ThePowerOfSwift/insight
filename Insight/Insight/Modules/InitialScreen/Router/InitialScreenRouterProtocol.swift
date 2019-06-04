@@ -1,5 +1,5 @@
 //
-//  InitialScreenWireframeProtocol.swift
+//  InitialScreenRouterProtocol.swift
 //  Insight
 //
 //  Created by Douglas Mandarino on 01/06/19.
@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 
-protocol InitialScreenWireframeProtocol {
+protocol InitialScreenRouterProtocol {
     func presentInsight()
     func presentTutorial()
 }

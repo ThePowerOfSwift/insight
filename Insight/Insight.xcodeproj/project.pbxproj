@@ -20,7 +20,7 @@
 		5A2A817C2288CDD500321158 /* InsightDocumentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A817B2288CDD500321158 /* InsightDocumentInteractor.swift */; };
 		5A2A81802288D0F900321158 /* InsightDocumentInteractorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A817F2288D0F900321158 /* InsightDocumentInteractorBuilder.swift */; };
 		5A32D2E722A3485B00B6B2F1 /* TutorialWireframeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32D2E522A3485B00B6B2F1 /* TutorialWireframeProtocol.swift */; };
-		5A32D2E822A3485B00B6B2F1 /* TutorialWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32D2E622A3485B00B6B2F1 /* TutorialWireframe.swift */; };
+		5A32D2E822A3485B00B6B2F1 /* TutorialRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32D2E622A3485B00B6B2F1 /* TutorialRouter.swift */; };
 		5A32D2EA22A348F400B6B2F1 /* TutorialPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32D2E922A348F400B6B2F1 /* TutorialPresenterProtocol.swift */; };
 		5A32D2EC22A3492E00B6B2F1 /* TutorialPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32D2EB22A3492E00B6B2F1 /* TutorialPresenter.swift */; };
 		5A32D2EE22A349F100B6B2F1 /* TutorialPresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32D2ED22A349F100B6B2F1 /* TutorialPresenterBuilder.swift */; };
@@ -33,7 +33,6 @@
 		5A33CD302259596100734BC6 /* InsightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD2F2259596100734BC6 /* InsightViewController.swift */; };
 		5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD312259599000734BC6 /* InsightPresenter.swift */; };
 		5A33CD34225959A900734BC6 /* InsightRecorderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD33225959A900734BC6 /* InsightRecorderInteractor.swift */; };
-		5A33CD3622595A3D00734BC6 /* InsightWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */; };
 		5A33CD3822595C2600734BC6 /* InsightPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */; };
 		5A33CD3C2259604F00734BC6 /* InsightViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */; };
 		5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */; };
@@ -50,9 +49,9 @@
 		5A8DD3C822A2C0AE00B7D3CC /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8DD3C422A2C0AD00B7D3CC /* TutorialViewController.xib */; };
 		5A8DD3CB22A2CDE500B7D3CC /* InitialScreenViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3CA22A2CDE500B7D3CC /* InitialScreenViewControllerBuilder.swift */; };
 		5A8DD3CF22A2CE9100B7D3CC /* InitialScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3CE22A2CE9100B7D3CC /* InitialScreenPresenter.swift */; };
-		5A8DD3D222A2CEB400B7D3CC /* InitialScreenWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D122A2CEB400B7D3CC /* InitialScreenWireframe.swift */; };
+		5A8DD3D222A2CEB400B7D3CC /* InitialScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D122A2CEB400B7D3CC /* InitialScreenRouter.swift */; };
 		5A8DD3D422A2CF0E00B7D3CC /* InitialScreenPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D322A2CF0E00B7D3CC /* InitialScreenPresenterProtocol.swift */; };
-		5A8DD3D622A2D00C00B7D3CC /* InitialScreenWireframeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D522A2D00C00B7D3CC /* InitialScreenWireframeProtocol.swift */; };
+		5A8DD3D622A2D00C00B7D3CC /* InitialScreenRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D522A2D00C00B7D3CC /* InitialScreenRouterProtocol.swift */; };
 		5A8DD3D822A2D2BF00B7D3CC /* InitialScreenPresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D722A2D2BF00B7D3CC /* InitialScreenPresenterBuilder.swift */; };
 		5A8DD3DA22A2E90100B7D3CC /* TutorialViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D922A2E90100B7D3CC /* TutorialViewControllerBuilder.swift */; };
 		5AA0CF63226D5BD3009E6A99 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */; };
@@ -89,7 +88,7 @@
 		5A2A817B2288CDD500321158 /* InsightDocumentInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightDocumentInteractor.swift; sourceTree = "<group>"; };
 		5A2A817F2288D0F900321158 /* InsightDocumentInteractorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightDocumentInteractorBuilder.swift; sourceTree = "<group>"; };
 		5A32D2E522A3485B00B6B2F1 /* TutorialWireframeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialWireframeProtocol.swift; sourceTree = "<group>"; };
-		5A32D2E622A3485B00B6B2F1 /* TutorialWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialWireframe.swift; sourceTree = "<group>"; };
+		5A32D2E622A3485B00B6B2F1 /* TutorialRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialRouter.swift; sourceTree = "<group>"; };
 		5A32D2E922A348F400B6B2F1 /* TutorialPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPresenterProtocol.swift; sourceTree = "<group>"; };
 		5A32D2EB22A3492E00B6B2F1 /* TutorialPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPresenter.swift; sourceTree = "<group>"; };
 		5A32D2ED22A349F100B6B2F1 /* TutorialPresenterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPresenterBuilder.swift; sourceTree = "<group>"; };
@@ -108,7 +107,6 @@
 		5A33CD2F2259596100734BC6 /* InsightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightViewController.swift; sourceTree = "<group>"; };
 		5A33CD312259599000734BC6 /* InsightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenter.swift; sourceTree = "<group>"; };
 		5A33CD33225959A900734BC6 /* InsightRecorderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRecorderInteractor.swift; sourceTree = "<group>"; };
-		5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightWireframe.swift; sourceTree = "<group>"; };
 		5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterProtocols.swift; sourceTree = "<group>"; };
 		5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightViewControllerBuilder.swift; sourceTree = "<group>"; };
 		5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterBuilder.swift; sourceTree = "<group>"; };
@@ -125,9 +123,9 @@
 		5A8DD3C422A2C0AD00B7D3CC /* TutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
 		5A8DD3CA22A2CDE500B7D3CC /* InitialScreenViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenViewControllerBuilder.swift; sourceTree = "<group>"; };
 		5A8DD3CE22A2CE9100B7D3CC /* InitialScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenPresenter.swift; sourceTree = "<group>"; };
-		5A8DD3D122A2CEB400B7D3CC /* InitialScreenWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenWireframe.swift; sourceTree = "<group>"; };
+		5A8DD3D122A2CEB400B7D3CC /* InitialScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenRouter.swift; sourceTree = "<group>"; };
 		5A8DD3D322A2CF0E00B7D3CC /* InitialScreenPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenPresenterProtocol.swift; sourceTree = "<group>"; };
-		5A8DD3D522A2D00C00B7D3CC /* InitialScreenWireframeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenWireframeProtocol.swift; sourceTree = "<group>"; };
+		5A8DD3D522A2D00C00B7D3CC /* InitialScreenRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenRouterProtocol.swift; sourceTree = "<group>"; };
 		5A8DD3D722A2D2BF00B7D3CC /* InitialScreenPresenterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenPresenterBuilder.swift; sourceTree = "<group>"; };
 		5A8DD3D922A2E90100B7D3CC /* TutorialViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerBuilder.swift; sourceTree = "<group>"; };
 		5AA0CF60226C2848009E6A99 /* Insight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Insight.entitlements; sourceTree = "<group>"; };
@@ -225,13 +223,13 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		5A32D2E222A3476800B6B2F1 /* Wireframe */ = {
+		5A32D2E222A3476800B6B2F1 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				5A32D2E622A3485B00B6B2F1 /* TutorialWireframe.swift */,
+				5A32D2E622A3485B00B6B2F1 /* TutorialRouter.swift */,
 				5A32D2E522A3485B00B6B2F1 /* TutorialWireframeProtocol.swift */,
 			);
-			path = Wireframe;
+			path = Router;
 			sourceTree = "<group>";
 		};
 		5A32D2E422A347A000B6B2F1 /* Steps */ = {
@@ -362,14 +360,6 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		5A33CD2E2259579300734BC6 /* Wireframe */ = {
-			isa = PBXGroup;
-			children = (
-				5A33CD3522595A3D00734BC6 /* InsightWireframe.swift */,
-			);
-			path = Wireframe;
-			sourceTree = "<group>";
-		};
 		5A33CD412259694700734BC6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,7 +388,6 @@
 		5A33CD57225998CC00734BC6 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				5A33CD2E2259579300734BC6 /* Wireframe */,
 				5A33CD58225998D300734BC6 /* Extensions */,
 			);
 			path = Core;
@@ -426,7 +415,7 @@
 				5A32D2E422A347A000B6B2F1 /* Steps */,
 				5A32D2E122A3476200B6B2F1 /* Presenter */,
 				5A32D2E022A3475B00B6B2F1 /* View */,
-				5A32D2E222A3476800B6B2F1 /* Wireframe */,
+				5A32D2E222A3476800B6B2F1 /* Router */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -436,7 +425,7 @@
 			children = (
 				5A8DD3CC22A2CE2C00B7D3CC /* Presenter */,
 				5A8DD3CD22A2CE3100B7D3CC /* View */,
-				5A8DD3D022A2CE9A00B7D3CC /* Wireframe */,
+				5A8DD3D022A2CE9A00B7D3CC /* Router */,
 			);
 			path = InitialScreen;
 			sourceTree = "<group>";
@@ -461,13 +450,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		5A8DD3D022A2CE9A00B7D3CC /* Wireframe */ = {
+		5A8DD3D022A2CE9A00B7D3CC /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				5A8DD3D122A2CEB400B7D3CC /* InitialScreenWireframe.swift */,
-				5A8DD3D522A2D00C00B7D3CC /* InitialScreenWireframeProtocol.swift */,
+				5A8DD3D122A2CEB400B7D3CC /* InitialScreenRouter.swift */,
+				5A8DD3D522A2D00C00B7D3CC /* InitialScreenRouterProtocol.swift */,
 			);
-			path = Wireframe;
+			path = Router;
 			sourceTree = "<group>";
 		};
 		5AA0CF61226D5BD3009E6A99 /* Frameworks */ = {
@@ -634,7 +623,7 @@
 				5A32D2EC22A3492E00B6B2F1 /* TutorialPresenter.swift in Sources */,
 				5A8DD3C522A2C0AE00B7D3CC /* InitialScreenViewController.swift in Sources */,
 				5A1FB0D2226AC08F00D7681A /* InsightButton.swift in Sources */,
-				5A32D2E822A3485B00B6B2F1 /* TutorialWireframe.swift in Sources */,
+				5A32D2E822A3485B00B6B2F1 /* TutorialRouter.swift in Sources */,
 				5A32D2EE22A349F100B6B2F1 /* TutorialPresenterBuilder.swift in Sources */,
 				5A24D9F42270E05D0048BB3D /* PDFPageViewModel.swift in Sources */,
 				5A33CD302259596100734BC6 /* InsightViewController.swift in Sources */,
@@ -650,17 +639,16 @@
 				5A24D9F02270D84D0048BB3D /* PDFPage.swift in Sources */,
 				5A32D2E722A3485B00B6B2F1 /* TutorialWireframeProtocol.swift in Sources */,
 				5A8DD3D822A2D2BF00B7D3CC /* InitialScreenPresenterBuilder.swift in Sources */,
-				5A8DD3D622A2D00C00B7D3CC /* InitialScreenWireframeProtocol.swift in Sources */,
+				5A8DD3D622A2D00C00B7D3CC /* InitialScreenRouterProtocol.swift in Sources */,
 				5A8DD3CB22A2CDE500B7D3CC /* InitialScreenViewControllerBuilder.swift in Sources */,
 				5A24D9EC226FB0050048BB3D /* PDFDocument.swift in Sources */,
 				5A33CD562259829F00734BC6 /* RecordBarView.swift in Sources */,
 				5A2A81802288D0F900321158 /* InsightDocumentInteractorBuilder.swift in Sources */,
 				5A33CCFB225956B900734BC6 /* AppDelegate.swift in Sources */,
-				5A33CD3622595A3D00734BC6 /* InsightWireframe.swift in Sources */,
 				5A32D2F222A35E7F00B6B2F1 /* TutorialMapper.swift in Sources */,
 				5A8DD3D422A2CF0E00B7D3CC /* InitialScreenPresenterProtocol.swift in Sources */,
 				5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */,
-				5A8DD3D222A2CEB400B7D3CC /* InitialScreenWireframe.swift in Sources */,
+				5A8DD3D222A2CEB400B7D3CC /* InitialScreenRouter.swift in Sources */,
 				5A32D2F022A35ADC00B6B2F1 /* TutorialStep.swift in Sources */,
 				5A24D9F22270DB390048BB3D /* PDFPageMapper.swift in Sources */,
 				5A33CD5F225AB8F500734BC6 /* WebCamView.swift in Sources */,
