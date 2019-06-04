@@ -13,14 +13,14 @@ final class InsightPresenter {
     
     private var recordInteractor: InsightRecorderInteractorProtocol?
     private var documentInteractor: InsightDocumentInteractorProtocol?
-    private weak var delegate: InsightPresenterOutputProtocol?
+    private weak var delegate: InsightPresenterDelegate?
     
     private var pages = [PDFPageViewModel]()
     private var selectedPage: PDFPageViewModel?
     
     init(recordInteractor: InsightRecorderInteractorProtocol,
          documentInteractor: InsightDocumentInteractorProtocol,
-         delegate: InsightPresenterOutputProtocol) {
+         delegate: InsightPresenterDelegate) {
         self.recordInteractor = recordInteractor
         self.documentInteractor = documentInteractor
         self.delegate = delegate

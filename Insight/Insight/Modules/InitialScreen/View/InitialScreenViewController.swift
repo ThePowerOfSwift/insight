@@ -9,7 +9,7 @@
 import UIKit
 
 
-final class InitialScreenViewController: UIViewController {
+final class InitialScreenViewController: UIViewController, InitialScreenPresenterDelegate {
     
     private var presenter: InitialScreenPresenterProtocol?
     

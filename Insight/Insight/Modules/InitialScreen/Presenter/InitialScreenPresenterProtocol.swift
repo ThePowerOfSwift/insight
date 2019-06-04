@@ -13,3 +13,5 @@ protocol InitialScreenPresenterProtocol {
     func didTapNewInsight()
     func didTapTutorial()
 }
+
+protocol InitialScreenPresenterDelegate {}

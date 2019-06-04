@@ -11,20 +11,20 @@ import Foundation
 
 struct InitialScreenPresenter {
     
-    var wireframe: InitialScreenWireframeProtocol?
+    var router: InitialScreenRouterProtocol?
     
-    init(wireframe: InitialScreenWireframeProtocol) {
-        self.wireframe = wireframe
+    init(router: InitialScreenRouterProtocol) {
+        self.router = router
     }
 }
 
 extension InitialScreenPresenter: InitialScreenPresenterProtocol {
    
     func didTapNewInsight() {
-        self.wireframe?.presentInsight()
+        self.router?.presentInsight()
     }
     
     func didTapTutorial() {
-        self.wireframe?.presentTutorial()
+        self.router?.presentTutorial()
     }
 }

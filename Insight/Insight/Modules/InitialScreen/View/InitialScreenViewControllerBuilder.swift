@@ -12,8 +12,8 @@ import Foundation
 struct InitialScreenViewControllerBuilder {
     
     static func build() -> InitialScreenViewController {
-        let presenter = InitialScreenPresenterBuilder.build()
         let viewController = InitialScreenViewController()
+        let presenter = InitialScreenPresenterBuilder.build(delegate: viewController)
         viewController.setupViewController(with: presenter)
     
         return viewController

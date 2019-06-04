@@ -15,7 +15,7 @@ protocol InsightPresenterProtocol {
     func didDoubleTapped(leftSide: Bool)
 }
 
-protocol InsightPresenterOutputProtocol: class {
+protocol InsightPresenterDelegate: class {
     func startBroadcast()
     func broadcastEnded()
     func startRecording()
