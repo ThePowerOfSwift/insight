@@ -147,16 +147,12 @@ extension InsightViewController: RecordBarDelegate {
     private func showActionSheetToChooseReplayKitStyle() {
         let alert = UIAlertController(title: "What do you want to do?", message: nil, preferredStyle: .actionSheet)
         let broadcastAction = UIAlertAction(title: "Broadcast", style: .default) { _ in
-            self.dismiss(animated: true, completion: nil)
             self.presenter?.didTapRecordButton(toBroadcast: true)
         }
         let recordAction = UIAlertAction(title: "Recording", style: .default) { _ in
-            self.dismiss(animated: true, completion: nil)
             self.presenter?.didTapRecordButton(toBroadcast: false)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            self.dismiss(animated: true, completion: nil)
-        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(broadcastAction)
         alert.addAction(recordAction)
         alert.addAction(cancelAction)
@@ -176,7 +172,6 @@ extension InsightViewController: RPBroadcastActivityViewControllerDelegate {
             self.showError(with: "Couldn't start broadcast.")
             return
         }
-    
         broadcastActivityViewController.dismiss(animated: true) {
             broadcastController?.startBroadcast { error in
                 DispatchQueue.main.async {
@@ -303,7 +298,6 @@ extension InsightViewController: UIDocumentPickerDelegate {
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("view was cancelled")
-        dismiss(animated: true, completion: nil)
     }
     
     private func presentDocumentPicker() {
@@ -332,7 +326,6 @@ extension InsightViewController {
             self.showError(with: "Couldn't start broadcast.")
             return
         }
-        self.dismissAlert()
         self.recordBarView.didStartRecording()
         self.isReplayKitOff = false
     }
@@ -356,11 +349,8 @@ extension InsightViewController {
     }
     
     private func showError(with message: String) {
-        dismiss(animated: false, completion: nil)
         let alert = UIAlertController(title: "Something happened", message: message, preferredStyle: .alert)
-        let cancelButton = UIAlertAction(title: "Ok", style: .default) { _ in
-            self.dismiss(animated: true, completion: nil)
-        }
+        let cancelButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(cancelButton)
         present(alert, animated: true, completion: nil)
     }
