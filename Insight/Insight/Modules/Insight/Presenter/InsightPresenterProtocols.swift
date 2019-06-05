@@ -21,6 +21,7 @@ protocol InsightPresenterDelegate: class {
     func startRecording()
     func stopRecording()
     func presentPDFPage(page: PDFPageViewModel)
+    func configureViewForPDF(page: PDFPageViewModel)
     func presentError()
     func showLoading()
     func hideLoading()

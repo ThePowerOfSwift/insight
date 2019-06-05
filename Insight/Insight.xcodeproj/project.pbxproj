@@ -43,6 +43,7 @@
 		5A33CD5A225998F500734BC6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD59225998F500734BC6 /* UIView.swift */; };
 		5A33CD5C2259BAC800734BC6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD5B2259BAC800734BC6 /* LaunchScreen.xib */; };
 		5A33CD5F225AB8F500734BC6 /* WebCamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD5E225AB8F500734BC6 /* WebCamView.swift */; };
+		5A3BDB3022A809FC0016A9F0 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BDB2F22A809FC0016A9F0 /* UIImageView.swift */; };
 		5A8DD3C522A2C0AE00B7D3CC /* InitialScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3C122A2C0AD00B7D3CC /* InitialScreenViewController.swift */; };
 		5A8DD3C622A2C0AE00B7D3CC /* InitialScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8DD3C222A2C0AD00B7D3CC /* InitialScreenViewController.xib */; };
 		5A8DD3C722A2C0AE00B7D3CC /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3C322A2C0AD00B7D3CC /* TutorialViewController.swift */; };
@@ -117,6 +118,7 @@
 		5A33CD59225998F500734BC6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		5A33CD5B2259BAC800734BC6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		5A33CD5E225AB8F500734BC6 /* WebCamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCamView.swift; sourceTree = "<group>"; };
+		5A3BDB2F22A809FC0016A9F0 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		5A8DD3C122A2C0AD00B7D3CC /* InitialScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialScreenViewController.swift; sourceTree = "<group>"; };
 		5A8DD3C222A2C0AD00B7D3CC /* InitialScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialScreenViewController.xib; sourceTree = "<group>"; };
 		5A8DD3C322A2C0AD00B7D3CC /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				5A33CD59225998F500734BC6 /* UIView.swift */,
+				5A3BDB2F22A809FC0016A9F0 /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				5A1FB0D5226B715100D7681A /* LaserPointerView.swift in Sources */,
 				5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */,
 				5A24D9EE226FB4420048BB3D /* PDFDocumentMapper.swift in Sources */,
+				5A3BDB3022A809FC0016A9F0 /* UIImageView.swift in Sources */,
 				5A32D2EA22A348F400B6B2F1 /* TutorialPresenterProtocol.swift in Sources */,
 				5A8DD3CF22A2CE9100B7D3CC /* InitialScreenPresenter.swift in Sources */,
 				5A2A817C2288CDD500321158 /* InsightDocumentInteractor.swift in Sources */,

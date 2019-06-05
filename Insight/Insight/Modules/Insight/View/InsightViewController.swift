@@ -26,6 +26,7 @@ class InsightViewController: UIViewController {
     private var camView = CamView()
     private var laserPointerView = LaserPointerView()
     private var pdfView: UIImageView = UIImageView()
+    private var backgroundView: UIImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +70,14 @@ extension InsightViewController: InsightPresenterDelegate {
         self.pdfView.setNeedsDisplay()
         self.view.addSubview(self.pdfView)
         self.view.sendSubviewToBack(self.pdfView)
+        self.view.sendSubviewToBack(self.backgroundView)
+    }
+    
+    func configureViewForPDF(page: PDFPageViewModel) {
+        self.backgroundView = UIImageView(image: page.image)
+        self.backgroundView.addBlurEffect()
+        self.view.addSubview(self.backgroundView)
+        self.view.sendSubviewToBack(self.backgroundView)
     }
     
     func presentError() {
@@ -320,7 +329,7 @@ extension InsightViewController: UIDocumentPickerDelegate {
 // MARL: - Privates
 
 extension InsightViewController {
-        private func didStartReplayKit(error: Error?) {
+    private func didStartReplayKit(error: Error?) {
         guard error == nil else {
             self.showError(with: "Couldn't start broadcast.")
             return

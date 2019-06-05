@@ -81,6 +81,7 @@ extension InsightPresenter: InsightRecorderInteractorDelegate {
         guard let page = self.pages.first else { return }
         self.selectedPage = page
         self.delegate?.presentPDFPage(page: page)
+        self.delegate?.configureViewForPDF(page: page)
     }
 }
 
