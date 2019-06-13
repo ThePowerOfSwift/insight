@@ -28,7 +28,6 @@
 		5A32D2F222A35E7F00B6B2F1 /* TutorialMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32D2F122A35E7F00B6B2F1 /* TutorialMapper.swift */; };
 		5A33CCFB225956B900734BC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CCFA225956B900734BC6 /* AppDelegate.swift */; };
 		5A33CD02225956BC00734BC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD01225956BC00734BC6 /* Assets.xcassets */; };
-		5A33CD10225956BC00734BC6 /* InsightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD0F225956BC00734BC6 /* InsightTests.swift */; };
 		5A33CD1B225956BC00734BC6 /* InsightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD1A225956BC00734BC6 /* InsightUITests.swift */; };
 		5A33CD302259596100734BC6 /* InsightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD2F2259596100734BC6 /* InsightViewController.swift */; };
 		5A33CD322259599000734BC6 /* InsightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD312259599000734BC6 /* InsightPresenter.swift */; };
@@ -36,7 +35,7 @@
 		5A33CD3822595C2600734BC6 /* InsightPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */; };
 		5A33CD3C2259604F00734BC6 /* InsightViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */; };
 		5A33CD3E225960E000734BC6 /* InsightPresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */; };
-		5A33CD402259617B00734BC6 /* InsightInteractorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */; };
+		5A33CD402259617B00734BC6 /* InsightRecorderInteractorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD3F2259617B00734BC6 /* InsightRecorderInteractorBuilder.swift */; };
 		5A33CD4722597D5A00734BC6 /* InsightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD4622597D5A00734BC6 /* InsightViewController.xib */; };
 		5A33CD54225981F300734BC6 /* RecordBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A33CD4F225981F300734BC6 /* RecordBarView.xib */; };
 		5A33CD562259829F00734BC6 /* RecordBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A33CD552259829F00734BC6 /* RecordBarView.swift */; };
@@ -56,6 +55,8 @@
 		5A8DD3D822A2D2BF00B7D3CC /* InitialScreenPresenterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D722A2D2BF00B7D3CC /* InitialScreenPresenterBuilder.swift */; };
 		5A8DD3DA22A2E90100B7D3CC /* TutorialViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8DD3D922A2E90100B7D3CC /* TutorialViewControllerBuilder.swift */; };
 		5AA0CF63226D5BD3009E6A99 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */; };
+		5AC9173F22AFDC3200346066 /* InsightRecorderInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC9173E22AFDC3200346066 /* InsightRecorderInteractorTests.swift */; };
+		5AF3F95122B2C12C00BDAA24 /* InsightDocmentInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3F95022B2C12C00BDAA24 /* InsightDocmentInteractorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +101,6 @@
 		5A33CD01225956BC00734BC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A33CD06225956BC00734BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A33CD0B225956BC00734BC6 /* InsightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A33CD0F225956BC00734BC6 /* InsightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightTests.swift; sourceTree = "<group>"; };
 		5A33CD11225956BC00734BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A33CD16225956BC00734BC6 /* InsightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A33CD1A225956BC00734BC6 /* InsightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightUITests.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		5A33CD3722595C2600734BC6 /* InsightPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterProtocols.swift; sourceTree = "<group>"; };
 		5A33CD3B2259604F00734BC6 /* InsightViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightViewControllerBuilder.swift; sourceTree = "<group>"; };
 		5A33CD3D225960E000734BC6 /* InsightPresenterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterBuilder.swift; sourceTree = "<group>"; };
-		5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightInteractorBuilder.swift; sourceTree = "<group>"; };
+		5A33CD3F2259617B00734BC6 /* InsightRecorderInteractorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRecorderInteractorBuilder.swift; sourceTree = "<group>"; };
 		5A33CD4622597D5A00734BC6 /* InsightViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightViewController.xib; sourceTree = "<group>"; };
 		5A33CD4F225981F300734BC6 /* RecordBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordBarView.xib; sourceTree = "<group>"; };
 		5A33CD552259829F00734BC6 /* RecordBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBarView.swift; sourceTree = "<group>"; };
@@ -132,6 +132,8 @@
 		5A8DD3D922A2E90100B7D3CC /* TutorialViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerBuilder.swift; sourceTree = "<group>"; };
 		5AA0CF60226C2848009E6A99 /* Insight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Insight.entitlements; sourceTree = "<group>"; };
 		5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		5AC9173E22AFDC3200346066 /* InsightRecorderInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRecorderInteractorTests.swift; sourceTree = "<group>"; };
+		5AF3F95022B2C12C00BDAA24 /* InsightDocmentInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightDocmentInteractorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,7 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				5A33CD33225959A900734BC6 /* InsightRecorderInteractor.swift */,
-				5A33CD3F2259617B00734BC6 /* InsightInteractorBuilder.swift */,
+				5A33CD3F2259617B00734BC6 /* InsightRecorderInteractorBuilder.swift */,
 			);
 			path = Recorder;
 			sourceTree = "<group>";
@@ -282,7 +284,6 @@
 			isa = PBXGroup;
 			children = (
 				5A33CD412259694700734BC6 /* Modules */,
-				5A33CD0F225956BC00734BC6 /* InsightTests.swift */,
 				5A33CD11225956BC00734BC6 /* Info.plist */,
 			);
 			path = InsightTests;
@@ -373,6 +374,7 @@
 		5A33CD422259694E00734BC6 /* Insight */ = {
 			isa = PBXGroup;
 			children = (
+				5AF3F94F22B2C10100BDAA24 /* Interactor */,
 			);
 			path = Insight;
 			sourceTree = "<group>";
@@ -468,6 +470,15 @@
 				5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5AF3F94F22B2C10100BDAA24 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				5AC9173E22AFDC3200346066 /* InsightRecorderInteractorTests.swift */,
+				5AF3F95022B2C12C00BDAA24 /* InsightDocmentInteractorTests.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -657,7 +668,7 @@
 				5A24D9F22270DB390048BB3D /* PDFPageMapper.swift in Sources */,
 				5A33CD5F225AB8F500734BC6 /* WebCamView.swift in Sources */,
 				5A33CD34225959A900734BC6 /* InsightRecorderInteractor.swift in Sources */,
-				5A33CD402259617B00734BC6 /* InsightInteractorBuilder.swift in Sources */,
+				5A33CD402259617B00734BC6 /* InsightRecorderInteractorBuilder.swift in Sources */,
 				5A8DD3DA22A2E90100B7D3CC /* TutorialViewControllerBuilder.swift in Sources */,
 				5A33CD5A225998F500734BC6 /* UIView.swift in Sources */,
 				5A33CD3822595C2600734BC6 /* InsightPresenterProtocols.swift in Sources */,
@@ -668,7 +679,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A33CD10225956BC00734BC6 /* InsightTests.swift in Sources */,
+				5AF3F95122B2C12C00BDAA24 /* InsightDocmentInteractorTests.swift in Sources */,
+				5AC9173F22AFDC3200346066 /* InsightRecorderInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

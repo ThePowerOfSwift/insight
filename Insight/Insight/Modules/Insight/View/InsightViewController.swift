@@ -15,8 +15,8 @@ import MobileCoreServices
 
 class InsightViewController: UIViewController {
     
-    @IBOutlet weak var recordBarView: RecordBarView!
-    @IBOutlet weak var toolBarView: ToolBarView!
+    @IBOutlet private weak var recordBarView: RecordBarView!
+    @IBOutlet private weak var toolBarView: ToolBarView!
     
     private var presenter: InsightPresenterProtocol?
     private var isRecording: Bool = false

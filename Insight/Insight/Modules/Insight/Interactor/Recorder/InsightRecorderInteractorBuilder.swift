@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct InsightInteractorBuilder {
+struct InsightRecorderInteractorBuilder {
     
     static func build() -> InsightRecorderInteractor {
         let interactor = InsightRecorderInteractor()

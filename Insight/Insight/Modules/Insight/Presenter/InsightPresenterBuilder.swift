@@ -12,7 +12,7 @@ import Foundation
 struct InsightPresenterBuilder {
     
     static func build(delegate: InsightPresenterDelegate) -> InsightPresenter {
-        let recordInteractor = InsightInteractorBuilder.build()
+        let recordInteractor = InsightRecorderInteractorBuilder.build()
         let documentInteractor = InsightDocumentInteractorBuilder.build()
         let presenter = InsightPresenter(recordInteractor: recordInteractor, documentInteractor: documentInteractor, delegate: delegate)
         recordInteractor.setupInteractor(with: presenter)
