@@ -57,6 +57,9 @@
 		5AA0CF63226D5BD3009E6A99 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */; };
 		5AC9173F22AFDC3200346066 /* InsightRecorderInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC9173E22AFDC3200346066 /* InsightRecorderInteractorTests.swift */; };
 		5AF3F95122B2C12C00BDAA24 /* InsightDocmentInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3F95022B2C12C00BDAA24 /* InsightDocmentInteractorTests.swift */; };
+		5AF3F95422B2C68E00BDAA24 /* InsightPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3F95322B2C68E00BDAA24 /* InsightPresenterTests.swift */; };
+		5AF3F95722B3E1F900BDAA24 /* PDFDocumentMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3F95622B3E1F900BDAA24 /* PDFDocumentMock.swift */; };
+		5AF3F95922B3E3B200BDAA24 /* VariablesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3F95822B3E3B200BDAA24 /* VariablesMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +137,9 @@
 		5AA0CF62226D5BD3009E6A99 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		5AC9173E22AFDC3200346066 /* InsightRecorderInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRecorderInteractorTests.swift; sourceTree = "<group>"; };
 		5AF3F95022B2C12C00BDAA24 /* InsightDocmentInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightDocmentInteractorTests.swift; sourceTree = "<group>"; };
+		5AF3F95322B2C68E00BDAA24 /* InsightPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightPresenterTests.swift; sourceTree = "<group>"; };
+		5AF3F95622B3E1F900BDAA24 /* PDFDocumentMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFDocumentMock.swift; sourceTree = "<group>"; };
+		5AF3F95822B3E3B200BDAA24 /* VariablesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariablesMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,6 +380,8 @@
 		5A33CD422259694E00734BC6 /* Insight */ = {
 			isa = PBXGroup;
 			children = (
+				5AF3F95522B3E1EB00BDAA24 /* Mock */,
+				5AF3F95222B2C66200BDAA24 /* Presenter */,
 				5AF3F94F22B2C10100BDAA24 /* Interactor */,
 			);
 			path = Insight;
@@ -479,6 +487,23 @@
 				5AF3F95022B2C12C00BDAA24 /* InsightDocmentInteractorTests.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		5AF3F95222B2C66200BDAA24 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5AF3F95322B2C68E00BDAA24 /* InsightPresenterTests.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		5AF3F95522B3E1EB00BDAA24 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				5AF3F95622B3E1F900BDAA24 /* PDFDocumentMock.swift */,
+				5AF3F95822B3E3B200BDAA24 /* VariablesMock.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -681,6 +706,9 @@
 			files = (
 				5AF3F95122B2C12C00BDAA24 /* InsightDocmentInteractorTests.swift in Sources */,
 				5AC9173F22AFDC3200346066 /* InsightRecorderInteractorTests.swift in Sources */,
+				5AF3F95422B2C68E00BDAA24 /* InsightPresenterTests.swift in Sources */,
+				5AF3F95922B3E3B200BDAA24 /* VariablesMock.swift in Sources */,
+				5AF3F95722B3E1F900BDAA24 /* PDFDocumentMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,6 @@ import XCTest
 class InsightDocmentInteractorTests: XCTestCase {
     
     private var sut: InsightDocumentInteractor?
-    private var url: URL = URL(string: "http://www.orimi.com/pdf-test.pdf")!
     private var expectation: XCTestExpectation?
     
     override func setUp() {
