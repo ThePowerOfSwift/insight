@@ -284,15 +284,20 @@ extension InsightViewController: UIGestureRecognizerDelegate {
     
     private func configureGestures() {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(trackLaserPointer(recognizer:)))
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(presentAnotherPage(recognizer:)))
-        
         pan.delegate = self
-        doubleTap.delegate = self
-        
-        doubleTap.numberOfTapsRequired = 2
-        
         self.view.addGestureRecognizer(pan)
+        addGestureToPresentation()
+    }
+    
+    private func addGestureToPresentation() {
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(presentAnotherPage(recognizer:)))
+        doubleTap.delegate = self
+        doubleTap.numberOfTapsRequired = 2
         self.view.addGestureRecognizer(doubleTap)
+        
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(presentAnotherPage(recognizer:)))
+        pan.delegate = self
+        self.view.addGestureRecognizer(pan)
     }
 }
 
@@ -316,11 +321,31 @@ extension InsightViewController: UIDocumentPickerDelegate {
         self.present(importMenu, animated: true, completion: nil)
     }
     
-    @objc private func presentAnotherPage(recognizer: UITapGestureRecognizer) {
+    @objc private func presentAnotherPage(recognizer: UIGestureRecognizer) {
+        if let pan = recognizer as? UIPanGestureRecognizer  {
+            swipeToAnotherPage(gesture: pan)
+            return
+        }
+        if let doubleTap = recognizer as? UITapGestureRecognizer {
+            doubleTappedToAnotherPage(recognizer: doubleTap)
+        }
+    }
+    
+    private func doubleTappedToAnotherPage(recognizer: UITapGestureRecognizer) {
         if recognizer.location(in: self.view).x > self.view.center.x {
             self.presenter?.didDoubleTapped(leftSide: false)
         } else {
             self.presenter?.didDoubleTapped(leftSide: true)
+        }
+    }
+        
+    private func swipeToAnotherPage(gesture: UIPanGestureRecognizer) {
+        if gesture.state == .ended {
+            if gesture.velocity(in: pdfView).x < -100 {
+                self.presenter?.didDoubleTapped(leftSide: false)
+            } else if gesture.velocity(in: pdfView).x > 100 {
+                self.presenter?.didDoubleTapped(leftSide: true)
+            }
         }
     }
 }
