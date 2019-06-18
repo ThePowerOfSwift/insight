@@ -37,7 +37,7 @@ struct TutorialMapper {
     
     static private func makePdfNavigationStep() -> TutorialStep {
         return TutorialStep(title: "Navigate in PDF",
-                            description: "Probably your presentation will have more than one page. In order to go FORWARD, double tap on the Right side of the screen. And to go BACKWARD, double tap on the LEFT side of the screen.",
+                            description: "Probably your presentation will have more than one page. You can go forward and backwards by swiping in the screen or double tapping on the right and the left side of the screen.",
                             step: .pdfNavigatonStep)
     }
     

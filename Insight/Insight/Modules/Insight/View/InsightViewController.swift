@@ -276,14 +276,26 @@ extension InsightViewController: RPPreviewViewControllerDelegate {
 
 extension InsightViewController: UIGestureRecognizerDelegate {
     
-    @objc private func trackLaserPointer(recognizer: UIPanGestureRecognizer) {
+    @objc private func panGestureHandler(recognizer: UIPanGestureRecognizer) {
         if isLaserPointerSelected {
             self.laserPointerView.didMove(in: self.view, recognizer: recognizer)
+        } else {
+            swipeToAnotherPage(gesture: recognizer)
+        }
+    }
+    
+    private func swipeToAnotherPage(gesture: UIPanGestureRecognizer) {
+        if gesture.state == .ended {
+            if gesture.velocity(in: pdfView).x < -100 {
+                self.presenter?.didDoubleTapped(leftSide: false)
+            } else if gesture.velocity(in: pdfView).x > 100 {
+                self.presenter?.didDoubleTapped(leftSide: true)
+            }
         }
     }
     
     private func configureGestures() {
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(trackLaserPointer(recognizer:)))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panGestureHandler(recognizer:)))
         pan.delegate = self
         self.view.addGestureRecognizer(pan)
         addGestureToPresentation()
@@ -294,10 +306,6 @@ extension InsightViewController: UIGestureRecognizerDelegate {
         doubleTap.delegate = self
         doubleTap.numberOfTapsRequired = 2
         self.view.addGestureRecognizer(doubleTap)
-        
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(presentAnotherPage(recognizer:)))
-        pan.delegate = self
-        self.view.addGestureRecognizer(pan)
     }
 }
 
@@ -321,14 +329,8 @@ extension InsightViewController: UIDocumentPickerDelegate {
         self.present(importMenu, animated: true, completion: nil)
     }
     
-    @objc private func presentAnotherPage(recognizer: UIGestureRecognizer) {
-        if let pan = recognizer as? UIPanGestureRecognizer  {
-            swipeToAnotherPage(gesture: pan)
-            return
-        }
-        if let doubleTap = recognizer as? UITapGestureRecognizer {
-            doubleTappedToAnotherPage(recognizer: doubleTap)
-        }
+    @objc private func presentAnotherPage(recognizer: UITapGestureRecognizer) {
+        doubleTappedToAnotherPage(recognizer: recognizer)
     }
     
     private func doubleTappedToAnotherPage(recognizer: UITapGestureRecognizer) {
@@ -336,16 +338,6 @@ extension InsightViewController: UIDocumentPickerDelegate {
             self.presenter?.didDoubleTapped(leftSide: false)
         } else {
             self.presenter?.didDoubleTapped(leftSide: true)
-        }
-    }
-        
-    private func swipeToAnotherPage(gesture: UIPanGestureRecognizer) {
-        if gesture.state == .ended {
-            if gesture.velocity(in: pdfView).x < -100 {
-                self.presenter?.didDoubleTapped(leftSide: false)
-            } else if gesture.velocity(in: pdfView).x > 100 {
-                self.presenter?.didDoubleTapped(leftSide: true)
-            }
         }
     }
 }
